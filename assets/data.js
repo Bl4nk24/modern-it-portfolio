@@ -1,63 +1,74 @@
 window.PORTFOLIO_SEED = {
   profile: {
-    name: "Eirik",
-    focus: "Microsoft, PowerShell, Automation",
-    mode: "Admin, Integrator, AI Builder",
-    location: "Germany / Remote",
+    name: "Eirik Christiansen",
+    focus: "SAP B1, Infrastruktur, Security",
+    mode: "Consultant, Admin, Automatisierer",
+    location: "Hamburg / Lueneburg / Hybrid",
     email: "hello@example.dev"
   },
   projects: [
     {
-      title: "Microsoft 365 Administration",
-      category: "microsoft",
-      year: "2026",
-      status: "Admin core",
+      title: "SAP Business One Consulting",
+      category: "sap",
+      year: "2025 - heute",
+      status: "Be1Eye GmbH",
       summary:
-        "Tenant, Benutzer, Gruppen, Lizenzen, Teams, SharePoint, Exchange und Entra so betreuen, dass der Alltag sauber funktioniert.",
-      impact: "Ich denke Microsoft nicht als einzelne Apps, sondern als zusammenhaengendes Arbeits- und Berechtigungssystem.",
-      stack: ["Microsoft 365", "Entra ID", "Intune", "Teams", "SharePoint", "Exchange"],
+        "SAP Business One fuer kleine und mittelstaendische Unternehmen technisch betreuen, optimieren und in bestehende IT-Landschaften einordnen.",
+      impact:
+        "Mein Schwerpunkt liegt auf der technischen Seite: Infrastruktur, Security, Prozessautomatisierung, HANA-Optimierung und ein sauberer Blick auf das grosse Ganze.",
+      stack: ["SAP Business One", "HANA", "SQL", "Prozessautomatisierung", "ERP-Technik"],
       links: {
         live: "#contact",
         code: "#contact"
       }
     },
     {
-      title: "PowerShell Automation",
+      title: "IT-Infrastruktur & Security",
+      category: "infra",
+      year: "2021 - heute",
+      status: "Admin backbone",
+      summary:
+        "Windows Server, Active Directory, Netzwerke, Hardware, Betriebssysteme, Helpdesk und Microsoft-Umgebungen im Betrieb verstehen und betreuen.",
+      impact:
+        "Ich komme aus der Administration: Systeme muessen stabil, nachvollziehbar, sicher und fuer Nutzer wirklich brauchbar sein.",
+      stack: [
+        "Windows Server",
+        "Active Directory",
+        "Netzwerkadministration",
+        "LAN/WAN",
+        "Helpdesk",
+        "Security"
+      ],
+      links: {
+        live: "#contact",
+        code: "#contact"
+      }
+    },
+    {
+      title: "Prozessautomatisierung",
       category: "automation",
-      year: "2025",
-      status: "Daily operations",
+      year: "laufend",
+      status: "Systems connected",
       summary:
-        "Wiederkehrende Admin-Aufgaben, Auswertungen, Benutzerprozesse und Systemverbindungen mit PowerShell und APIs automatisieren.",
-      impact: "Weniger Klickarbeit, weniger Fehlerquellen und mehr Zeit fuer die Aufgaben, bei denen Menschen wirklich gebraucht werden.",
-      stack: ["PowerShell", "Graph API", "Power Automate", "REST APIs", "Reporting"],
+        "Wiederkehrende Aufgaben, Datenfluesse und Systemuebergaenge mit PowerShell, SQL, MySQL, APIs und Microsoft-Werkzeugen vereinfachen.",
+      impact:
+        "Ich entwickle nicht am liebsten grosse Softwareprodukte, aber ich kann technische Bruecken bauen, Prozesse automatisieren und Systeme miteinander sprechen lassen.",
+      stack: ["PowerShell", "SQL", "MySQL", "Microsoft Office", "Outlook", "APIs"],
       links: {
         live: "#contact",
         code: "#contact"
       }
     },
     {
-      title: "KI-Agenten fuer Prozesse",
+      title: "KI-Agenten & Assistenzsysteme",
       category: "ai",
-      year: "2025",
-      status: "AI enablement",
+      year: "2026",
+      status: "AI builder",
       summary:
-        "KI-Agenten konzipieren, trainieren und in bestehende Ablaeufe einbetten, ohne Governance, Rollen und Datenzugriff zu vergessen.",
-      impact: "KI ist fuer mich kein Showpiece, sondern ein Werkzeug fuer Support, Wissen, Automatisierung und bessere Entscheidungen.",
-      stack: ["Copilot", "Agent Builder", "Prompting", "Knowledge Sources", "Governance"],
-      links: {
-        live: "#contact",
-        code: "#contact"
-      }
-    },
-    {
-      title: "SAP Business One Technik",
-      category: "erp",
-      year: "2024",
-      status: "ERP backbone",
-      summary:
-        "Technische Seite von SAP B1 verstehen: Datenbank, Schnittstellen, Add-ons, Systembetrieb und Verbindungen zu anderen Tools.",
-      impact: "Ich kann Fachsysteme so einordnen, dass IT, Prozesse und Business-Anforderungen zusammenkommen.",
-      stack: ["SAP B1", "SQL Server", "HANA", "B1if", "Service Layer", "Windows Server"],
+        "KI-Agenten fuer Support, Wissen, Prozesshilfe und Automatisierung aufbauen, trainieren und mit bestehenden Datenquellen verbinden.",
+      impact:
+        "Der Fokus liegt nicht auf Hype, sondern auf kontrollierter Nutzung: Rollen, Datenzugriff, Anweisungen, Wissen und nachvollziehbare Ergebnisse.",
+      stack: ["KI-Agenten", "Prompting", "Knowledge Sources", "Automatisierung", "Governance"],
       links: {
         live: "#contact",
         code: "#contact"
@@ -66,32 +77,48 @@ window.PORTFOLIO_SEED = {
   ],
   lifeEvents: [
     {
-      date: "Basis",
-      title: "IT Administration",
-      text: "Systeme betreiben, Nutzer unterstuetzen, Berechtigungen verstehen und Verantwortung fuer stabile Umgebungen uebernehmen."
+      date: "Apr. 2025 - heute",
+      title: "SAP IT-Consultant, Be1Eye GmbH",
+      text:
+        "Vollzeit in Lueneburg/Hybrid. SAP Business One Consulting, IT-Infrastruktur, Security, Prozessautomatisierung und HANA-Optimierung."
     },
     {
-      date: "Microsoft",
-      title: "Modern Workplace",
-      text: "Microsoft 365, Teams, SharePoint, Exchange, Entra und Intune als zusammenhaengende Arbeitsplattform denken."
+      date: "Okt. 2021 - Apr. 2025",
+      title: "IT-Systemadministrator, Reos GmbH",
+      text:
+        "Duales Studium in Hamburg/Hybrid. Active Directory, Microsoft Outlook, Windows Server, Netzwerk, Hardware, Betriebssysteme und Helpdesk-Support."
     },
     {
-      date: "Automation",
-      title: "PowerShell statt Klickarbeit",
-      text: "Wiederkehrende Aufgaben automatisieren, Systeme verbinden und Reports aus Daten bauen, die sonst liegen bleiben."
+      date: "Okt. 2021 - Maerz 2025",
+      title: "B.Sc. Computer Science, IU Internationale Hochschule",
+      text:
+        "Bachelorabschluss mit Note 2.2. Schwerpunkte aus dem Profil: SQL, MySQL, OOP, JavaScript, HTML/CSS und Java."
     },
     {
-      date: "Jetzt",
-      title: "KI-Agenten mit Kontrolle",
-      text: "Agenten und KI-Workflows so aufbauen, dass sie helfen, aber Rollen, Rechte, Datenquellen und Nachvollziehbarkeit respektieren."
+      date: "Sept. 2012 - Juni 2021",
+      title: "Abitur, Schloss Torgelow Privates Internatsgymnasium",
+      text:
+        "Abitur mit Note 2.4. Grundlagen aus dem Profil: SQL, MySQL, Python, Hardware und technische Arbeitsweise."
     }
   ],
   stack: [
-    { name: "Microsoft 365 Administration", level: 92, tone: "mint" },
-    { name: "PowerShell & Automation", level: 90, tone: "lime" },
-    { name: "Entra ID, Intune & Security", level: 84, tone: "coral" },
-    { name: "Systemintegration & APIs", level: 86, tone: "blue" },
-    { name: "KI-Agenten & Prozessdesign", level: 82, tone: "violet" },
-    { name: "SAP Business One Technik", level: 78, tone: "amber" }
+    { name: "SAP Business One", level: 90, tone: "mint" },
+    { name: "IT-Infrastruktur & Security", level: 88, tone: "lime" },
+    { name: "Computerhardware-Montage", level: 86, tone: "coral" },
+    { name: "Netzwerkadministration", level: 86, tone: "blue" },
+    { name: "Active Directory", level: 84, tone: "violet" },
+    { name: "Windows Server", level: 84, tone: "amber" },
+    { name: "Betriebssysteme", level: 82, tone: "mint" },
+    { name: "Microsoft Outlook & Office", level: 82, tone: "lime" },
+    { name: "Helpdesk-Support", level: 80, tone: "coral" },
+    { name: "LAN/WAN & Netzwerktechnik", level: 80, tone: "blue" },
+    { name: "SQL & MySQL", level: 78, tone: "violet" },
+    { name: "Hardware-Installation", level: 78, tone: "amber" },
+    { name: "Windows & Mac", level: 76, tone: "mint" },
+    { name: "HTML, CSS & JavaScript", level: 68, tone: "lime" },
+    { name: "Java, Python & OOP", level: 64, tone: "coral" },
+    { name: "Teamwork", level: 88, tone: "blue" },
+    { name: "PowerShell & Automatisierung", level: 84, tone: "violet" },
+    { name: "KI-Agenten aufbauen", level: 78, tone: "amber" }
   ]
 };
