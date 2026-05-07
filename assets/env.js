@@ -1,0 +1,4 @@
+window.PORTFOLIO_ENV = {
+  SUPABASE_URL: "",
+  SUPABASE_PUBLISHABLE_KEY: ""
+};

@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Modernes IT Portfolio mit Projekten, Lebensstationen, Stack und Supabase-Anbindung."
+    />
+    <title>Eirik | IT Portfolio</title>
+    <link rel="stylesheet" href="./assets/styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#projects">Direkt zu den Projekten</a>
+
+    <header class="site-header" data-elevate>
+      <a class="brand" href="#top" aria-label="Zur Startansicht">
+        <span class="brand-mark" aria-hidden="true">E</span>
+        <span>Eirik</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Hauptnavigation">
+        <a href="#projects">Projekte</a>
+        <a href="#life">Leben</a>
+        <a href="#stack">Stack</a>
+        <a href="#contact">Kontakt</a>
+      </nav>
+
+      <button class="icon-button" type="button" data-theme-toggle aria-label="Theme wechseln">
+        <span data-icon="moon" aria-hidden="true"></span>
+      </button>
+    </header>
+
+    <main id="top">
+      <section class="hero-section" aria-labelledby="hero-title">
+        <canvas id="signalCanvas" class="signal-canvas" aria-hidden="true"></canvas>
+
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <h1 id="hero-title">Eirik</h1>
+            <p class="hero-lede">
+              IT-Projekte, Lebensstationen und technische Energie in einer Oberfl&auml;che,
+              die wie ein pers&ouml;nliches Control Center wirkt.
+            </p>
+
+            <div class="hero-actions" aria-label="Primaere Aktionen">
+              <a class="button button-primary" href="#projects">
+                <span data-icon="folder" aria-hidden="true"></span>
+                Projekte ansehen
+              </a>
+              <a class="button button-secondary" href="#contact">
+                <span data-icon="send" aria-hidden="true"></span>
+                Signal senden
+              </a>
+            </div>
+          </div>
+
+          <aside class="identity-console" aria-label="Profil Momentaufnahme">
+            <div class="console-topline">
+              <span>now.running</span>
+              <strong data-profile-status>Demo Data</strong>
+            </div>
+            <div class="console-portrait" aria-hidden="true">
+              <span>E</span>
+            </div>
+            <dl class="console-stats">
+              <div>
+                <dt>Fokus</dt>
+                <dd data-profile-focus>Frontend, Cloud, AI</dd>
+              </div>
+              <div>
+                <dt>Modus</dt>
+                <dd data-profile-mode>Build in public</dd>
+              </div>
+              <div>
+                <dt>Basis</dt>
+                <dd data-profile-location>Germany / Remote</dd>
+              </div>
+            </dl>
+          </aside>
+        </div>
+      </section>
+
+      <section class="projects-section" id="projects" aria-labelledby="projects-title">
+        <div class="section-heading">
+          <p class="section-kicker">Selected work</p>
+          <h2 id="projects-title">Projekte mit Substanz</h2>
+        </div>
+
+        <div class="project-toolbar" aria-label="Projektfilter">
+          <button class="segment is-active" type="button" data-filter="all">Alle</button>
+          <button class="segment" type="button" data-filter="web">Web</button>
+          <button class="segment" type="button" data-filter="cloud">Cloud</button>
+          <button class="segment" type="button" data-filter="ai">AI</button>
+          <button class="segment" type="button" data-filter="life">Life</button>
+        </div>
+
+        <div class="project-layout">
+          <div class="project-list" data-project-list></div>
+          <article class="project-detail" data-project-detail aria-live="polite"></article>
+        </div>
+      </section>
+
+      <section class="life-section" id="life" aria-labelledby="life-title">
+        <div class="section-heading">
+          <p class="section-kicker">Life log</p>
+          <h2 id="life-title">Nicht nur Code</h2>
+        </div>
+
+        <div class="life-grid" data-life-grid></div>
+      </section>
+
+      <section class="stack-section" id="stack" aria-labelledby="stack-title">
+        <div class="section-heading">
+          <p class="section-kicker">Toolchain</p>
+          <h2 id="stack-title">Womit ich Dinge baue</h2>
+        </div>
+
+        <div class="stack-board" data-stack-board></div>
+      </section>
+
+      <section class="contact-section" id="contact" aria-labelledby="contact-title">
+        <div class="contact-copy">
+          <p class="section-kicker">Open channel</p>
+          <h2 id="contact-title">Lass uns etwas bauen</h2>
+          <p>
+            Projektidee, Zusammenarbeit oder ein gutes technisches Problem: Schreib mir
+            ein Signal und ich melde mich mit Kontext zur&uuml;ck.
+          </p>
+        </div>
+
+        <form class="contact-form" data-contact-form>
+          <label>
+            <span>Name</span>
+            <input name="name" autocomplete="name" required />
+          </label>
+          <label>
+            <span>E-Mail</span>
+            <input name="email" type="email" autocomplete="email" required />
+          </label>
+          <label>
+            <span>Nachricht</span>
+            <textarea name="message" rows="5" required></textarea>
+          </label>
+          <button class="button button-primary" type="submit">
+            <span data-icon="send" aria-hidden="true"></span>
+            Senden
+          </button>
+          <p class="form-note" data-form-note></p>
+        </form>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>Built with static web, Supabase-ready data and a little taste.</span>
+      <a href="#top">Nach oben</a>
+    </footer>
+
+    <script src="./assets/env.js"></script>
+    <script src="./assets/data.js"></script>
+    <script src="./assets/supabase.js"></script>
+    <script src="./assets/app.js"></script>
+  </body>
+</html>

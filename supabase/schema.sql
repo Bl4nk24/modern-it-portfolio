@@ -1,0 +1,219 @@
+create extension if not exists pgcrypto;
+
+create table if not exists public.profile (
+  profile_key text primary key default 'main' check (profile_key = 'main'),
+  name text not null,
+  focus text not null,
+  mode text not null,
+  location text not null,
+  email text,
+  is_public boolean not null default true,
+  updated_at timestamptz not null default now()
+);
+
+create table if not exists public.projects (
+  slug text primary key,
+  sort_order integer not null default 0,
+  title text not null,
+  category text not null check (category in ('web', 'cloud', 'ai', 'life')),
+  year_label text not null,
+  status text not null,
+  summary text not null,
+  impact text not null,
+  stack text[] not null default '{}',
+  links jsonb not null default '{}',
+  is_public boolean not null default true,
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now()
+);
+
+create table if not exists public.life_events (
+  slug text primary key,
+  sort_order integer not null default 0,
+  date_label text not null,
+  title text not null,
+  body text not null,
+  is_public boolean not null default true,
+  created_at timestamptz not null default now()
+);
+
+create table if not exists public.contact_messages (
+  id uuid primary key default gen_random_uuid(),
+  name text not null,
+  email text not null,
+  message text not null,
+  created_at timestamptz not null default now()
+);
+
+alter table public.profile enable row level security;
+alter table public.projects enable row level security;
+alter table public.life_events enable row level security;
+alter table public.contact_messages enable row level security;
+
+drop policy if exists "Public can read profile" on public.profile;
+create policy "Public can read profile"
+  on public.profile
+  for select
+  to anon, authenticated
+  using (is_public);
+
+drop policy if exists "Public can read projects" on public.projects;
+create policy "Public can read projects"
+  on public.projects
+  for select
+  to anon, authenticated
+  using (is_public);
+
+drop policy if exists "Public can read life events" on public.life_events;
+create policy "Public can read life events"
+  on public.life_events
+  for select
+  to anon, authenticated
+  using (is_public);
+
+drop policy if exists "Public can submit contact messages" on public.contact_messages;
+create policy "Public can submit contact messages"
+  on public.contact_messages
+  for insert
+  to anon, authenticated
+  with check (
+    length(btrim(name)) between 1 and 120
+    and position('@' in email) > 1
+    and length(btrim(message)) between 1 and 4000
+  );
+
+grant usage on schema public to anon, authenticated;
+grant select on public.profile, public.projects, public.life_events to anon, authenticated;
+grant insert on public.contact_messages to anon, authenticated;
+
+insert into public.profile (profile_key, name, focus, mode, location, email, is_public)
+values (
+  'main',
+  'Eirik',
+  'Frontend, Cloud, AI',
+  'Build in public',
+  'Germany / Remote',
+  'hello@example.dev',
+  true
+)
+on conflict (profile_key) do update
+set
+  name = excluded.name,
+  focus = excluded.focus,
+  mode = excluded.mode,
+  location = excluded.location,
+  email = excluded.email,
+  is_public = excluded.is_public,
+  updated_at = now();
+
+insert into public.projects
+  (slug, sort_order, title, category, year_label, status, summary, impact, stack, links, is_public)
+values
+  (
+    'opsboard',
+    10,
+    'OpsBoard',
+    'web',
+    '2026',
+    'Concept live',
+    'Ein kompaktes Dashboard fuer Incident-Notizen, Service-Zustaende und Team-Uebergaben.',
+    'Von verstreuten Chats zu einem sichtbaren Betriebsbild.',
+    array['JavaScript', 'Supabase', 'Realtime', 'Charts'],
+    '{"live":"#contact","code":"#contact"}'::jsonb,
+    true
+  ),
+  (
+    'infra-pulse',
+    20,
+    'Infra Pulse',
+    'cloud',
+    '2025',
+    'Prototype',
+    'Monitoring-Ansicht fuer Deployments, Kostenimpulse und Automationslaeufe.',
+    'Macht Infrastruktur weniger abstrakt und Entscheidungen schneller.',
+    array['GitHub Actions', 'Linux', 'Terraform', 'Postgres'],
+    '{"live":"#contact","code":"#contact"}'::jsonb,
+    true
+  ),
+  (
+    'knowledge-desk',
+    30,
+    'Knowledge Desk',
+    'ai',
+    '2025',
+    'Internal tool',
+    'Persoenliche Wissensablage mit KI-Suche, Quellenlogik und sauberer Aufgabenuebergabe.',
+    'Ideen, Snippets und Entscheidungen bleiben auffindbar.',
+    array['OpenAI', 'Supabase', 'Edge Functions', 'Vector Search'],
+    '{"live":"#contact","code":"#contact"}'::jsonb,
+    true
+  ),
+  (
+    'life-atlas',
+    40,
+    'Life Atlas',
+    'life',
+    '2024',
+    'Story layer',
+    'Eine visuelle Timeline fuer Lernen, Reisen, Arbeit und Momente, die mich gepraegt haben.',
+    'Das Portfolio zeigt nicht nur Output, sondern Richtung.',
+    array['Design Systems', 'Maps', 'Storytelling', 'CSS'],
+    '{"live":"#life","code":"#contact"}'::jsonb,
+    true
+  )
+on conflict (slug) do update
+set
+  sort_order = excluded.sort_order,
+  title = excluded.title,
+  category = excluded.category,
+  year_label = excluded.year_label,
+  status = excluded.status,
+  summary = excluded.summary,
+  impact = excluded.impact,
+  stack = excluded.stack,
+  links = excluded.links,
+  is_public = excluded.is_public,
+  updated_at = now();
+
+insert into public.life_events
+  (slug, sort_order, date_label, title, body, is_public)
+values
+  (
+    'admin-mindset',
+    10,
+    '2021',
+    'Admin Mindset',
+    'Erste Systeme wirklich verstanden: Rechte, Netzwerke, Skripte, Verantwortung.',
+    true
+  ),
+  (
+    'web-cloud',
+    20,
+    '2023',
+    'Web + Cloud',
+    'Frontend wurde greifbar, Cloud-Workflows wurden Alltag, Deployments wurden schneller.',
+    true
+  ),
+  (
+    'ai-tooling',
+    30,
+    '2025',
+    'AI als Werkzeug',
+    'Nicht als Magie, sondern als vernuenftiger Beschleuniger fuer Recherche, Code und Struktur.',
+    true
+  ),
+  (
+    'portfolio-os',
+    40,
+    'Jetzt',
+    'Portfolio OS',
+    'Projekte, Lebenslauf und Persoenlichkeit wachsen in einem System zusammen.',
+    true
+  )
+on conflict (slug) do update
+set
+  sort_order = excluded.sort_order,
+  date_label = excluded.date_label,
+  title = excluded.title,
+  body = excluded.body,
+  is_public = excluded.is_public;
