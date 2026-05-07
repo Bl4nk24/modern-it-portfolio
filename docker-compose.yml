@@ -1,0 +1,10 @@
+services:
+  portfolio:
+    image: ghcr.io/bl4nk24/modern-it-portfolio:latest
+    container_name: modern-it-portfolio
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    environment:
+      SUPABASE_URL: "https://pkkjrxlubgddvuesqtpf.supabase.co"
+      SUPABASE_PUBLISHABLE_KEY: "sb_publishable_RnqBLxrvc4SUMM5aZiTKGg_SigsBtn8"

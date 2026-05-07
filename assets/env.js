@@ -1,4 +1,4 @@
 window.PORTFOLIO_ENV = {
-  SUPABASE_URL: "",
-  SUPABASE_PUBLISHABLE_KEY: ""
+  SUPABASE_URL: "https://pkkjrxlubgddvuesqtpf.supabase.co",
+  SUPABASE_PUBLISHABLE_KEY: "sb_publishable_RnqBLxrvc4SUMM5aZiTKGg_SigsBtn8"
 };

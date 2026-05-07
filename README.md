@@ -45,3 +45,19 @@ Fuer echte Projektlinks ersetze die `links`-Werte in `assets/data.js` oder in de
 Die Seite ist statisch und passt zu GitHub Pages, Netlify, Vercel oder Supabase Hosting-Workflows. Als Einstieg reicht es, alle Dateien ins Repository zu committen und die Root-Datei `index.html` auszuliefern.
 
 Fuer GitHub Pages liegt bereits `.github/workflows/pages.yml` bei. Nach einem Push auf `main` deployed der Workflow die Root-Dateien direkt als statische Seite.
+
+## Docker
+
+Das Repository baut automatisch ein Container-Image fuer GitHub Container Registry:
+
+```bash
+docker run -d \
+  --name modern-it-portfolio \
+  --restart unless-stopped \
+  -p 8080:80 \
+  -e SUPABASE_URL="https://pkkjrxlubgddvuesqtpf.supabase.co" \
+  -e SUPABASE_PUBLISHABLE_KEY="sb_publishable_RnqBLxrvc4SUMM5aZiTKGg_SigsBtn8" \
+  ghcr.io/bl4nk24/modern-it-portfolio:latest
+```
+
+Fuer Dockge kannst du `docker-compose.yml` direkt als Stack verwenden. Die Supabase-Werte werden beim Containerstart in `assets/env.js` geschrieben, damit du das Image nicht neu bauen musst, wenn sich die Umgebung aendert.

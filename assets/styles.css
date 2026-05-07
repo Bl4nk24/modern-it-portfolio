@@ -243,8 +243,10 @@ svg {
 }
 
 .hero-grid,
+.ops-section,
 .projects-section,
 .life-section,
+.playbook-section,
 .stack-section,
 .contact-section,
 .site-footer {
@@ -411,8 +413,10 @@ svg {
   font-weight: 760;
 }
 
+.ops-section,
 .projects-section,
 .life-section,
+.playbook-section,
 .stack-section,
 .contact-section {
   padding: 86px 28px;
@@ -437,6 +441,75 @@ svg {
   margin: 0;
   font-size: 2.65rem;
   line-height: 1.08;
+}
+
+.ops-layout {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.72fr) minmax(0, 1fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.ops-metrics,
+.capability-rail,
+.playbook-grid {
+  display: grid;
+  gap: 12px;
+}
+
+.ops-metric,
+.capability-item,
+.playbook-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: color-mix(in srgb, var(--surface) 82%, transparent);
+  box-shadow: var(--shadow);
+}
+
+.ops-metric {
+  display: grid;
+  gap: 10px;
+  min-height: 150px;
+  padding: 18px;
+}
+
+.ops-metric span,
+.capability-item > span,
+.playbook-card > span {
+  color: var(--accent-2);
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.ops-metric strong {
+  color: var(--text);
+  font-size: 1.45rem;
+  line-height: 1.1;
+}
+
+.ops-metric p,
+.capability-item p,
+.playbook-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.94rem;
+  line-height: 1.6;
+}
+
+.capability-item {
+  display: grid;
+  grid-template-columns: 54px minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+  padding: 18px;
+}
+
+.capability-item h3,
+.playbook-card h3 {
+  margin: 0 0 8px;
+  color: var(--text);
+  font-size: 1.08rem;
 }
 
 .project-toolbar {
@@ -659,6 +732,19 @@ svg {
   gap: 12px;
 }
 
+.playbook-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.playbook-card {
+  min-height: 210px;
+  padding: 18px;
+}
+
+.playbook-card h3 {
+  margin-top: 34px;
+}
+
 .stack-row {
   display: grid;
   gap: 16px;
@@ -803,6 +889,7 @@ svg {
   }
 
   .hero-grid,
+  .ops-layout,
   .project-layout,
   .project-detail,
   .contact-section {
@@ -820,6 +907,10 @@ svg {
   }
 
   .life-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .playbook-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -863,8 +954,10 @@ svg {
   }
 
   .hero-grid,
+  .ops-section,
   .projects-section,
   .life-section,
+  .playbook-section,
   .stack-section,
   .contact-section,
   .site-footer {
@@ -890,8 +983,10 @@ svg {
     font-size: 2rem;
   }
 
+  .ops-section,
   .projects-section,
   .life-section,
+  .playbook-section,
   .stack-section,
   .contact-section {
     padding-top: 64px;
@@ -899,6 +994,7 @@ svg {
   }
 
   .life-grid,
+  .playbook-grid,
   .stack-board {
     grid-template-columns: 1fr;
   }

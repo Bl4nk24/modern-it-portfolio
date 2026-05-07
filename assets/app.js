@@ -14,6 +14,7 @@
         "IT Administrator Portfolio mit Infrastruktur, Microsoft, Automatisierung, SAP Business One und KI-Agenten.",
       titleSuffix: "IT Portfolio",
       skipLink: "Direkt zu den Praxisfeldern",
+      navOps: "Ops",
       navProjects: "Praxisfelder",
       navLife: "Lebenslauf",
       navSkills: "Kenntnisse",
@@ -26,6 +27,8 @@
       consoleFocus: "Fokus",
       consoleMode: "Modus",
       consoleBase: "Basis",
+      opsKicker: "Command Center",
+      opsTitle: "Wie ich IT-Systeme denke",
       projectsKicker: "Praxisfelder",
       projectsTitle: "IT, die im Alltag funktioniert",
       filterAll: "Alle",
@@ -38,6 +41,8 @@
       lifeTitle: "Erfahrung und Ausbildung",
       skillsKicker: "Kenntnisse",
       skillsTitle: "Was ich laut Profil mitbringe",
+      playbookKicker: "Playbooks",
+      playbookTitle: "Vom Problem zur sauberen Lösung",
       contactKicker: "Open channel",
       contactTitle: "Lass uns IT einfacher machen",
       contactText:
@@ -63,6 +68,7 @@
         "IT administrator portfolio focused on infrastructure, Microsoft, automation, SAP Business One, and AI agents.",
       titleSuffix: "IT Portfolio",
       skipLink: "Skip to practice areas",
+      navOps: "Ops",
       navProjects: "Practice",
       navLife: "Resume",
       navSkills: "Skills",
@@ -75,6 +81,8 @@
       consoleFocus: "Focus",
       consoleMode: "Mode",
       consoleBase: "Base",
+      opsKicker: "Command Center",
+      opsTitle: "How I think about IT systems",
       projectsKicker: "Practice areas",
       projectsTitle: "IT that works in real operations",
       filterAll: "All",
@@ -87,6 +95,8 @@
       lifeTitle: "Experience and education",
       skillsKicker: "Skills",
       skillsTitle: "What my profile brings together",
+      playbookKicker: "Playbooks",
+      playbookTitle: "From issue to clean solution",
       contactKicker: "Open channel",
       contactTitle: "Let's make IT simpler",
       contactText:
@@ -127,6 +137,9 @@
   const selectors = {
     projectList: document.querySelector("[data-project-list]"),
     projectDetail: document.querySelector("[data-project-detail]"),
+    opsMetrics: document.querySelector("[data-ops-metrics]"),
+    capabilityRail: document.querySelector("[data-capability-rail]"),
+    playbookGrid: document.querySelector("[data-playbook-grid]"),
     lifeGrid: document.querySelector("[data-life-grid]"),
     stackBoard: document.querySelector("[data-stack-board]"),
     status: document.querySelector("[data-profile-status]"),
@@ -258,9 +271,11 @@
 
   function renderAll() {
     renderProfile();
+    renderOps();
     renderProjects();
     renderLife();
     renderStack();
+    renderPlaybooks();
   }
 
   function renderProfile() {
@@ -280,6 +295,34 @@
     return state.filter === "all"
       ? projects
       : projects.filter((project) => project.category === state.filter);
+  }
+
+  function renderOps() {
+    selectors.opsMetrics.innerHTML = state.data.metrics
+      .map(
+        (metric) => `
+          <article class="ops-metric">
+            <span>${escapeHtml(metric.label)}</span>
+            <strong>${escapeHtml(metric.value)}</strong>
+            <p>${escapeHtml(metric.text)}</p>
+          </article>
+        `
+      )
+      .join("");
+
+    selectors.capabilityRail.innerHTML = state.data.capabilities
+      .map(
+        (capability, index) => `
+          <article class="capability-item">
+            <span>${String(index + 1).padStart(2, "0")}</span>
+            <div>
+              <h3>${escapeHtml(capability.title)}</h3>
+              <p>${escapeHtml(capability.text)}</p>
+            </div>
+          </article>
+        `
+      )
+      .join("");
   }
 
   function renderProjects() {
@@ -368,6 +411,20 @@
             <div class="meter" aria-hidden="true">
               <span style="width:${item.level}%"></span>
             </div>
+          </article>
+        `
+      )
+      .join("");
+  }
+
+  function renderPlaybooks() {
+    selectors.playbookGrid.innerHTML = state.data.playbooks
+      .map(
+        (playbook) => `
+          <article class="playbook-card">
+            <span>${escapeHtml(playbook.step)}</span>
+            <h3>${escapeHtml(playbook.title)}</h3>
+            <p>${escapeHtml(playbook.text)}</p>
           </article>
         `
       )

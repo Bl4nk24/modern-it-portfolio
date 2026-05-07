@@ -136,6 +136,55 @@ window.PORTFOLIO_CONTENT = {
       { name: "PowerShell & Automatisierung", level: 84, tone: "violet" },
       { name: "KI-Agenten aufbauen", level: 78, tone: "amber" },
       { name: "Teamwork", level: 88, tone: "mint" }
+    ],
+    metrics: [
+      { label: "Betriebsmodus", value: "Hybrid IT", text: "Arbeitsplatz, Server, Netzwerk, Cloud und ERP zusammen denken." },
+      { label: "Automationsstil", value: "Low-friction", text: "Kleine Skripte, klare Übergaben, weniger manuelle Wiederholung." },
+      { label: "Stärkenprofil", value: "Integrator", text: "Systeme verbinden, Abhängigkeiten sehen, Support realistisch halten." }
+    ],
+    capabilities: [
+      {
+        title: "Identity & Access",
+        text: "Active Directory, Benutzer, Gruppen, Berechtigungen und nachvollziehbare Zugriffe."
+      },
+      {
+        title: "Endpoint & Workplace",
+        text: "Windows, Mac, Hardware, Office, Outlook und die echten Probleme am Arbeitsplatz."
+      },
+      {
+        title: "Network & Server",
+        text: "LAN/WAN, Windows Server, Betriebssysteme, Infrastruktur und technische Fehlersuche."
+      },
+      {
+        title: "Data & ERP",
+        text: "SQL, MySQL, SAP Business One und Datenflüsse zwischen Fachsystemen."
+      },
+      {
+        title: "Automation & AI",
+        text: "PowerShell, APIs, Prozessautomatisierung und KI-Agenten als Assistenz für IT-Abläufe."
+      }
+    ],
+    playbooks: [
+      {
+        step: "01",
+        title: "Verstehen",
+        text: "Nutzerproblem, Systemkontext und technische Abhängigkeiten sauber aufnehmen."
+      },
+      {
+        step: "02",
+        title: "Stabilisieren",
+        text: "Erst Betrieb sichern, dann Ursachenanalyse, Dokumentation und Automatisierung nachziehen."
+      },
+      {
+        step: "03",
+        title: "Verbinden",
+        text: "Wenn Systeme wiederkehrend Daten brauchen, baue ich lieber eine saubere Verbindung als mehr Klickarbeit."
+      },
+      {
+        step: "04",
+        title: "Verbessern",
+        text: "KI-Agenten, PowerShell oder bessere Admin-Prozesse dort einsetzen, wo sie echten Aufwand reduzieren."
+      }
     ]
   },
   en: {
@@ -275,6 +324,55 @@ window.PORTFOLIO_CONTENT = {
       { name: "PowerShell & automation", level: 84, tone: "violet" },
       { name: "Building AI agents", level: 78, tone: "amber" },
       { name: "Teamwork", level: 88, tone: "mint" }
+    ],
+    metrics: [
+      { label: "Operating mode", value: "Hybrid IT", text: "Thinking workplace, server, network, cloud, and ERP together." },
+      { label: "Automation style", value: "Low-friction", text: "Small scripts, clear handovers, less manual repetition." },
+      { label: "Strength profile", value: "Integrator", text: "Connecting systems, seeing dependencies, keeping support realistic." }
+    ],
+    capabilities: [
+      {
+        title: "Identity & Access",
+        text: "Active Directory, users, groups, permissions, and traceable access patterns."
+      },
+      {
+        title: "Endpoint & Workplace",
+        text: "Windows, Mac, hardware, Office, Outlook, and the real issues users face."
+      },
+      {
+        title: "Network & Server",
+        text: "LAN/WAN, Windows Server, operating systems, infrastructure, and technical troubleshooting."
+      },
+      {
+        title: "Data & ERP",
+        text: "SQL, MySQL, SAP Business One, and data flows between business systems."
+      },
+      {
+        title: "Automation & AI",
+        text: "PowerShell, APIs, process automation, and AI agents as assistance for IT workflows."
+      }
+    ],
+    playbooks: [
+      {
+        step: "01",
+        title: "Understand",
+        text: "Capture the user issue, system context, and technical dependencies first."
+      },
+      {
+        step: "02",
+        title: "Stabilize",
+        text: "Secure operations first, then follow up with root cause analysis, documentation, and automation."
+      },
+      {
+        step: "03",
+        title: "Connect",
+        text: "When systems repeatedly need data, I prefer a clean connection over more manual clicking."
+      },
+      {
+        step: "04",
+        title: "Improve",
+        text: "Use AI agents, PowerShell, or better admin processes where they reduce real effort."
+      }
     ]
   }
 };
