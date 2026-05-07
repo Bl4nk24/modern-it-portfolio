@@ -61,3 +61,11 @@ docker run -d \
 ```
 
 Fuer Dockge kannst du `docker-compose.yml` direkt als Stack verwenden. Die Supabase-Werte werden beim Containerstart in `assets/env.js` geschrieben, damit du das Image nicht neu bauen musst, wenn sich die Umgebung aendert.
+
+Falls GitHub Container Registry das Package noch nicht oeffentlich ausliefert, nutze in Dockge stattdessen `docker-compose.build.yml`. Dieser Stack baut direkt aus dem oeffentlichen GitHub-Repository:
+
+```bash
+docker compose -f docker-compose.build.yml up -d
+```
+
+GHCR public machen: GitHub Repository -> Packages -> `modern-it-portfolio` -> Package settings -> Change visibility -> Public.
