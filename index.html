@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="./assets/styles.css" />
   </head>
   <body>
-    <a class="skip-link" href="#projects">Direkt zu den Projekten</a>
+    <a class="skip-link" href="#projects" data-i18n="skipLink">Direkt zu den Praxisfeldern</a>
 
     <header class="site-header" data-elevate>
       <a class="brand" href="#top" aria-label="Zur Startansicht">
@@ -20,15 +20,20 @@
       </a>
 
       <nav class="nav-links" aria-label="Hauptnavigation">
-        <a href="#projects">Projekte</a>
-        <a href="#life">Lebenslauf</a>
-        <a href="#stack">Kenntnisse</a>
-        <a href="#contact">Kontakt</a>
+        <a href="#projects" data-i18n="navProjects">Praxisfelder</a>
+        <a href="#life" data-i18n="navLife">Lebenslauf</a>
+        <a href="#stack" data-i18n="navSkills">Kenntnisse</a>
+        <a href="#contact" data-i18n="navContact">Kontakt</a>
       </nav>
 
-      <button class="icon-button" type="button" data-theme-toggle aria-label="Theme wechseln">
-        <span data-icon="moon" aria-hidden="true"></span>
-      </button>
+      <div class="header-actions">
+        <button class="language-toggle" type="button" data-language-toggle aria-label="Switch language">
+          EN
+        </button>
+        <button class="icon-button" type="button" data-theme-toggle aria-label="Theme wechseln">
+          <span data-icon="moon" aria-hidden="true"></span>
+        </button>
+      </div>
     </header>
 
     <main id="top">
@@ -38,27 +43,26 @@
         <div class="hero-grid">
           <div class="hero-copy">
             <h1 id="hero-title">Eirik</h1>
-            <p class="hero-lede">
-              SAP Business One Consultant und IT Administrator mit Fokus auf
-              IT-Infrastruktur, Security, Prozessautomatisierung, HANA-Optimierung
-              und Systeme, die im Alltag wirklich zusammenarbeiten.
+            <p class="hero-lede" data-i18n="heroLede">
+              IT Administrator mit Fokus auf Infrastruktur, Microsoft-Umgebungen,
+              Automatisierung und Systeme, die im Alltag wirklich zusammenarbeiten.
             </p>
 
             <div class="hero-actions" aria-label="Primaere Aktionen">
               <a class="button button-primary" href="#projects">
                 <span data-icon="folder" aria-hidden="true"></span>
-                Systeme ansehen
+                <span data-i18n="primaryCta">Praxisfelder ansehen</span>
               </a>
               <a class="button button-secondary" href="#contact">
                 <span data-icon="send" aria-hidden="true"></span>
-                Signal senden
+                <span data-i18n="secondaryCta">Kontakt aufnehmen</span>
               </a>
             </div>
           </div>
 
           <aside class="identity-console" aria-label="Profil Momentaufnahme">
             <div class="console-topline">
-              <span>now.running</span>
+              <span data-i18n="consoleLabel">now.running</span>
               <strong data-profile-status>Demo Data</strong>
             </div>
             <div class="console-portrait" aria-hidden="true">
@@ -66,15 +70,15 @@
             </div>
             <dl class="console-stats">
               <div>
-                <dt>Fokus</dt>
+                <dt data-i18n="consoleFocus">Fokus</dt>
                 <dd data-profile-focus>SAP B1, Infrastruktur, Security</dd>
               </div>
               <div>
-                <dt>Modus</dt>
+                <dt data-i18n="consoleMode">Modus</dt>
                 <dd data-profile-mode>Consultant, Admin, Automatisierer</dd>
               </div>
               <div>
-                <dt>Basis</dt>
+                <dt data-i18n="consoleBase">Basis</dt>
                 <dd data-profile-location>Hamburg / Lueneburg / Hybrid</dd>
               </div>
             </dl>
@@ -84,16 +88,23 @@
 
       <section class="projects-section" id="projects" aria-labelledby="projects-title">
         <div class="section-heading">
-          <p class="section-kicker">Praxisfelder</p>
-          <h2 id="projects-title">Technik, die Prozesse traegt</h2>
+          <p class="section-kicker" data-i18n="projectsKicker">Praxisfelder</p>
+          <h2 id="projects-title" data-i18n="projectsTitle">IT, die im Alltag funktioniert</h2>
         </div>
 
         <div class="project-toolbar" aria-label="Projektfilter">
-          <button class="segment is-active" type="button" data-filter="all">Alle</button>
-          <button class="segment" type="button" data-filter="sap">SAP B1</button>
-          <button class="segment" type="button" data-filter="infra">Infra & Security</button>
-          <button class="segment" type="button" data-filter="automation">Automation</button>
-          <button class="segment" type="button" data-filter="ai">KI-Agenten</button>
+          <button class="segment is-active" type="button" data-filter="all" data-i18n="filterAll">Alle</button>
+          <button class="segment" type="button" data-filter="infra" data-i18n="filterInfra">
+            Infrastruktur
+          </button>
+          <button class="segment" type="button" data-filter="microsoft" data-i18n="filterMicrosoft">
+            Microsoft
+          </button>
+          <button class="segment" type="button" data-filter="automation" data-i18n="filterAutomation">
+            Automation
+          </button>
+          <button class="segment" type="button" data-filter="sap" data-i18n="filterSap">SAP B1</button>
+          <button class="segment" type="button" data-filter="ai" data-i18n="filterAi">KI-Agenten</button>
         </div>
 
         <div class="project-layout">
@@ -104,8 +115,8 @@
 
       <section class="life-section" id="life" aria-labelledby="life-title">
         <div class="section-heading">
-          <p class="section-kicker">Lebenslauf</p>
-          <h2 id="life-title">Erfahrung und Ausbildung</h2>
+          <p class="section-kicker" data-i18n="lifeKicker">Lebenslauf</p>
+          <h2 id="life-title" data-i18n="lifeTitle">Erfahrung und Ausbildung</h2>
         </div>
 
         <div class="life-grid" data-life-grid></div>
@@ -113,8 +124,8 @@
 
       <section class="stack-section" id="stack" aria-labelledby="stack-title">
         <div class="section-heading">
-          <p class="section-kicker">Kenntnisse</p>
-          <h2 id="stack-title">Was ich laut Profil mitbringe</h2>
+          <p class="section-kicker" data-i18n="skillsKicker">Kenntnisse</p>
+          <h2 id="stack-title" data-i18n="skillsTitle">Was ich laut Profil mitbringe</h2>
         </div>
 
         <div class="stack-board" data-stack-board></div>
@@ -122,30 +133,30 @@
 
       <section class="contact-section" id="contact" aria-labelledby="contact-title">
         <div class="contact-copy">
-          <p class="section-kicker">Open channel</p>
-          <h2 id="contact-title">Lass uns IT einfacher machen</h2>
-          <p>
-            SAP-B1-Thema, Infrastruktur, Security, Automatisierung oder KI-Agent:
-            Schreib mir ein Signal und ich melde mich mit Kontext zur&uuml;ck.
+          <p class="section-kicker" data-i18n="contactKicker">Open channel</p>
+          <h2 id="contact-title" data-i18n="contactTitle">Lass uns IT einfacher machen</h2>
+          <p data-i18n="contactText">
+            Infrastruktur, Microsoft-Umgebung, Automatisierung, SAP-B1-Thema oder KI-Agent:
+            Schreib mir ein Signal und ich melde mich mit Kontext zurück.
           </p>
         </div>
 
         <form class="contact-form" data-contact-form>
           <label>
-            <span>Name</span>
+            <span data-i18n="formName">Name</span>
             <input name="name" autocomplete="name" required />
           </label>
           <label>
-            <span>E-Mail</span>
+            <span data-i18n="formEmail">E-Mail</span>
             <input name="email" type="email" autocomplete="email" required />
           </label>
           <label>
-            <span>Nachricht</span>
+            <span data-i18n="formMessage">Nachricht</span>
             <textarea name="message" rows="5" required></textarea>
           </label>
           <button class="button button-primary" type="submit">
             <span data-icon="send" aria-hidden="true"></span>
-            Senden
+            <span data-i18n="formSubmit">Senden</span>
           </button>
           <p class="form-note" data-form-note></p>
         </form>
@@ -153,8 +164,8 @@
     </main>
 
     <footer class="site-footer">
-      <span>SAP Business One, IT Administration, Automation and AI agents.</span>
-      <a href="#top">Nach oben</a>
+      <span data-i18n="footerText">IT Administration, Infrastruktur, Automation and AI agents.</span>
+      <a href="#top" data-i18n="footerTop">Nach oben</a>
     </footer>
 
     <script src="./assets/env.js"></script>

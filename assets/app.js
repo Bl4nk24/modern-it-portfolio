@@ -1,9 +1,112 @@
 (function () {
   const state = {
+    content: window.PORTFOLIO_CONTENT || { de: window.PORTFOLIO_SEED, en: window.PORTFOLIO_SEED },
     data: window.PORTFOLIO_SEED,
+    lang: localStorage.getItem("portfolio_lang") || "de",
     filter: "all",
     activeProject: 0,
     theme: localStorage.getItem("portfolio_theme") || "dark"
+  };
+
+  const ui = {
+    de: {
+      metaDescription:
+        "IT Administrator Portfolio mit Infrastruktur, Microsoft, Automatisierung, SAP Business One und KI-Agenten.",
+      titleSuffix: "IT Portfolio",
+      skipLink: "Direkt zu den Praxisfeldern",
+      navProjects: "Praxisfelder",
+      navLife: "Lebenslauf",
+      navSkills: "Kenntnisse",
+      navContact: "Kontakt",
+      heroLede:
+        "IT Administrator mit Fokus auf Infrastruktur, Microsoft-Umgebungen, Automatisierung und Systeme, die im Alltag wirklich zusammenarbeiten.",
+      primaryCta: "Praxisfelder ansehen",
+      secondaryCta: "Kontakt aufnehmen",
+      consoleLabel: "now.running",
+      consoleFocus: "Fokus",
+      consoleMode: "Modus",
+      consoleBase: "Basis",
+      projectsKicker: "Praxisfelder",
+      projectsTitle: "IT, die im Alltag funktioniert",
+      filterAll: "Alle",
+      filterInfra: "Infrastruktur",
+      filterMicrosoft: "Microsoft",
+      filterAutomation: "Automation",
+      filterSap: "SAP B1",
+      filterAi: "KI-Agenten",
+      lifeKicker: "Lebenslauf",
+      lifeTitle: "Erfahrung und Ausbildung",
+      skillsKicker: "Kenntnisse",
+      skillsTitle: "Was ich laut Profil mitbringe",
+      contactKicker: "Open channel",
+      contactTitle: "Lass uns IT einfacher machen",
+      contactText:
+        "Infrastruktur, Microsoft-Umgebung, Automatisierung, SAP-B1-Thema oder KI-Agent: Schreib mir ein Signal und ich melde mich mit Kontext zurück.",
+      formName: "Name",
+      formEmail: "E-Mail",
+      formMessage: "Nachricht",
+      formSubmit: "Senden",
+      footerText: "IT Administration, Infrastruktur, Automation and AI agents.",
+      footerTop: "Nach oben",
+      liveLabel: "Kontakt",
+      codeLabel: "Details",
+      sending: "Sende...",
+      sentSupabase: "Gespeichert. Ich melde mich.",
+      sentLocal: "Lokal gespeichert. Supabase ist noch nicht verbunden.",
+      sendError: "Konnte nicht senden. Bitte prüfe Supabase.",
+      languageButton: "EN",
+      languageLabel: "Switch to English",
+      themeLabel: "Theme wechseln"
+    },
+    en: {
+      metaDescription:
+        "IT administrator portfolio focused on infrastructure, Microsoft, automation, SAP Business One, and AI agents.",
+      titleSuffix: "IT Portfolio",
+      skipLink: "Skip to practice areas",
+      navProjects: "Practice",
+      navLife: "Resume",
+      navSkills: "Skills",
+      navContact: "Contact",
+      heroLede:
+        "IT administrator focused on infrastructure, Microsoft environments, automation, and systems that actually work together in daily operations.",
+      primaryCta: "View practice areas",
+      secondaryCta: "Get in touch",
+      consoleLabel: "now.running",
+      consoleFocus: "Focus",
+      consoleMode: "Mode",
+      consoleBase: "Base",
+      projectsKicker: "Practice areas",
+      projectsTitle: "IT that works in real operations",
+      filterAll: "All",
+      filterInfra: "Infrastructure",
+      filterMicrosoft: "Microsoft",
+      filterAutomation: "Automation",
+      filterSap: "SAP B1",
+      filterAi: "AI agents",
+      lifeKicker: "Resume",
+      lifeTitle: "Experience and education",
+      skillsKicker: "Skills",
+      skillsTitle: "What my profile brings together",
+      contactKicker: "Open channel",
+      contactTitle: "Let's make IT simpler",
+      contactText:
+        "Infrastructure, Microsoft environments, automation, SAP B1 topics, or AI agents: send me a signal and I will get back to you with context.",
+      formName: "Name",
+      formEmail: "Email",
+      formMessage: "Message",
+      formSubmit: "Send",
+      footerText: "IT administration, infrastructure, automation and AI agents.",
+      footerTop: "Back to top",
+      liveLabel: "Contact",
+      codeLabel: "Details",
+      sending: "Sending...",
+      sentSupabase: "Saved. I will get back to you.",
+      sentLocal: "Saved locally. Supabase is not connected yet.",
+      sendError: "Could not send. Please check Supabase.",
+      languageButton: "DE",
+      languageLabel: "Auf Deutsch wechseln",
+      themeLabel: "Toggle theme"
+    }
   };
 
   const icons = {
@@ -32,13 +135,16 @@
     location: document.querySelector("[data-profile-location]"),
     form: document.querySelector("[data-contact-form]"),
     formNote: document.querySelector("[data-form-note]"),
-    themeToggle: document.querySelector("[data-theme-toggle]")
+    themeToggle: document.querySelector("[data-theme-toggle]"),
+    languageToggle: document.querySelector("[data-language-toggle]")
   };
 
   function init() {
+    setLanguage(state.lang);
     hydrateIcons();
     applyTheme();
     bindThemeToggle();
+    bindLanguageToggle();
     bindFilters();
     bindContactForm();
     renderAll();
@@ -57,6 +163,7 @@
     document.documentElement.dataset.theme = state.theme;
     const icon = state.theme === "dark" ? "sun" : "moon";
     selectors.themeToggle.querySelector("[data-icon]").dataset.icon = icon;
+    selectors.themeToggle.setAttribute("aria-label", t("themeLabel"));
     hydrateIcons(selectors.themeToggle);
   }
 
@@ -66,6 +173,28 @@
       localStorage.setItem("portfolio_theme", state.theme);
       applyTheme();
     });
+  }
+
+  function bindLanguageToggle() {
+    selectors.languageToggle.addEventListener("click", () => {
+      setLanguage(state.lang === "de" ? "en" : "de");
+      renderAll();
+    });
+  }
+
+  function setLanguage(lang) {
+    state.lang = state.content[lang] ? lang : "de";
+    state.data = state.content[state.lang];
+    state.filter = state.filter === "all" ? "all" : state.filter;
+    state.activeProject = 0;
+    localStorage.setItem("portfolio_lang", state.lang);
+    document.documentElement.lang = state.lang;
+    document.querySelector('meta[name="description"]').setAttribute("content", t("metaDescription"));
+    document.querySelectorAll("[data-i18n]").forEach((node) => {
+      node.textContent = t(node.dataset.i18n);
+    });
+    selectors.languageToggle.textContent = t("languageButton");
+    selectors.languageToggle.setAttribute("aria-label", t("languageLabel"));
   }
 
   function bindFilters() {
@@ -91,7 +220,7 @@
         message: String(formData.get("message") || "").trim()
       };
 
-      selectors.formNote.textContent = "Sende...";
+      selectors.formNote.textContent = t("sending");
       selectors.form.querySelector("button").disabled = true;
 
       try {
@@ -99,10 +228,10 @@
         selectors.form.reset();
         selectors.formNote.textContent =
           result.mode === "supabase"
-            ? "Gespeichert. Ich melde mich."
-            : "Lokal gespeichert. Supabase ist noch nicht verbunden.";
+            ? t("sentSupabase")
+            : t("sentLocal");
       } catch (error) {
-        selectors.formNote.textContent = "Konnte nicht senden. Bitte pruefe Supabase.";
+        selectors.formNote.textContent = t("sendError");
       } finally {
         selectors.form.querySelector("button").disabled = false;
       }
@@ -113,11 +242,13 @@
     try {
       const remoteData = await window.PortfolioSupabase.loadData();
       if (!remoteData) return;
-      state.data = {
-        ...state.data,
-        ...remoteData,
-        stack: state.data.stack
-      };
+      if (state.lang === "de") {
+        state.data = {
+          ...state.data,
+          ...remoteData,
+          stack: state.data.stack
+        };
+      }
       selectors.status.textContent = "Supabase Live";
       renderAll();
     } catch (error) {
@@ -134,7 +265,7 @@
 
   function renderProfile() {
     const profile = state.data.profile;
-    document.title = `${profile.name} | IT Portfolio`;
+    document.title = `${profile.name} | ${t("titleSuffix")}`;
     document.querySelector(".brand span:last-child").textContent = profile.name;
     document.querySelector(".brand-mark").textContent = profile.name.slice(0, 1);
     document.querySelector(".console-portrait span").textContent = profile.name.slice(0, 1);
@@ -183,32 +314,28 @@
     }
 
     selectors.projectDetail.innerHTML = `
-      <div class="project-visual" aria-hidden="true">
-        <div class="visual-bar"></div>
-        <div class="visual-grid">
-          <span></span><span></span><span></span><span></span>
-        </div>
-      </div>
       <div class="project-detail-body">
-        <div class="detail-meta">
-          <span>${escapeHtml(project.status)}</span>
-          <span>${escapeHtml(project.year)}</span>
-        </div>
-        <h3>${escapeHtml(project.title)}</h3>
-        <p>${escapeHtml(project.summary)}</p>
-        <blockquote>${escapeHtml(project.impact)}</blockquote>
-        <div class="stack-tags">
-          ${project.stack.map((item) => `<span>${escapeHtml(item)}</span>`).join("")}
-        </div>
-        <div class="detail-actions">
-          <a class="button button-secondary" href="${escapeAttr(project.links.live || "#contact")}">
-            <span data-icon="arrow" aria-hidden="true"></span>
-            Live
-          </a>
-          <a class="button button-ghost" href="${escapeAttr(project.links.code || "#contact")}">
-            <span data-icon="folder" aria-hidden="true"></span>
-            Code
-          </a>
+        <div class="detail-shell">
+          <div class="detail-meta">
+            <span>${escapeHtml(project.status)}</span>
+            <span>${escapeHtml(project.year)}</span>
+          </div>
+          <h3>${escapeHtml(project.title)}</h3>
+          <p>${escapeHtml(project.summary)}</p>
+          <blockquote>${escapeHtml(project.impact)}</blockquote>
+          <div class="stack-tags">
+            ${project.stack.map((item) => `<span>${escapeHtml(item)}</span>`).join("")}
+          </div>
+          <div class="detail-actions">
+            <a class="button button-secondary" href="${escapeAttr(project.links.live || "#contact")}">
+              <span data-icon="arrow" aria-hidden="true"></span>
+              ${escapeHtml(t("liveLabel"))}
+            </a>
+            <a class="button button-ghost" href="${escapeAttr(project.links.code || "#contact")}">
+              <span data-icon="folder" aria-hidden="true"></span>
+              ${escapeHtml(t("codeLabel"))}
+            </a>
+          </div>
         </div>
       </div>
     `;
@@ -332,6 +459,10 @@
 
   function escapeAttr(value) {
     return escapeHtml(value).replaceAll("`", "&#096;");
+  }
+
+  function t(key) {
+    return (ui[state.lang] && ui[state.lang][key]) || ui.de[key] || key;
   }
 
   init();

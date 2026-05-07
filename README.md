@@ -1,13 +1,13 @@
 # Modern IT Administrator Portfolio
 
-Ein modernes, direkt hostbares Portfolio fuer SAP Business One Consulting, IT Administration, IT-Infrastruktur, Security, Prozessautomatisierung, HANA-Optimierung, KI-Agenten und Kontakt. Die App laeuft ohne Build-Schritt als statische Website und kann spaeter per Supabase aus echten Tabellen gespeist werden.
+Ein modernes, zweisprachiges Portfolio fuer IT Administration, IT-Infrastruktur, Microsoft-Themen, Automatisierung, SAP Business One als wachsendes Praxisfeld, KI-Agenten und Kontakt. Die App laeuft ohne Build-Schritt als statische Website und kann spaeter per Supabase aus echten Tabellen gespeist werden.
 
 ## Inhalte
 
 - `index.html` ist die Portfolio-Oberflaeche.
 - `assets/styles.css` enthaelt das komplette visuelle System.
 - `assets/app.js` steuert Filter, Projektdetail, Theme, Canvas und Kontaktflow.
-- `assets/data.js` enthaelt die Portfolio-Inhalte aus dem LinkedIn-Screenshot: Be1Eye, Reos, IU, SAP B1, Infrastruktur, Security, Prozessautomatisierung und Kenntnisse.
+- `assets/data.js` enthaelt die deutschen und englischen Portfolio-Inhalte aus dem LinkedIn-Screenshot: Be1Eye, Reos, IU, Infrastruktur, Microsoft, SAP B1, Automatisierung und Kenntnisse.
 - `assets/supabase.js` laedt Supabase nur, wenn URL und Publishable Key gesetzt sind.
 - `supabase/schema.sql` legt Tabellen, RLS-Policies, Grants und Seed-Daten an.
 
