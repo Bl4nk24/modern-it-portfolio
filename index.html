@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="SAP Business One Consultant und IT Administrator Portfolio mit IT-Infrastruktur, Security, Prozessautomatisierung, HANA, Microsoft und KI-Agenten."
+      content="IT Administrator Portfolio mit Microsoft, Infrastruktur, PowerShell-Automatisierung, SAP Business One Technik und KI-Agenten seit 2020."
     />
     <title>Eirik | IT Portfolio</title>
     <link rel="stylesheet" href="./assets/styles.css" />
@@ -58,6 +58,15 @@
                 <span data-icon="send" aria-hidden="true"></span>
                 <span data-i18n="secondaryCta">Kontakt aufnehmen</span>
               </a>
+              <a
+                class="button button-ghost"
+                href="https://www.linkedin.com/in/eirik-christiansen/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <span data-icon="linkedin" aria-hidden="true"></span>
+                <span data-i18n="linkedinCta">LinkedIn ansehen</span>
+              </a>
             </div>
           </div>
 
@@ -80,9 +89,19 @@
               </div>
               <div>
                 <dt data-i18n="consoleBase">Basis</dt>
-                <dd data-profile-location>Hamburg / Lueneburg / Hybrid</dd>
+                <dd data-profile-location>Hamburg & Remote</dd>
               </div>
             </dl>
+            <div class="console-mini-grid">
+              <div>
+                <span data-i18n="consoleAi">KI seit</span>
+                <strong>2020</strong>
+              </div>
+              <div>
+                <span data-i18n="consoleProof">Profilbasis</span>
+                <strong data-i18n="consoleLinkedIn">LinkedIn + Praxis</strong>
+              </div>
+            </div>
           </aside>
         </div>
       </section>
@@ -142,6 +161,10 @@
         </div>
 
         <div class="stack-board" data-stack-board></div>
+        <p class="stack-note" data-i18n="skillsNote">
+          Die Werte sind ein realistisches 1-bis-10-Modell aus LinkedIn-Kenntnissen,
+          Berufserfahrung und Selbsteinschätzung, keine Zertifikatsnoten.
+        </p>
       </section>
 
       <section class="playbook-section" aria-labelledby="playbook-title">
@@ -161,26 +184,50 @@
             Infrastruktur, Microsoft-Umgebung, Automatisierung, SAP-B1-Thema oder KI-Agent:
             Schreib mir ein Signal und ich melde mich mit Kontext zurück.
           </p>
+          <a
+            class="profile-link"
+            href="https://www.linkedin.com/in/eirik-christiansen/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <span data-icon="linkedin" aria-hidden="true"></span>
+            <span data-i18n="contactLinkedIn">Profil auf LinkedIn öffnen</span>
+          </a>
         </div>
 
         <form class="contact-form" data-contact-form>
           <label>
             <span data-i18n="formName">Name</span>
-            <input name="name" autocomplete="name" required />
+            <input name="name" autocomplete="name" minlength="2" maxlength="120" required />
           </label>
           <label>
             <span data-i18n="formEmail">E-Mail</span>
-            <input name="email" type="email" autocomplete="email" required />
+            <input name="email" type="email" autocomplete="email" maxlength="180" required />
+          </label>
+          <label>
+            <span data-i18n="formTopic">Thema</span>
+            <select name="topic" required>
+              <option value="" data-i18n="topicPlaceholder">Thema wählen</option>
+              <option value="Microsoft & Workplace" data-i18n="topicMicrosoft">Microsoft & Workplace</option>
+              <option value="Infrastruktur" data-i18n="topicInfra">Infrastruktur</option>
+              <option value="Automation" data-i18n="topicAutomation">Automation</option>
+              <option value="SAP B1" data-i18n="topicSap">SAP B1</option>
+              <option value="KI-Agenten" data-i18n="topicAi">KI-Agenten</option>
+            </select>
           </label>
           <label>
             <span data-i18n="formMessage">Nachricht</span>
-            <textarea name="message" rows="5" required></textarea>
+            <textarea name="message" rows="5" minlength="10" maxlength="4000" required></textarea>
           </label>
-          <button class="button button-primary" type="submit">
+          <label class="honeypot" aria-hidden="true">
+            <span>Website</span>
+            <input name="website" tabindex="-1" autocomplete="off" />
+          </label>
+          <button class="button button-primary" type="submit" data-contact-submit>
             <span data-icon="send" aria-hidden="true"></span>
             <span data-i18n="formSubmit">Senden</span>
           </button>
-          <p class="form-note" data-form-note></p>
+          <p class="form-note" data-form-note aria-live="polite"></p>
         </form>
       </section>
     </main>

@@ -11,7 +11,7 @@
   const ui = {
     de: {
       metaDescription:
-        "IT Administrator Portfolio mit Infrastruktur, Microsoft, Automatisierung, SAP Business One und KI-Agenten.",
+        "IT Administrator Portfolio mit Microsoft, Infrastruktur, PowerShell-Automatisierung, SAP Business One Technik und KI-Agenten seit 2020.",
       titleSuffix: "IT Portfolio",
       skipLink: "Direkt zu den Praxisfeldern",
       navOps: "Ops",
@@ -20,13 +20,17 @@
       navSkills: "Kenntnisse",
       navContact: "Kontakt",
       heroLede:
-        "IT Administrator mit Fokus auf Infrastruktur, Microsoft-Umgebungen, Automatisierung und Systeme, die im Alltag wirklich zusammenarbeiten.",
+        "IT Administrator aus Hamburg mit Fokus auf Microsoft-Umgebungen, Infrastruktur, PowerShell-Automatisierung und Systeme, die im Alltag wirklich zusammenarbeiten.",
       primaryCta: "Praxisfelder ansehen",
       secondaryCta: "Kontakt aufnehmen",
+      linkedinCta: "LinkedIn ansehen",
       consoleLabel: "now.running",
       consoleFocus: "Fokus",
       consoleMode: "Modus",
       consoleBase: "Basis",
+      consoleAi: "KI seit",
+      consoleProof: "Profilbasis",
+      consoleLinkedIn: "LinkedIn + Praxis",
       opsKicker: "Command Center",
       opsTitle: "Wie ich IT-Systeme denke",
       projectsKicker: "Praxisfelder",
@@ -41,31 +45,43 @@
       lifeTitle: "Erfahrung und Ausbildung",
       skillsKicker: "Kenntnisse",
       skillsTitle: "Was ich laut Profil mitbringe",
+      skillsNote:
+        "Die Werte sind ein realistisches 1-bis-10-Modell aus LinkedIn-Kenntnissen, Berufserfahrung und Selbsteinschätzung, keine Zertifikatsnoten.",
       playbookKicker: "Playbooks",
       playbookTitle: "Vom Problem zur sauberen Lösung",
       contactKicker: "Open channel",
       contactTitle: "Lass uns IT einfacher machen",
       contactText:
         "Infrastruktur, Microsoft-Umgebung, Automatisierung, SAP-B1-Thema oder KI-Agent: Schreib mir ein Signal und ich melde mich mit Kontext zurück.",
+      contactLinkedIn: "Profil auf LinkedIn öffnen",
       formName: "Name",
       formEmail: "E-Mail",
+      formTopic: "Thema",
+      topicPlaceholder: "Thema wählen",
+      topicMicrosoft: "Microsoft & Workplace",
+      topicInfra: "Infrastruktur",
+      topicAutomation: "Automation",
+      topicSap: "SAP B1",
+      topicAi: "KI-Agenten",
       formMessage: "Nachricht",
       formSubmit: "Senden",
       footerText: "IT Administration, Infrastruktur, Automation and AI agents.",
       footerTop: "Nach oben",
       liveLabel: "Kontakt",
-      codeLabel: "Details",
+      codeLabel: "LinkedIn",
+      detailSignals: "Praxis-Signale",
       sending: "Sende...",
       sentSupabase: "Gespeichert. Ich melde mich.",
       sentLocal: "Lokal gespeichert. Supabase ist noch nicht verbunden.",
       sendError: "Konnte nicht senden. Bitte prüfe Supabase.",
+      formInvalid: "Bitte fülle die Felder vollständig aus.",
       languageButton: "EN",
       languageLabel: "Switch to English",
       themeLabel: "Theme wechseln"
     },
     en: {
       metaDescription:
-        "IT administrator portfolio focused on infrastructure, Microsoft, automation, SAP Business One, and AI agents.",
+        "IT administrator portfolio focused on Microsoft, infrastructure, PowerShell automation, SAP Business One technology, and AI agents since 2020.",
       titleSuffix: "IT Portfolio",
       skipLink: "Skip to practice areas",
       navOps: "Ops",
@@ -74,13 +90,17 @@
       navSkills: "Skills",
       navContact: "Contact",
       heroLede:
-        "IT administrator focused on infrastructure, Microsoft environments, automation, and systems that actually work together in daily operations.",
+        "Hamburg-based IT administrator focused on Microsoft environments, infrastructure, PowerShell automation, and systems that actually work together in daily operations.",
       primaryCta: "View practice areas",
       secondaryCta: "Get in touch",
+      linkedinCta: "View LinkedIn",
       consoleLabel: "now.running",
       consoleFocus: "Focus",
       consoleMode: "Mode",
       consoleBase: "Base",
+      consoleAi: "AI since",
+      consoleProof: "Profile basis",
+      consoleLinkedIn: "LinkedIn + practice",
       opsKicker: "Command Center",
       opsTitle: "How I think about IT systems",
       projectsKicker: "Practice areas",
@@ -95,24 +115,36 @@
       lifeTitle: "Experience and education",
       skillsKicker: "Skills",
       skillsTitle: "What my profile brings together",
+      skillsNote:
+        "The values use a realistic 1-to-10 model based on LinkedIn skills, work experience, and self-assessment, not certificate grades.",
       playbookKicker: "Playbooks",
       playbookTitle: "From issue to clean solution",
       contactKicker: "Open channel",
       contactTitle: "Let's make IT simpler",
       contactText:
         "Infrastructure, Microsoft environments, automation, SAP B1 topics, or AI agents: send me a signal and I will get back to you with context.",
+      contactLinkedIn: "Open LinkedIn profile",
       formName: "Name",
       formEmail: "Email",
+      formTopic: "Topic",
+      topicPlaceholder: "Choose topic",
+      topicMicrosoft: "Microsoft & Workplace",
+      topicInfra: "Infrastructure",
+      topicAutomation: "Automation",
+      topicSap: "SAP B1",
+      topicAi: "AI agents",
       formMessage: "Message",
       formSubmit: "Send",
       footerText: "IT administration, infrastructure, automation and AI agents.",
       footerTop: "Back to top",
       liveLabel: "Contact",
-      codeLabel: "Details",
+      codeLabel: "LinkedIn",
+      detailSignals: "Practice signals",
       sending: "Sending...",
       sentSupabase: "Saved. I will get back to you.",
       sentLocal: "Saved locally. Supabase is not connected yet.",
       sendError: "Could not send. Please check Supabase.",
+      formInvalid: "Please complete all fields.",
       languageButton: "DE",
       languageLabel: "Auf Deutsch wechseln",
       themeLabel: "Toggle theme"
@@ -131,7 +163,9 @@
     arrow:
       '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>',
     spark:
-      '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 9.8 9.8 3 12l6.8 2.2L12 21l2.2-6.8L21 12l-6.8-2.2L12 3Z"/></svg>'
+      '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 9.8 9.8 3 12l6.8 2.2L12 21l2.2-6.8L21 12l-6.8-2.2L12 3Z"/></svg>',
+    linkedin:
+      '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 10v8M8 7.2v.1M12 18v-4.6c0-2.1 1.2-3.4 3.1-3.4 1.8 0 2.9 1.2 2.9 3.5V18M12 10.4V18M4 4.8A1.8 1.8 0 0 1 5.8 3h12.4A1.8 1.8 0 0 1 20 4.8v14.4a1.8 1.8 0 0 1-1.8 1.8H5.8A1.8 1.8 0 0 1 4 19.2V4.8Z"/></svg>'
   };
 
   const selectors = {
@@ -227,28 +261,46 @@
     selectors.form.addEventListener("submit", async (event) => {
       event.preventDefault();
       const formData = new FormData(selectors.form);
+      if (!selectors.form.checkValidity()) {
+        setFormState("error", t("formInvalid"));
+        selectors.form.reportValidity();
+        return;
+      }
+
+      if (String(formData.get("website") || "").trim()) {
+        selectors.form.reset();
+        setFormState("success", t("sentSupabase"));
+        return;
+      }
+
       const payload = {
         name: String(formData.get("name") || "").trim(),
         email: String(formData.get("email") || "").trim(),
-        message: String(formData.get("message") || "").trim()
+        topic: String(formData.get("topic") || "").trim(),
+        message: String(formData.get("message") || "").trim(),
+        language: state.lang,
+        source_url: window.location.href,
+        user_agent: navigator.userAgent.slice(0, 500)
       };
 
-      selectors.formNote.textContent = t("sending");
-      selectors.form.querySelector("button").disabled = true;
+      setFormState("loading", t("sending"));
+      selectors.form.querySelector("[data-contact-submit]").disabled = true;
 
       try {
         const result = await window.PortfolioSupabase.saveMessage(payload);
         selectors.form.reset();
-        selectors.formNote.textContent =
-          result.mode === "supabase"
-            ? t("sentSupabase")
-            : t("sentLocal");
+        setFormState("success", result.mode === "supabase" ? t("sentSupabase") : t("sentLocal"));
       } catch (error) {
-        selectors.formNote.textContent = t("sendError");
+        setFormState("error", t("sendError"));
       } finally {
-        selectors.form.querySelector("button").disabled = false;
+        selectors.form.querySelector("[data-contact-submit]").disabled = false;
       }
     });
+  }
+
+  function setFormState(type, message) {
+    selectors.form.dataset.state = type;
+    selectors.formNote.textContent = message;
   }
 
   async function loadSupabaseData() {
@@ -366,6 +418,16 @@
           <h3>${escapeHtml(project.title)}</h3>
           <p>${escapeHtml(project.summary)}</p>
           <blockquote>${escapeHtml(project.impact)}</blockquote>
+          ${
+            project.signals && project.signals.length
+              ? `<div class="detail-proof">
+                  <span>${escapeHtml(t("detailSignals"))}</span>
+                  <ul>
+                    ${project.signals.map((signal) => `<li>${escapeHtml(signal)}</li>`).join("")}
+                  </ul>
+                </div>`
+              : ""
+          }
           <div class="stack-tags">
             ${project.stack.map((item) => `<span>${escapeHtml(item)}</span>`).join("")}
           </div>
@@ -402,17 +464,21 @@
   function renderStack() {
     selectors.stackBoard.innerHTML = state.data.stack
       .map(
-        (item) => `
+        (item) => {
+          const level = Math.max(0, Math.min(10, Number(item.level) || 0));
+          return `
           <article class="stack-row" data-tone="${escapeAttr(item.tone)}">
             <div>
               <strong>${escapeHtml(item.name)}</strong>
-              <span>${item.level}%</span>
+              <span>${formatLevel(level)}/10</span>
             </div>
             <div class="meter" aria-hidden="true">
-              <span style="width:${item.level}%"></span>
+              <span style="width:${level * 10}%"></span>
             </div>
+            ${item.evidence ? `<p>${escapeHtml(item.evidence)}</p>` : ""}
           </article>
-        `
+        `;
+        }
       )
       .join("");
   }
@@ -516,6 +582,10 @@
 
   function escapeAttr(value) {
     return escapeHtml(value).replaceAll("`", "&#096;");
+  }
+
+  function formatLevel(value) {
+    return Number.isInteger(value) ? String(value) : value.toFixed(1);
   }
 
   function t(key) {

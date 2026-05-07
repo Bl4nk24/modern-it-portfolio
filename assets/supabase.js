@@ -82,6 +82,7 @@
       status: row.status,
       summary: row.summary,
       impact: row.impact,
+      signals: row.signals || [],
       stack: row.stack || [],
       links: row.links || {}
     }));

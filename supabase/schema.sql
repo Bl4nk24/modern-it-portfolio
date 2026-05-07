@@ -20,6 +20,7 @@ create table if not exists public.projects (
   status text not null,
   summary text not null,
   impact text not null,
+  signals text[] not null default '{}',
   stack text[] not null default '{}',
   links jsonb not null default '{}',
   is_public boolean not null default true,
@@ -41,9 +42,55 @@ create table if not exists public.contact_messages (
   id uuid primary key default gen_random_uuid(),
   name text not null,
   email text not null,
+  topic text,
   message text not null,
+  language text,
+  source_url text,
+  user_agent text,
   created_at timestamptz not null default now()
 );
+
+alter table public.projects
+  add column if not exists signals text[] not null default '{}';
+
+alter table public.contact_messages
+  add column if not exists topic text,
+  add column if not exists language text,
+  add column if not exists source_url text,
+  add column if not exists user_agent text;
+
+create index if not exists contact_messages_created_at_idx
+  on public.contact_messages (created_at desc);
+
+alter table public.contact_messages
+  drop constraint if exists contact_messages_name_length,
+  drop constraint if exists contact_messages_email_shape,
+  drop constraint if exists contact_messages_message_length,
+  drop constraint if exists contact_messages_topic_length,
+  drop constraint if exists contact_messages_language_value,
+  drop constraint if exists contact_messages_source_url_length,
+  drop constraint if exists contact_messages_user_agent_length;
+
+alter table public.contact_messages
+  add constraint contact_messages_name_length
+    check (length(btrim(name)) between 2 and 120) not valid,
+  add constraint contact_messages_email_shape
+    check (
+      length(btrim(email)) between 5 and 180
+      and btrim(email) !~ '[[:space:]]'
+      and position('@' in btrim(email)) > 1
+      and position('.' in split_part(btrim(email), '@', 2)) > 1
+    ) not valid,
+  add constraint contact_messages_message_length
+    check (length(btrim(message)) between 10 and 4000) not valid,
+  add constraint contact_messages_topic_length
+    check (topic is null or length(btrim(topic)) between 1 and 120) not valid,
+  add constraint contact_messages_language_value
+    check (language is null or language in ('de', 'en')) not valid,
+  add constraint contact_messages_source_url_length
+    check (source_url is null or length(source_url) <= 500) not valid,
+  add constraint contact_messages_user_agent_length
+    check (user_agent is null or length(user_agent) <= 500) not valid;
 
 alter table public.profile enable row level security;
 alter table public.projects enable row level security;
@@ -77,9 +124,16 @@ create policy "Public can submit contact messages"
   for insert
   to anon, authenticated
   with check (
-    length(btrim(name)) between 1 and 120
-    and position('@' in email) > 1
-    and length(btrim(message)) between 1 and 4000
+    length(btrim(name)) between 2 and 120
+    and length(btrim(email)) between 5 and 180
+    and btrim(email) !~ '[[:space:]]'
+    and position('@' in btrim(email)) > 1
+    and position('.' in split_part(btrim(email), '@', 2)) > 1
+    and length(btrim(message)) between 10 and 4000
+    and (topic is null or length(btrim(topic)) between 1 and 120)
+    and (language is null or language in ('de', 'en'))
+    and (source_url is null or length(source_url) <= 500)
+    and (user_agent is null or length(user_agent) <= 500)
   );
 
 grant usage on schema public to anon, authenticated;
@@ -90,9 +144,9 @@ insert into public.profile (profile_key, name, focus, mode, location, email, is_
 values (
   'main',
   'Eirik Christiansen',
-  'IT-Infrastruktur, Microsoft, Automation',
-  'IT Admin, Integrator, KI Builder',
-  'Hamburg / Lüneburg / Hybrid',
+  'Microsoft, Infrastruktur, Automation',
+  'IT Admin, Integrator, KI-Agenten seit 2020',
+  'Hamburg & Remote',
   'hello@example.dev',
   true
 )
@@ -107,7 +161,7 @@ set
   updated_at = now();
 
 insert into public.projects
-  (slug, sort_order, title, category, year_label, status, summary, impact, stack, links, is_public)
+  (slug, sort_order, title, category, year_label, status, summary, impact, signals, stack, links, is_public)
 values
   (
     'it-infrastruktur-administration',
@@ -115,11 +169,12 @@ values
     'IT-Infrastruktur & Administration',
     'infra',
     '2021 - heute',
-    'Admin backbone',
-    'Windows Server, Active Directory, Netzwerke, Hardware, Betriebssysteme, Helpdesk und Microsoft-Umgebungen im Alltag betreuen.',
-    'Mein Kern ist klassische IT: Systeme stabil halten, Nutzer unterstützen, Berechtigungen sauber denken und technische Probleme pragmatisch lösen.',
+    'Operations backbone',
+    'Windows Server, Active Directory, Netzwerke, Hardware, Betriebssysteme, Helpdesk und Arbeitsplatzumgebungen im realen Betrieb betreuen.',
+    'Mein Kern ist klassische IT: Systeme stabil halten, Nutzer unterstützen, Berechtigungen sauber denken und technische Probleme so lösen, dass der Betrieb weiterlaufen kann.',
+    array['Active Directory, Windows Server, Netzwerk und Endgeräte aus dem Admin-Alltag', 'Fehlersuche zwischen Nutzer, Gerät, Berechtigung, Netzwerk und Backend', 'Support und Infrastruktur nicht getrennt denken, sondern als zusammenhängenden Betrieb'],
     array['Windows Server', 'Active Directory', 'Netzwerkadministration', 'LAN/WAN', 'Helpdesk', 'Hardware'],
-    '{"live":"#contact","code":"#contact"}'::jsonb,
+    '{"live":"#contact","code":"https://www.linkedin.com/in/eirik-christiansen/"}'::jsonb,
     true
   ),
   (
@@ -129,23 +184,25 @@ values
     'microsoft',
     'laufend',
     'Modern workplace',
-    'Microsoft Outlook, Office, Benutzerprozesse, Arbeitsplatzsysteme und typische Admin-Aufgaben sicher in den Betrieb einordnen.',
-    'Ich verstehe Microsoft-Themen vor allem aus Sicht der Administration: Was Nutzer brauchen, wo Rechte sitzen und wie Abläufe weniger chaotisch werden.',
-    array['Microsoft Outlook', 'Microsoft Office', 'Windows', 'User Support', 'Policies'],
-    '{"live":"#contact","code":"#contact"}'::jsonb,
+    'Microsoft Outlook, Office, Windows-Arbeitsplätze, Benutzerprozesse, Rechte, Policies und typische Admin-Aufgaben sicher in den Alltag einordnen.',
+    'Microsoft ist für mich kein einzelnes Tool, sondern die Schicht, in der Nutzer, Geräte, Berechtigungen, Kommunikation und Prozesse täglich zusammenkommen.',
+    array['Outlook, Office und Windows aus Support- und Administrationssicht', 'Benutzer, Gruppen, Rechte und Arbeitsabläufe so strukturieren, dass sie nachvollziehbar bleiben', 'Technische Sprache in verständliche Lösungen für Fachbereiche übersetzen'],
+    array['Microsoft Outlook', 'Microsoft Office', 'Windows', 'Active Directory', 'User Support', 'Policies'],
+    '{"live":"#contact","code":"https://www.linkedin.com/in/eirik-christiansen/"}'::jsonb,
     true
   ),
   (
     'prozessautomatisierung',
     30,
-    'Prozessautomatisierung',
+    'Automation & Systemverbindungen',
     'automation',
     'laufend',
     'Systems connected',
     'Wiederkehrende Aufgaben, Datenflüsse und Übergänge zwischen Systemen mit PowerShell, SQL, MySQL, APIs und Microsoft-Werkzeugen vereinfachen.',
-    'Ich schreibe nicht am liebsten große Softwareprodukte, aber ich kann technische Brücken bauen, Prozesse automatisieren und Systeme miteinander sprechen lassen.',
+    'Ich schreibe nicht am liebsten große Softwareprodukte. Meine Stärke ist eher, technische Brücken zu bauen, Klickarbeit zu reduzieren und Systeme miteinander sprechen zu lassen.',
+    array['PowerShell und kleine Skripte für wiederkehrende Admin-Aufgaben', 'SQL/MySQL, Reports und Datenübergaben zwischen Fachsystemen', 'Prozessverständnis: erst manuelle Reibung sehen, dann sinnvoll automatisieren'],
     array['PowerShell', 'SQL', 'MySQL', 'APIs', 'Reporting', 'Prozesse'],
-    '{"live":"#contact","code":"#contact"}'::jsonb,
+    '{"live":"#contact","code":"https://www.linkedin.com/in/eirik-christiansen/"}'::jsonb,
     true
   ),
   (
@@ -153,12 +210,13 @@ values
     40,
     'SAP Business One Technik',
     'sap',
-    'seit 2025',
+    'seit Apr. 2025',
     'ERP learning curve',
-    'Seit 2025 arbeite ich mit SAP Business One und lerne die technische Seite rund um ERP-Betrieb, Daten, Schnittstellen und Kundenanforderungen kennen.',
-    'SAP B1 ist ein wachsender Bereich in meinem Profil, aber nicht mein einziger Schwerpunkt. Ich verbinde ERP-Themen mit meinem IT-Admin- und Infrastruktur-Verständnis.',
+    'Seit 2025 baue ich technisches SAP-Business-One-Verständnis rund um ERP-Betrieb, Daten, HANA, SQL, Schnittstellen und Kundenanforderungen auf.',
+    'SAP B1 ist ein wachsender Bereich in meinem Profil, nicht der Mittelpunkt. Ich ordne ERP-Themen mit meinem IT-Admin- und Infrastruktur-Hintergrund ein.',
+    array['Technische Einordnung von SAP B1 in bestehende IT-Landschaften', 'Datenbank-, HANA- und SQL-Verständnis als Brücke in ERP-Themen', 'Bewusst als Aufbaugebiet dargestellt, weil die Praxis erst seit 2025 läuft'],
     array['SAP Business One', 'HANA', 'SQL', 'ERP-Technik', 'Support'],
-    '{"live":"#contact","code":"#contact"}'::jsonb,
+    '{"live":"#contact","code":"https://www.linkedin.com/in/eirik-christiansen/"}'::jsonb,
     true
   ),
   (
@@ -166,12 +224,13 @@ values
     50,
     'KI-Agenten & Assistenzsysteme',
     'ai',
-    '2026',
+    'seit 2020',
     'AI builder',
-    'KI-Agenten für Support, Wissen, Prozesshilfe und Automatisierung aufbauen, trainieren und mit bestehenden Datenquellen verbinden.',
-    'Der Fokus liegt nicht auf Hype, sondern auf kontrollierter Nutzung: Rollen, Datenzugriff, Anweisungen, Wissen und nachvollziehbare Ergebnisse.',
+    'Seit 2020 beschäftige ich mich mit KI-Workflows, Agenten, Prompting, Wissensquellen und Assistenzsystemen für Support, Prozesse und Automatisierung.',
+    'KI bedeutet für mich nicht Hype, sondern kontrollierte Assistenz: klare Rollen, saubere Datenquellen, nachvollziehbare Anweisungen und sinnvolle Verbindung mit bestehenden Systemen.',
+    array['KI-Agenten für Wissen, Support, Prozesshilfe und interne Assistenz aufbauen', 'Datenquellen, Rollen, Prompts und Grenzen bewusst definieren', 'Automatisierung, APIs und Systemverständnis als Grundlage für brauchbare Agenten'],
     array['KI-Agenten', 'Prompting', 'Knowledge Sources', 'Automatisierung', 'Governance'],
-    '{"live":"#contact","code":"#contact"}'::jsonb,
+    '{"live":"#contact","code":"https://www.linkedin.com/in/eirik-christiansen/"}'::jsonb,
     true
   )
 on conflict (slug) do update
@@ -183,6 +242,7 @@ set
   status = excluded.status,
   summary = excluded.summary,
   impact = excluded.impact,
+  signals = excluded.signals,
   stack = excluded.stack,
   links = excluded.links,
   is_public = excluded.is_public,
@@ -196,7 +256,7 @@ values
     10,
     'Apr. 2025 - heute',
     'SAP IT-Consultant, Be1Eye GmbH',
-    'Vollzeit in Lüneburg/Hybrid. SAP Business One Consulting, IT-Infrastruktur, Security, Prozessautomatisierung und HANA-Optimierung.',
+    'Hamburg/Remote. SAP Business One Technik, IT-Infrastruktur, Security, Prozessautomatisierung und technische Einordnung von ERP-Themen.',
     true
   ),
   (
@@ -204,7 +264,15 @@ values
     20,
     'Okt. 2021 - Apr. 2025',
     'IT-Systemadministrator, Reos GmbH',
-    'Duales Studium in Hamburg/Hybrid. Active Directory, Microsoft Outlook, Windows Server, Netzwerk, Hardware, Betriebssysteme und Helpdesk-Support.',
+    'Hamburg/Remote im dualen Studium. Active Directory, Microsoft Outlook, Windows Server, Netzwerk, Hardware, Betriebssysteme und Helpdesk-Support.',
+    true
+  ),
+  (
+    'ki-workflows-agenten',
+    25,
+    '2020 - heute',
+    'KI-Workflows & Agenten',
+    'Eigene Praxis mit KI-Systemen, Prompting, Assistenzlogik, Wissensquellen und Automatisierungsideen für IT- und Prozessaufgaben.',
     true
   ),
   (

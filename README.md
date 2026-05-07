@@ -7,7 +7,7 @@ Ein modernes, zweisprachiges Portfolio fuer IT Administration, IT-Infrastruktur,
 - `index.html` ist die Portfolio-Oberflaeche.
 - `assets/styles.css` enthaelt das komplette visuelle System.
 - `assets/app.js` steuert Filter, Projektdetail, Theme, Canvas und Kontaktflow.
-- `assets/data.js` enthaelt die deutschen und englischen Portfolio-Inhalte aus dem LinkedIn-Screenshot: Be1Eye, Reos, IU, Infrastruktur, Microsoft, SAP B1, Automatisierung und Kenntnisse.
+- `assets/data.js` enthaelt die deutschen und englischen Portfolio-Inhalte aus dem LinkedIn-Screenshot: Hamburg/Remote, Be1Eye, Reos, IU, Infrastruktur, Microsoft, SAP B1 als Aufbaugebiet, Automatisierung, KI seit 2020 und Kenntnisse.
 - `assets/supabase.js` laedt Supabase nur, wenn URL und Publishable Key gesetzt sind.
 - `supabase/schema.sql` legt Tabellen, RLS-Policies, Grants und Seed-Daten an.
 
@@ -38,7 +38,9 @@ Wenn du ohne Datenbank arbeiten willst, ersetze die Inhalte direkt in `assets/da
 
 LinkedIn-Hinweis: Die Inhalte wurden anhand bereitgestellter LinkedIn-Screenshots aktualisiert. Ein Zertifikatsbereich war dort nicht sichtbar, deshalb sind keine Zertifikate eingetragen.
 
-Fuer echte Projektlinks ersetze die `links`-Werte in `assets/data.js` oder in der `projects`-Tabelle. Der Kontaktflow speichert Nachrichten bei verbundener Datenbank in `contact_messages`, sonst lokal im Browser.
+Fuer echte Projektlinks ersetze die `links`-Werte in `assets/data.js` oder in der `projects`-Tabelle. Der Kontaktflow speichert Nachrichten inklusive Thema, Sprache und Quelle bei verbundener Datenbank in `contact_messages`, sonst lokal im Browser.
+
+Die Skillwerte sind bewusst ein 1-bis-10-Modell statt Prozentwerte. Sie basieren auf LinkedIn-Kenntnissen, Berufserfahrung und Selbsteinschaetzung, nicht auf offiziellen Zertifikatsnoten.
 
 ## Deployment
 

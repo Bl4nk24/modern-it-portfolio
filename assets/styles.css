@@ -11,6 +11,7 @@
   --accent-2: #d8ff63;
   --accent-3: #ff7a59;
   --accent-4: #a78bfa;
+  --accent-5: #65a9ff;
   --shadow: 0 24px 70px rgba(0, 0, 0, 0.34);
   --radius: 8px;
   --max: 1180px;
@@ -156,6 +157,13 @@ svg {
   display: flex;
   align-items: center;
   gap: 6px;
+  max-width: min(56vw, 620px);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.nav-links::-webkit-scrollbar {
+  display: none;
 }
 
 .nav-links a {
@@ -328,6 +336,13 @@ svg {
   color: var(--muted);
 }
 
+.button-ghost:hover,
+.button-ghost:focus-visible {
+  border-color: var(--border);
+  background: var(--surface);
+  color: var(--text);
+}
+
 .identity-console,
 .project-detail,
 .life-card,
@@ -411,6 +426,36 @@ svg {
   margin: 0;
   color: var(--text);
   font-weight: 760;
+}
+
+.console-mini-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.console-mini-grid div {
+  display: grid;
+  gap: 6px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.08), transparent),
+    color-mix(in srgb, var(--surface) 72%, transparent);
+  padding: 12px;
+}
+
+.console-mini-grid span {
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 760;
+}
+
+.console-mini-grid strong {
+  color: var(--text);
+  font-size: 0.96rem;
+  line-height: 1.25;
 }
 
 .ops-section,
@@ -680,6 +725,51 @@ svg {
   line-height: 1.55;
 }
 
+.detail-proof {
+  display: grid;
+  gap: 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background:
+    linear-gradient(90deg, rgba(108, 240, 207, 0.1), transparent 52%),
+    color-mix(in srgb, var(--surface) 72%, transparent);
+  padding: 16px;
+}
+
+.detail-proof > span {
+  color: var(--accent);
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.detail-proof ul {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.detail-proof li {
+  position: relative;
+  color: var(--text);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  padding-left: 18px;
+}
+
+.detail-proof li::before {
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-2);
+  content: "";
+}
+
 .stack-tags {
   display: flex;
   flex-wrap: wrap;
@@ -733,7 +823,7 @@ svg {
 }
 
 .playbook-grid {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
 }
 
 .playbook-card {
@@ -747,7 +837,7 @@ svg {
 
 .stack-row {
   display: grid;
-  gap: 16px;
+  gap: 12px;
   padding: 18px;
 }
 
@@ -766,6 +856,13 @@ svg {
   color: var(--muted);
   font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
   font-size: 0.82rem;
+}
+
+.stack-row p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.86rem;
+  line-height: 1.48;
 }
 
 .meter {
@@ -791,7 +888,7 @@ svg {
 }
 
 .stack-row[data-tone="blue"] .meter span {
-  background: #65a9ff;
+  background: var(--accent-5);
 }
 
 .stack-row[data-tone="violet"] .meter span {
@@ -814,12 +911,29 @@ svg {
   top: 112px;
 }
 
-.contact-copy p:last-child {
+.contact-copy > p:not(.section-kicker) {
   max-width: 520px;
   margin: 18px 0 0;
   color: var(--muted);
   font-size: 1rem;
   line-height: 1.72;
+}
+
+.profile-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 22px;
+  border-bottom: 1px solid color-mix(in srgb, var(--accent) 50%, transparent);
+  color: var(--accent);
+  font-weight: 820;
+  padding-bottom: 4px;
+}
+
+.profile-link:hover,
+.profile-link:focus-visible {
+  color: var(--text);
+  border-color: var(--text);
 }
 
 .contact-form {
@@ -840,6 +954,7 @@ svg {
 }
 
 .contact-form input,
+.contact-form select,
 .contact-form textarea {
   width: 100%;
   border: 1px solid var(--border);
@@ -850,14 +965,27 @@ svg {
   padding: 13px 14px;
 }
 
+.contact-form select {
+  appearance: none;
+}
+
 .contact-form textarea {
   resize: vertical;
 }
 
 .contact-form input:focus,
+.contact-form select:focus,
 .contact-form textarea:focus {
   border-color: var(--accent);
   box-shadow: 0 0 0 3px rgba(108, 240, 207, 0.16);
+}
+
+.honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
 }
 
 .form-note {
@@ -865,6 +993,22 @@ svg {
   margin: 0;
   color: var(--muted);
   font-size: 0.88rem;
+}
+
+.contact-form[data-state="success"] .form-note {
+  color: var(--accent-2);
+}
+
+.contact-form[data-state="error"] .form-note {
+  color: var(--accent-3);
+}
+
+.stack-note {
+  max-width: 820px;
+  margin: 18px 0 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.6;
 }
 
 .site-footer {
@@ -933,12 +1077,7 @@ svg {
   }
 
   .nav-links {
-    gap: 0;
-  }
-
-  .nav-links a {
-    padding: 9px 8px;
-    font-size: 0.82rem;
+    display: none;
   }
 
   .language-toggle,
