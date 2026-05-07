@@ -1,97 +1,97 @@
 window.PORTFOLIO_SEED = {
   profile: {
     name: "Eirik",
-    focus: "Frontend, Cloud, AI",
-    mode: "Build in public",
+    focus: "Microsoft, PowerShell, Automation",
+    mode: "Admin, Integrator, AI Builder",
     location: "Germany / Remote",
     email: "hello@example.dev"
   },
   projects: [
     {
-      title: "OpsBoard",
-      category: "web",
+      title: "Microsoft 365 Administration",
+      category: "microsoft",
       year: "2026",
-      status: "Concept live",
+      status: "Admin core",
       summary:
-        "Ein kompaktes Dashboard fuer Incident-Notizen, Service-Zustaende und Team-Uebergaben.",
-      impact: "Von verstreuten Chats zu einem sichtbaren Betriebsbild.",
-      stack: ["JavaScript", "Supabase", "Realtime", "Charts"],
+        "Tenant, Benutzer, Gruppen, Lizenzen, Teams, SharePoint, Exchange und Entra so betreuen, dass der Alltag sauber funktioniert.",
+      impact: "Ich denke Microsoft nicht als einzelne Apps, sondern als zusammenhaengendes Arbeits- und Berechtigungssystem.",
+      stack: ["Microsoft 365", "Entra ID", "Intune", "Teams", "SharePoint", "Exchange"],
       links: {
         live: "#contact",
         code: "#contact"
       }
     },
     {
-      title: "Infra Pulse",
-      category: "cloud",
+      title: "PowerShell Automation",
+      category: "automation",
       year: "2025",
-      status: "Prototype",
+      status: "Daily operations",
       summary:
-        "Monitoring-Ansicht fuer Deployments, Kostenimpulse und Automationslaeufe.",
-      impact: "Macht Infrastruktur weniger abstrakt und Entscheidungen schneller.",
-      stack: ["GitHub Actions", "Linux", "Terraform", "Postgres"],
+        "Wiederkehrende Admin-Aufgaben, Auswertungen, Benutzerprozesse und Systemverbindungen mit PowerShell und APIs automatisieren.",
+      impact: "Weniger Klickarbeit, weniger Fehlerquellen und mehr Zeit fuer die Aufgaben, bei denen Menschen wirklich gebraucht werden.",
+      stack: ["PowerShell", "Graph API", "Power Automate", "REST APIs", "Reporting"],
       links: {
         live: "#contact",
         code: "#contact"
       }
     },
     {
-      title: "Knowledge Desk",
+      title: "KI-Agenten fuer Prozesse",
       category: "ai",
       year: "2025",
-      status: "Internal tool",
+      status: "AI enablement",
       summary:
-        "Persoenliche Wissensablage mit KI-Suche, Quellenlogik und sauberer Aufgabenuebergabe.",
-      impact: "Ideen, Snippets und Entscheidungen bleiben auffindbar.",
-      stack: ["OpenAI", "Supabase", "Edge Functions", "Vector Search"],
+        "KI-Agenten konzipieren, trainieren und in bestehende Ablaeufe einbetten, ohne Governance, Rollen und Datenzugriff zu vergessen.",
+      impact: "KI ist fuer mich kein Showpiece, sondern ein Werkzeug fuer Support, Wissen, Automatisierung und bessere Entscheidungen.",
+      stack: ["Copilot", "Agent Builder", "Prompting", "Knowledge Sources", "Governance"],
       links: {
         live: "#contact",
         code: "#contact"
       }
     },
     {
-      title: "Life Atlas",
-      category: "life",
+      title: "SAP Business One Technik",
+      category: "erp",
       year: "2024",
-      status: "Story layer",
+      status: "ERP backbone",
       summary:
-        "Eine visuelle Timeline fuer Lernen, Reisen, Arbeit und Momente, die mich gepraegt haben.",
-      impact: "Das Portfolio zeigt nicht nur Output, sondern Richtung.",
-      stack: ["Design Systems", "Maps", "Storytelling", "CSS"],
+        "Technische Seite von SAP B1 verstehen: Datenbank, Schnittstellen, Add-ons, Systembetrieb und Verbindungen zu anderen Tools.",
+      impact: "Ich kann Fachsysteme so einordnen, dass IT, Prozesse und Business-Anforderungen zusammenkommen.",
+      stack: ["SAP B1", "SQL Server", "HANA", "B1if", "Service Layer", "Windows Server"],
       links: {
-        live: "#life",
+        live: "#contact",
         code: "#contact"
       }
     }
   ],
   lifeEvents: [
     {
-      date: "2021",
-      title: "Admin Mindset",
-      text: "Erste Systeme wirklich verstanden: Rechte, Netzwerke, Skripte, Verantwortung."
+      date: "Basis",
+      title: "IT Administration",
+      text: "Systeme betreiben, Nutzer unterstuetzen, Berechtigungen verstehen und Verantwortung fuer stabile Umgebungen uebernehmen."
     },
     {
-      date: "2023",
-      title: "Web + Cloud",
-      text: "Frontend wurde greifbar, Cloud-Workflows wurden Alltag, Deployments wurden schneller."
+      date: "Microsoft",
+      title: "Modern Workplace",
+      text: "Microsoft 365, Teams, SharePoint, Exchange, Entra und Intune als zusammenhaengende Arbeitsplattform denken."
     },
     {
-      date: "2025",
-      title: "AI als Werkzeug",
-      text: "Nicht als Magie, sondern als vernuenftiger Beschleuniger fuer Recherche, Code und Struktur."
+      date: "Automation",
+      title: "PowerShell statt Klickarbeit",
+      text: "Wiederkehrende Aufgaben automatisieren, Systeme verbinden und Reports aus Daten bauen, die sonst liegen bleiben."
     },
     {
       date: "Jetzt",
-      title: "Portfolio OS",
-      text: "Projekte, Lebenslauf und Persoenlichkeit wachsen in einem System zusammen."
+      title: "KI-Agenten mit Kontrolle",
+      text: "Agenten und KI-Workflows so aufbauen, dass sie helfen, aber Rollen, Rechte, Datenquellen und Nachvollziehbarkeit respektieren."
     }
   ],
   stack: [
-    { name: "JavaScript", level: 92, tone: "mint" },
-    { name: "Supabase", level: 86, tone: "lime" },
-    { name: "UI Systems", level: 88, tone: "coral" },
-    { name: "Cloud Ops", level: 78, tone: "blue" },
-    { name: "Automation", level: 82, tone: "violet" },
-    { name: "AI Tooling", level: 80, tone: "amber" }
+    { name: "Microsoft 365 Administration", level: 92, tone: "mint" },
+    { name: "PowerShell & Automation", level: 90, tone: "lime" },
+    { name: "Entra ID, Intune & Security", level: 84, tone: "coral" },
+    { name: "Systemintegration & APIs", level: 86, tone: "blue" },
+    { name: "KI-Agenten & Prozessdesign", level: 82, tone: "violet" },
+    { name: "SAP Business One Technik", level: 78, tone: "amber" }
   ]
 };

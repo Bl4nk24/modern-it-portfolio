@@ -1,13 +1,13 @@
-# Modern IT Portfolio
+# Modern IT Administrator Portfolio
 
-Ein modernes, direkt hostbares Portfolio fuer Projekte, Life-Story, Stack und Kontakt. Die App laeuft ohne Build-Schritt als statische Website und kann spaeter per Supabase aus echten Tabellen gespeist werden.
+Ein modernes, direkt hostbares Portfolio fuer IT Administration, Microsoft 365, PowerShell-Automatisierung, SAP Business One Technik, KI-Agenten und Kontakt. Die App laeuft ohne Build-Schritt als statische Website und kann spaeter per Supabase aus echten Tabellen gespeist werden.
 
 ## Inhalte
 
 - `index.html` ist die Portfolio-Oberflaeche.
 - `assets/styles.css` enthaelt das komplette visuelle System.
 - `assets/app.js` steuert Filter, Projektdetail, Theme, Canvas und Kontaktflow.
-- `assets/data.js` enthaelt Demo-Inhalte, die sofort ersetzt werden koennen.
+- `assets/data.js` enthaelt die Portfolio-Inhalte fuer Microsoft, Automation, KI-Agenten und SAP B1.
 - `assets/supabase.js` laedt Supabase nur, wenn URL und Publishable Key gesetzt sind.
 - `supabase/schema.sql` legt Tabellen, RLS-Policies, Grants und Seed-Daten an.
 
@@ -35,6 +35,8 @@ Hinweis vom 7. Mai 2026: Supabase rollt aus, dass neue Tabellen in `public` nich
 ## Personalisieren
 
 Wenn du ohne Datenbank arbeiten willst, ersetze die Inhalte direkt in `assets/data.js`. Mit Supabase kannst du dieselben Felder in den Tabellen `profile`, `projects` und `life_events` pflegen.
+
+LinkedIn-Hinweis: Oeffentliche LinkedIn-Profilseiten blocken haeufig Details wie Kenntnisse, Zertifikate und vollstaendige Berufsstationen. Trage konkrete Zertifikate oder Arbeitgeber erst ein, wenn sie aus einem Profil-PDF oder Screenshot verifiziert sind.
 
 Fuer echte Projektlinks ersetze die `links`-Werte in `assets/data.js` oder in der `projects`-Tabelle. Der Kontaktflow speichert Nachrichten bei verbundener Datenbank in `contact_messages`, sonst lokal im Browser.
 
