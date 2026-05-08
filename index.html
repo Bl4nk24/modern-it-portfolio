@@ -23,11 +23,11 @@
       </a>
 
       <nav class="nav-links" aria-label="Hauptnavigation">
-        <a href="#top" data-i18n="navOverview">Overview</a>
+        <a href="#top" data-i18n="navOverview">Überblick</a>
         <a href="#ops" data-i18n="navOps">Expertise</a>
-        <a href="#projects" data-i18n="navProjects">Work</a>
-        <a href="#life" data-i18n="navLife">Journey</a>
-        <a href="#stack" data-i18n="navSkills">Skills</a>
+        <a href="#projects" data-i18n="navProjects">Praxis</a>
+        <a href="#life" data-i18n="navLife">Werdegang</a>
+        <a href="#stack" data-i18n="navSkills">Kenntnisse</a>
         <a href="#contact" data-i18n="navContact">Kontakt</a>
       </nav>
 
@@ -61,6 +61,7 @@
               <span data-i18n="chipMicrosoft">Microsoft</span>
               <span data-i18n="chipIdentity">Identity</span>
               <span data-i18n="chipAutomation">PowerShell</span>
+              <span data-i18n="chipLocation">Hamburg & Remote</span>
               <span data-i18n="chipAi">KI-Agenten seit 2020</span>
               <span data-i18n="chipSap">SAP B1 seit 04/2025</span>
             </div>
@@ -86,55 +87,41 @@
             </div>
           </div>
 
-          <aside class="system-map" aria-label="System Map">
-            <div class="map-header">
-              <span data-i18n="mapTitle">System Map - was ich verbinde</span>
-              <strong data-profile-status>Supabase ready</strong>
+          <aside class="orbit-panel" aria-label="Microsoft System Orbit">
+            <div class="orbit-header">
+              <span data-i18n="mapTitle">Microsoft System Orbit</span>
+              <strong data-profile-status data-i18n="mapStatus">Microsoft Stack</strong>
             </div>
-            <div class="map-canvas">
-              <div class="map-center">
-                <span data-icon="spark" aria-hidden="true"></span>
-                <strong>Operations</strong>
-                <small data-i18n="mapCenter">Monitor · Automate · Secure</small>
+            <div class="orbit-stage">
+              <canvas id="orbitScene" class="orbit-scene" aria-hidden="true"></canvas>
+              <div class="orbit-label label-m365">
+                <strong>Microsoft 365</strong>
+                <small>Outlook · Office · Teams</small>
               </div>
-              <div class="map-node node-microsoft">
-                <span class="node-icon">MS</span>
-                  <strong>Microsoft</strong>
-                  <small>M365<br />Outlook<br />Windows</small>
+              <div class="orbit-label label-entra">
+                <strong>Entra ID</strong>
+                <small>Identity · Access</small>
               </div>
-              <div class="map-node node-identity">
-                <span data-icon="lock" aria-hidden="true"></span>
-                  <strong>Identity</strong>
-                  <small>AD<br />Rechte</small>
+              <div class="orbit-label label-server">
+                <strong>Windows Server</strong>
+                <small>AD · Files · Services</small>
               </div>
-              <div class="map-node node-infra">
-                <span data-icon="server" aria-hidden="true"></span>
-                  <strong>Infrastructure</strong>
-                  <small>Server<br />LAN/WAN</small>
+              <div class="orbit-label label-ps">
+                <strong>PowerShell</strong>
+                <small>Automation · APIs</small>
               </div>
-              <div class="map-node node-automation">
-                <span data-icon="terminal" aria-hidden="true"></span>
-                  <strong>Automation</strong>
-                  <small>PowerShell<br />SQL / APIs</small>
+              <div class="orbit-label label-network">
+                <strong>Network</strong>
+                <small>LAN/WAN · Security</small>
               </div>
-              <div class="map-node node-sap">
-                <span class="node-icon">SAP</span>
-                <strong>SAP B1</strong>
-                <small>seit 04/2025</small>
-              </div>
-              <div class="map-node node-ai">
-                <span data-icon="brain" aria-hidden="true"></span>
+              <div class="orbit-label label-ai">
                 <strong>AI Agents</strong>
-                <small>seit 2020</small>
+                <small>Support · Knowledge</small>
               </div>
-              <span class="map-line line-a"></span>
-              <span class="map-line line-b"></span>
-              <span class="map-line line-c"></span>
-              <span class="map-line line-d"></span>
             </div>
-            <div class="map-footer">
-              <span data-i18n="mapFooter">Reale Systeme. Reale Wirkung.</span>
-              <a href="#projects" data-i18n="mapLink">Praxisfelder ansehen</a>
+            <div class="orbit-footer">
+              <span data-i18n="mapFooter">Microsoft, Infrastruktur und Automation als ein System.</span>
+              <a href="#projects" data-i18n="mapLink">Work ansehen</a>
             </div>
           </aside>
         </div>
@@ -143,7 +130,7 @@
       <section class="ops-section" id="ops" aria-labelledby="ops-title">
         <div class="section-heading">
           <p class="section-kicker" data-i18n="opsKicker">Expertise</p>
-          <h2 id="ops-title" data-i18n="opsTitle">Capabilities mit operativer Substanz.</h2>
+          <h2 id="ops-title" data-i18n="opsTitle">Kompetenzen mit operativer Substanz.</h2>
         </div>
 
         <div class="ops-metrics" data-ops-metrics></div>
@@ -153,22 +140,17 @@
       <section class="projects-section" id="projects" aria-labelledby="projects-title">
         <div class="section-heading section-heading-split">
           <div>
-            <p class="section-kicker" data-i18n="projectsKicker">Work</p>
-            <h2 id="projects-title" data-i18n="projectsTitle">Praxis statt Projektliste.</h2>
+            <p class="section-kicker" data-i18n="projectsKicker">Praxis</p>
+            <h2 id="projects-title" data-i18n="projectsTitle">Systeme, die arbeiten.</h2>
           </div>
           <p data-i18n="projectsIntro">
-            Kein künstliches Developer-Theater: diese Felder zeigen, wo ich IT-Betrieb,
-            Systemverständnis und Automatisierung wirklich zusammenbringe.
+            Ausgewählte Schwerpunkte aus Administration, Microsoft-Infrastruktur,
+            Automatisierung und KI-Assistenz.
           </p>
         </div>
 
-        <div class="project-toolbar" aria-label="Projektfilter">
-          <button class="segment is-active" type="button" data-filter="all" data-i18n="filterAll">Alle</button>
-          <button class="segment" type="button" data-filter="infra" data-i18n="filterInfra">Infrastruktur</button>
-          <button class="segment" type="button" data-filter="microsoft" data-i18n="filterMicrosoft">Microsoft</button>
-          <button class="segment" type="button" data-filter="automation" data-i18n="filterAutomation">Automation</button>
-          <button class="segment" type="button" data-filter="sap" data-i18n="filterSap">SAP B1</button>
-          <button class="segment" type="button" data-filter="ai" data-i18n="filterAi">KI-Agenten</button>
+        <div class="project-toolbar project-toolbar-simple" aria-label="Projektansicht">
+          <span class="segment is-active" data-i18n="filterAll">Alle</span>
         </div>
 
         <div class="project-layout">
@@ -180,12 +162,11 @@
       <section class="stack-section" id="stack" aria-labelledby="stack-title">
         <div class="section-heading section-heading-split">
           <div>
-            <p class="section-kicker" data-i18n="skillsKicker">Skills</p>
-            <h2 id="stack-title" data-i18n="skillsTitle">Praktische Stärke, belegt statt behauptet.</h2>
+            <p class="section-kicker" data-i18n="skillsKicker">Kenntnisse</p>
+            <h2 id="stack-title" data-i18n="skillsTitle">Kompetenzkarte.</h2>
           </div>
           <p class="stack-note" data-i18n="skillsNote">
-            Die Werte sind ein realistisches 1-bis-10-Modell aus LinkedIn-Kenntnissen,
-            Berufserfahrung und Selbsteinschätzung, keine Zertifikatsnoten.
+            Skala 1 bis 10: eingeordnet aus LinkedIn-Profil, Berufserfahrung, Projekten und Ausbildung.
           </p>
         </div>
 
@@ -195,7 +176,7 @@
       <section class="life-section" id="life" aria-labelledby="life-title">
         <div class="section-heading">
           <p class="section-kicker" data-i18n="lifeKicker">Journey</p>
-          <h2 id="life-title" data-i18n="lifeTitle">Von Grundlagen zu Integration.</h2>
+          <h2 id="life-title" data-i18n="lifeTitle">Von Betrieb zu Integration.</h2>
         </div>
 
         <div class="life-grid" data-life-grid></div>
@@ -203,8 +184,8 @@
 
       <section class="playbook-section" aria-labelledby="playbook-title">
         <div class="section-heading">
-          <p class="section-kicker" data-i18n="playbookKicker">Operating Method</p>
-          <h2 id="playbook-title" data-i18n="playbookTitle">Wie ich Probleme sauber mache.</h2>
+          <p class="section-kicker" data-i18n="playbookKicker">Arbeitsweise</p>
+          <h2 id="playbook-title" data-i18n="playbookTitle">Wie ich Systeme sauber bekomme.</h2>
         </div>
 
         <div class="playbook-grid" data-playbook-grid></div>
@@ -212,11 +193,11 @@
 
       <section class="contact-section" id="contact" aria-labelledby="contact-title">
         <div class="contact-copy">
-          <p class="section-kicker" data-i18n="contactKicker">Let's connect</p>
-          <h2 id="contact-title" data-i18n="contactTitle">Hast du eine IT-Frage im Kopf?</h2>
+          <p class="section-kicker" data-i18n="contactKicker">Kontakt</p>
+          <h2 id="contact-title" data-i18n="contactTitle">Lass uns über IT sprechen.</h2>
           <p data-i18n="contactText">
             Infrastruktur, Microsoft-Umgebung, Automatisierung, SAP-B1-Thema oder KI-Agent:
-            Schreib mir ein Signal und ich melde mich mit Kontext zurück.
+            Schreib mir kurz, worum es geht.
           </p>
           <a
             class="profile-link"
@@ -268,7 +249,7 @@
           </label>
           <div class="form-footer">
             <p class="privacy-note" data-i18n="privacyNote">
-              Deine Anfrage landet sicher in Supabase. Keine öffentlichen Leserechte.
+              Deine Anfrage kommt direkt bei mir an und wird nicht öffentlich angezeigt.
             </p>
             <button class="button button-primary" type="submit" data-contact-submit>
               <span data-i18n="formSubmit">Senden</span>
@@ -281,12 +262,8 @@
     </main>
 
     <footer class="site-footer">
-      <span data-i18n="footerText">IT Administration, Infrastruktur, Automation and AI agents.</span>
-      <div class="footer-status">
-        <span>Supabase Live</span>
-        <span>RLS secured</span>
-        <span>Docker ready</span>
-      </div>
+      <span data-i18n="footerText">IT Administration, Microsoft-Infrastruktur, Automation und KI-Agenten.</span>
+      <a href="https://www.linkedin.com/in/eirik-christiansen/" target="_blank" rel="noreferrer">LinkedIn</a>
       <a href="#top" data-i18n="footerTop">Nach oben</a>
     </footer>
 
@@ -294,5 +271,6 @@
     <script src="./assets/data.js"></script>
     <script src="./assets/supabase.js"></script>
     <script src="./assets/app.js"></script>
+    <script type="module" src="./assets/orbit.js"></script>
   </body>
 </html>

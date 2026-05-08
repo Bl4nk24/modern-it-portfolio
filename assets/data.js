@@ -3,81 +3,67 @@ window.PORTFOLIO_CONTENT = {
     profile: {
       name: "Eirik Christiansen",
       focus: "Microsoft, Infrastruktur, Automation",
-      mode: "IT Admin, Integrator, KI-Agenten seit 2020",
+      mode: "IT Administrator & Systems Integrator",
       location: "Hamburg & Remote",
       email: "hello@example.dev",
       linkedin: "https://www.linkedin.com/in/eirik-christiansen/"
     },
     projects: [
       {
-        title: "IT-Infrastruktur & Administration",
-        category: "infra",
-        year: "2021 - heute",
-        status: "Operations backbone",
-        summary:
-          "Windows Server, Active Directory, Netzwerke, Hardware, Betriebssysteme, Helpdesk und Arbeitsplatzumgebungen im realen Betrieb betreuen.",
-        impact:
-          "Mein Kern ist klassische IT: Systeme stabil halten, Nutzer unterstützen, Berechtigungen sauber denken und technische Probleme so lösen, dass der Betrieb weiterlaufen kann.",
-        signals: [
-          "Active Directory, Windows Server, Netzwerk und Endgeräte aus dem Admin-Alltag",
-          "Fehlersuche zwischen Nutzer, Gerät, Berechtigung, Netzwerk und Backend",
-          "Support und Infrastruktur nicht getrennt denken, sondern als zusammenhängenden Betrieb"
-        ],
-        stack: [
-          "Windows Server",
-          "Active Directory",
-          "Netzwerkadministration",
-          "LAN/WAN",
-          "Helpdesk",
-          "Hardware"
-        ],
-        links: {
-          live: "#contact",
-          code: "https://www.linkedin.com/in/eirik-christiansen/"
-        }
-      },
-      {
-        title: "Microsoft & Workplace",
+        title: "Microsoft 365 & Identity",
         category: "microsoft",
         year: "laufend",
-        status: "Modern workplace",
+        status: "Workplace & Access",
+        card: "Tenant, Benutzer, Gruppen und Workplace-Prozesse.",
         summary:
-          "Microsoft Outlook, Office, Windows-Arbeitsplätze, Benutzerprozesse, Rechte, Policies und typische Admin-Aufgaben sicher in den Alltag einordnen.",
-        impact:
-          "Microsoft ist für mich kein einzelnes Tool, sondern die Schicht, in der Nutzer, Geräte, Berechtigungen, Kommunikation und Prozesse täglich zusammenkommen.",
-        signals: [
-          "Outlook, Office und Windows aus Support- und Administrationssicht",
-          "Benutzer, Gruppen, Rechte und Arbeitsabläufe so strukturieren, dass sie nachvollziehbar bleiben",
-          "Technische Sprache in verständliche Lösungen für Fachbereiche übersetzen"
-        ],
-        stack: [
-          "Microsoft Outlook",
-          "Microsoft Office",
-          "Windows",
-          "Active Directory",
-          "User Support",
-          "Policies"
-        ],
+          "Microsoft-Umgebungen sauber betreiben: Outlook, Office, Windows, Benutzer, Gruppen und nachvollziehbare Rechte.",
+        signals: ["Microsoft 365 im Admin-Alltag", "Active Directory und Gruppenstrukturen", "Workplace-Support mit technischem Kontext"],
+        stack: ["Microsoft 365", "Outlook", "Office", "Windows", "Active Directory", "User Support"],
         links: {
           live: "#contact",
           code: "https://www.linkedin.com/in/eirik-christiansen/"
         }
       },
       {
-        title: "Automation & Systemverbindungen",
+        title: "Windows Server & Netzwerk",
+        category: "infra",
+        year: "2021 - heute",
+        status: "Infrastructure",
+        card: "Server, LAN/WAN, Hardware und Betriebssicherheit.",
+        summary:
+          "Infrastruktur betreuen, Fehler eingrenzen und Systeme so stabil halten, dass der Betrieb weiterlaufen kann.",
+        signals: ["Windows Server und Arbeitsplatzsysteme", "LAN/WAN, Geräte und Hardware", "Troubleshooting zwischen Nutzer, Netzwerk und Backend"],
+        stack: ["Windows Server", "LAN/WAN", "Hardware", "Backup", "Helpdesk", "Betriebssysteme"],
+        links: {
+          live: "#contact",
+          code: "https://www.linkedin.com/in/eirik-christiansen/"
+        }
+      },
+      {
+        title: "PowerShell Automation",
         category: "automation",
         year: "laufend",
-        status: "Systems connected",
+        status: "Automation",
+        card: "Wiederkehrende Aufgaben und Systemübergänge vereinfachen.",
         summary:
-          "Wiederkehrende Aufgaben, Datenflüsse und Übergänge zwischen Systemen mit PowerShell, SQL, MySQL, APIs und Microsoft-Werkzeugen vereinfachen.",
-        impact:
-          "Ich schreibe nicht am liebsten große Softwareprodukte. Meine Stärke ist eher, technische Brücken zu bauen, Klickarbeit zu reduzieren und Systeme miteinander sprechen zu lassen.",
-        signals: [
-          "PowerShell und kleine Skripte für wiederkehrende Admin-Aufgaben",
-          "SQL/MySQL, Reports und Datenübergaben zwischen Fachsystemen",
-          "Prozessverständnis: erst manuelle Reibung sehen, dann sinnvoll automatisieren"
-        ],
-        stack: ["PowerShell", "SQL", "MySQL", "APIs", "Reporting", "Prozesse"],
+          "PowerShell, SQL, MySQL und APIs dort einsetzen, wo sie manuelle Arbeit reduzieren und Systeme verbinden.",
+        signals: ["Skripte für wiederkehrende Admin-Aufgaben", "Datenübergaben zwischen Fachsystemen", "Reports, Schnittstellen und kleine interne Tools"],
+        stack: ["PowerShell", "SQL", "MySQL", "APIs", "Reports", "Microsoft Tools"],
+        links: {
+          live: "#contact",
+          code: "https://www.linkedin.com/in/eirik-christiansen/"
+        }
+      },
+      {
+        title: "KI-Agenten & Assistenz",
+        category: "ai",
+        year: "seit 2020",
+        status: "AI Assistance",
+        card: "Agenten, Wissensquellen und Prozesshilfe.",
+        summary:
+          "KI-Agenten für Support, Wissen und Automatisierung entwerfen: klare Rollen, gute Datenquellen, sinnvolle Grenzen.",
+        signals: ["KI-Workflows und Prompting seit 2020", "Knowledge Sources für Support und Prozesse", "Verbindung mit Automatisierung und APIs"],
+        stack: ["KI-Agenten", "Prompting", "Knowledge Sources", "Workflows", "Governance"],
         links: {
           live: "#contact",
           code: "https://www.linkedin.com/in/eirik-christiansen/"
@@ -87,37 +73,12 @@ window.PORTFOLIO_CONTENT = {
         title: "SAP Business One Technik",
         category: "sap",
         year: "seit Apr. 2025",
-        status: "ERP learning curve",
+        status: "ERP Technology",
+        card: "ERP-Technik mit Infrastruktur- und Datenblick.",
         summary:
-          "Seit 2025 baue ich technisches SAP-Business-One-Verständnis rund um ERP-Betrieb, Daten, HANA, SQL, Schnittstellen und Kundenanforderungen auf.",
-        impact:
-          "SAP B1 ist ein wachsender Bereich in meinem Profil, nicht der Mittelpunkt. Ich ordne ERP-Themen mit meinem IT-Admin- und Infrastruktur-Hintergrund ein.",
-        signals: [
-          "Technische Einordnung von SAP B1 in bestehende IT-Landschaften",
-          "Datenbank-, HANA- und SQL-Verständnis als Brücke in ERP-Themen",
-          "Bewusst als Aufbaugebiet dargestellt, weil die Praxis erst seit 2025 läuft"
-        ],
-        stack: ["SAP Business One", "HANA", "SQL", "ERP-Technik", "Support"],
-        links: {
-          live: "#contact",
-          code: "https://www.linkedin.com/in/eirik-christiansen/"
-        }
-      },
-      {
-        title: "KI-Agenten & Assistenzsysteme",
-        category: "ai",
-        year: "seit 2020",
-        status: "AI builder",
-        summary:
-          "Seit 2020 beschäftige ich mich mit KI-Workflows, Agenten, Prompting, Wissensquellen und Assistenzsystemen für Support, Prozesse und Automatisierung.",
-        impact:
-          "KI bedeutet für mich nicht Hype, sondern kontrollierte Assistenz: klare Rollen, saubere Datenquellen, nachvollziehbare Anweisungen und sinnvolle Verbindung mit bestehenden Systemen.",
-        signals: [
-          "KI-Agenten für Wissen, Support, Prozesshilfe und interne Assistenz aufbauen",
-          "Datenquellen, Rollen, Prompts und Grenzen bewusst definieren",
-          "Automatisierung, APIs und Systemverständnis als Grundlage für brauchbare Agenten"
-        ],
-        stack: ["KI-Agenten", "Prompting", "Knowledge Sources", "Automatisierung", "Governance"],
+          "SAP Business One technisch einordnen: HANA, SQL, Schnittstellen, Datenflüsse und Integration in bestehende IT.",
+        signals: ["Technische SAP-B1-Betreuung seit 2025", "SQL, HANA und Schnittstellen", "ERP-Themen aus Infrastrukturperspektive"],
+        stack: ["SAP Business One", "HANA", "SQL", "Schnittstellen", "Support"],
         links: {
           live: "#contact",
           code: "https://www.linkedin.com/in/eirik-christiansen/"
@@ -128,281 +89,132 @@ window.PORTFOLIO_CONTENT = {
       {
         date: "Apr. 2025 - heute",
         title: "SAP IT-Consultant, Be1Eye GmbH",
-        text:
-          "Hamburg & Remote. SAP Business One Technik, IT-Infrastruktur, Security, Prozessautomatisierung und technische Einordnung von ERP-Themen."
+        text: "Hamburg & Remote. SAP Business One Technik, IT-Infrastruktur, Security und Prozessautomatisierung."
       },
       {
         date: "Okt. 2021 - Apr. 2025",
         title: "IT-Systemadministrator, Reos GmbH",
-        text:
-          "Hamburg & Remote im dualen Studium. Active Directory, Microsoft Outlook, Windows Server, Netzwerk, Hardware, Betriebssysteme und Helpdesk-Support."
+        text: "Duales Studium mit Active Directory, Microsoft Outlook, Windows Server, Netzwerk, Hardware und Helpdesk."
       },
       {
         date: "2020 - heute",
         title: "KI-Workflows & Agenten",
-        text:
-          "Eigene Praxis mit KI-Systemen, Prompting, Assistenzlogik, Wissensquellen und Automatisierungsideen für IT- und Prozessaufgaben."
+        text: "Praxis mit KI-Systemen, Prompting, Wissensquellen und Automatisierungsideen für IT- und Prozessaufgaben."
       },
       {
         date: "Okt. 2021 - März 2025",
         title: "B.Sc. Computer Science, IU Internationale Hochschule",
-        text:
-          "Bachelorabschluss mit Note 2.2. Schwerpunkte aus dem Profil: SQL, MySQL, OOP, JavaScript, HTML/CSS und Java."
+        text: "Bachelorabschluss. Relevante Grundlagen: SQL, MySQL, OOP, JavaScript, HTML/CSS und Java."
       },
       {
         date: "Sept. 2012 - Juni 2021",
-        title: "Abitur, Schloss Torgelow Privates Internatsgymnasium",
-        text:
-          "Abitur mit Note 2.4. Grundlagen aus dem Profil: SQL, MySQL, Python, Hardware und technische Arbeitsweise."
+        title: "Abitur, Schloss Torgelow",
+        text: "Technische Grundlagen, strukturierte Arbeitsweise und frühes Interesse an Hardware und Software."
       }
     ],
     stack: [
-      {
-        name: "Microsoft Administration & Workplace",
-        level: 8.5,
-        tone: "mint",
-        evidence: "Basis: Outlook, Office, Windows, User Support und tägliche Admin-Praxis."
-      },
-      {
-        name: "Active Directory & Berechtigungen",
-        level: 8.4,
-        tone: "violet",
-        evidence: "Basis: Reos-Erfahrung, Benutzer, Gruppen, Rechte und nachvollziehbare Zugriffe."
-      },
-      {
-        name: "IT-Infrastruktur & Security",
-        level: 8.3,
-        tone: "blue",
-        evidence: "Basis: Infrastrukturrollen, Security-Aufgaben und operativer Systembetrieb."
-      },
-      {
-        name: "Helpdesk & User Support",
-        level: 8.6,
-        tone: "coral",
-        evidence: "Basis: echte Nutzerprobleme, Arbeitsplatzsysteme und schnelle technische Einordnung."
-      },
-      {
-        name: "Windows Server",
-        level: 8.2,
-        tone: "amber",
-        evidence: "Basis: Profilkenntnisse, Admin-Erfahrung und Betriebssystemverständnis."
-      },
-      {
-        name: "Netzwerkadministration & LAN/WAN",
-        level: 8.1,
-        tone: "blue",
-        evidence: "Basis: LinkedIn-Kenntnisse, Netzwerktechnik und Fehlersuche im Betrieb."
-      },
-      {
-        name: "Hardware-Montage & Installation",
-        level: 8.2,
-        tone: "lime",
-        evidence: "Basis: Hardware, Computerhardware-Montage und Installation aus Profil und Praxis."
-      },
-      {
-        name: "PowerShell & Automatisierung",
-        level: 7.6,
-        tone: "violet",
-        evidence: "Basis: Automatisierung wiederkehrender Aufgaben und Systemverbindungen."
-      },
-      {
-        name: "SQL & MySQL",
-        level: 7.2,
-        tone: "amber",
-        evidence: "Basis: Studium, Profilkenntnisse und technische Daten-/ERP-Themen."
-      },
-      {
-        name: "KI-Agenten & Prompting",
-        level: 7.7,
-        tone: "mint",
-        evidence: "Basis: eigene KI-Praxis seit 2020, Agentenlogik, Wissensquellen und Automatisierung."
-      },
-      {
-        name: "SAP Business One Technik",
-        level: 5.8,
-        tone: "lime",
-        evidence: "Basis: aktueller Aufbau seit April 2025, bewusst niedriger als die Infrastruktur-Themen."
-      },
-      {
-        name: "HTML, CSS & JavaScript",
-        level: 6.1,
-        tone: "coral",
-        evidence: "Basis: Studium und Grundverständnis, nicht als Hauptfokus positioniert."
-      },
-      {
-        name: "Java, Python & OOP",
-        level: 5.7,
-        tone: "blue",
-        evidence: "Basis: akademische Grundlagen und technisches Verständnis, nicht Lieblingsschwerpunkt."
-      },
-      {
-        name: "Windows & Mac",
-        level: 7.5,
-        tone: "amber",
-        evidence: "Basis: Betriebssysteme, Arbeitsplatzumgebungen und Endgeräte-Support."
-      },
-      {
-        name: "Teamwork & Kommunikation",
-        level: 8.7,
-        tone: "mint",
-        evidence: "Basis: Support, Beratung, Nutzerkontakt und Übersetzung zwischen IT und Fachbereich."
-      }
+      { name: "Microsoft Administration", level: 8.6, tone: "blue", trend: [5, 6, 7, 8, 8.6] },
+      { name: "Active Directory", level: 8.4, tone: "mint", trend: [5, 6, 7, 8, 8.4] },
+      { name: "IT-Infrastruktur", level: 8.3, tone: "blue", trend: [5, 6, 7, 7.8, 8.3] },
+      { name: "Helpdesk & Support", level: 8.6, tone: "coral", trend: [6, 7, 8, 8.2, 8.6] },
+      { name: "Windows Server", level: 8.2, tone: "amber", trend: [5, 6.5, 7.4, 8, 8.2] },
+      { name: "LAN/WAN & Netzwerk", level: 8.1, tone: "blue", trend: [5.2, 6, 7.2, 7.8, 8.1] },
+      { name: "PowerShell Automation", level: 7.8, tone: "violet", trend: [4.5, 5.5, 6.6, 7.2, 7.8] },
+      { name: "KI-Agenten", level: 7.8, tone: "mint", trend: [3, 4.8, 6.2, 7.1, 7.8] },
+      { name: "SQL & MySQL", level: 7.2, tone: "amber", trend: [4.5, 5.5, 6.3, 6.8, 7.2] },
+      { name: "SAP Business One", level: 6.0, tone: "lime", trend: [2, 3.5, 4.8, 5.5, 6] },
+      { name: "HTML/CSS/JavaScript", level: 6.2, tone: "coral", trend: [3.2, 4.4, 5.2, 5.8, 6.2] },
+      { name: "Kommunikation", level: 8.7, tone: "mint", trend: [6, 7.2, 8, 8.4, 8.7] }
     ],
     metrics: [
-      {
-        label: "Standort",
-        value: "Hamburg & Remote",
-        text: "Klarer Standortfokus ohne künstliche Ortsstreuung."
-      },
-      {
-        label: "KI-Erfahrung",
-        value: "seit 2020",
-        text: "Agenten, Prompting und Assistenzsysteme als laufendes Praxisfeld."
-      },
-      {
-        label: "Kompetenzmodell",
-        value: "1 bis 10",
-        text: "Realistische Einordnung aus LinkedIn, Berufserfahrung und Selbsteinschätzung."
-      },
-      {
-        label: "Rolle",
-        value: "Admin + Integrator",
-        text: "Systeme stabilisieren, verbinden und für Nutzer greifbar machen."
-      }
+      { label: "Microsoft & Identity", value: "9/10", text: "M365, Outlook, Windows, AD", tone: "blue", trend: [5, 6, 7, 8, 9] },
+      { label: "Automation", value: "8/10", text: "PowerShell, SQL, APIs", tone: "violet", trend: [3, 5, 6, 7, 8] },
+      { label: "Infrastructure", value: "9/10", text: "Server, Netzwerk, Hardware", tone: "blue", trend: [5, 6.5, 7.5, 8.4, 9] },
+      { label: "AI Agents", value: "8/10", text: "Seit 2020 mit KI-Workflows", tone: "mint", trend: [2, 4, 6, 7, 8] },
+      { label: "Security & Access", value: "8/10", text: "Rechte, Gruppen, Betrieb", tone: "amber", trend: [4, 5, 6.5, 7.2, 8] },
+      { label: "SAP B1 Technik", value: "6/10", text: "Seit 04/2025 im Aufbau", tone: "lime", trend: [2, 3, 4.5, 5.4, 6] }
     ],
     capabilities: [
-      {
-        title: "Identity & Access",
-        text: "Active Directory, Benutzer, Gruppen, Rechte, Rollen und nachvollziehbare Zugriffe als Fundament."
-      },
-      {
-        title: "Microsoft Workplace",
-        text: "Outlook, Office, Windows, Arbeitsplatzprozesse, Support und Admin-Entscheidungen im Alltag."
-      },
-      {
-        title: "Network & Server",
-        text: "LAN/WAN, Windows Server, Betriebssysteme, Hardware, Infrastruktur und strukturierte Fehlersuche."
-      },
-      {
-        title: "Automation Layer",
-        text: "PowerShell, SQL, MySQL, APIs, Reports und kleine Werkzeuge, die wiederkehrende Arbeit reduzieren."
-      },
-      {
-        title: "SAP B1 Technik",
-        text: "ERP als Aufbaugebiet: HANA, SQL, Schnittstellen, Daten und technische Einordnung in bestehende IT."
-      },
-      {
-        title: "AI Agent Systems",
-        text: "KI-Agenten seit 2020: Rollen, Wissensquellen, Prompts, Grenzen und Verbindung mit echten Prozessen."
-      }
+      { title: "Microsoft Workplace", text: "Outlook, Office, Windows und Nutzerprozesse sicher betreiben." },
+      { title: "Identity & Access", text: "Active Directory, Gruppen, Rechte und nachvollziehbare Zugriffe." },
+      { title: "Server & Network", text: "Windows Server, LAN/WAN, Endgeräte und strukturierte Fehlersuche." },
+      { title: "Automation Layer", text: "PowerShell, SQL, APIs und Reports für weniger manuelle Arbeit." },
+      { title: "AI Agent Systems", text: "Agenten mit Rollen, Wissensquellen, Prompts und klaren Grenzen." },
+      { title: "SAP B1 Technology", text: "ERP-Technik, HANA, SQL und Schnittstellen als wachsender Bereich." }
     ],
     playbooks: [
-      {
-        step: "01",
-        title: "Kontext aufnehmen",
-        text: "Nutzerproblem, Systemzustand, Berechtigungen und Abhängigkeiten zuerst verstehen."
-      },
-      {
-        step: "02",
-        title: "Betrieb sichern",
-        text: "Schnell stabilisieren, dann Ursache, Risiko und nachhaltige Lösung sauber trennen."
-      },
-      {
-        step: "03",
-        title: "Systeme verbinden",
-        text: "Wenn Daten wiederkehrend wandern, lieber eine klare Schnittstelle als noch mehr manuelle Klickarbeit."
-      },
-      {
-        step: "04",
-        title: "Automatisieren",
-        text: "PowerShell, SQL, APIs oder Microsoft-Werkzeuge dort einsetzen, wo sie echte Reibung entfernen."
-      },
-      {
-        step: "05",
-        title: "Assistieren lassen",
-        text: "KI-Agenten nur dort bauen, wo Rollen, Daten, Grenzen und Nutzen klar genug sind."
-      }
+      { step: "01", title: "Kontext klären", text: "System, Nutzer, Rechte und Abhängigkeiten zuerst verstehen." },
+      { step: "02", title: "Betrieb stabilisieren", text: "Schnell absichern, dann Ursache und nachhaltige Lösung trennen." },
+      { step: "03", title: "Systeme verbinden", text: "Datenflüsse und Übergänge sauber modellieren." },
+      { step: "04", title: "Automatisieren", text: "PowerShell, SQL und APIs dort nutzen, wo sie Reibung entfernen." },
+      { step: "05", title: "Assistenz ergänzen", text: "KI-Agenten nur mit klarem Nutzen, Datenrahmen und Kontrolle." }
     ]
   },
   en: {
     profile: {
       name: "Eirik Christiansen",
       focus: "Microsoft, infrastructure, automation",
-      mode: "IT admin, integrator, AI agents since 2020",
+      mode: "IT Administrator & Systems Integrator",
       location: "Hamburg & remote",
       email: "hello@example.dev",
       linkedin: "https://www.linkedin.com/in/eirik-christiansen/"
     },
     projects: [
       {
-        title: "IT Infrastructure & Administration",
-        category: "infra",
-        year: "2021 - today",
-        status: "Operations backbone",
-        summary:
-          "Supporting Windows Server, Active Directory, networks, hardware, operating systems, helpdesk topics, and workplace environments in real operations.",
-        impact:
-          "My core is practical IT: keeping systems stable, supporting users, thinking permissions through, and solving technical issues so operations can continue.",
-        signals: [
-          "Active Directory, Windows Server, networks, and endpoints from daily admin work",
-          "Troubleshooting across user, device, permissions, network, and backend",
-          "Treating support and infrastructure as one connected operating model"
-        ],
-        stack: [
-          "Windows Server",
-          "Active Directory",
-          "Network administration",
-          "LAN/WAN",
-          "Helpdesk",
-          "Hardware"
-        ],
-        links: {
-          live: "#contact",
-          code: "https://www.linkedin.com/in/eirik-christiansen/"
-        }
-      },
-      {
-        title: "Microsoft & Workplace",
+        title: "Microsoft 365 & Identity",
         category: "microsoft",
         year: "ongoing",
-        status: "Modern workplace",
+        status: "Workplace & Access",
+        card: "Tenant, users, groups, and workplace processes.",
         summary:
-          "Working with Microsoft Outlook, Office, Windows workplaces, user processes, permissions, policies, and common admin tasks in real environments.",
-        impact:
-          "Microsoft is not a single tool for me. It is the layer where users, devices, permissions, communication, and daily processes meet.",
-        signals: [
-          "Outlook, Office, and Windows from a support and administration perspective",
-          "Structuring users, groups, permissions, and workflows so they stay traceable",
-          "Translating technical language into understandable solutions for business teams"
-        ],
-        stack: [
-          "Microsoft Outlook",
-          "Microsoft Office",
-          "Windows",
-          "Active Directory",
-          "User support",
-          "Policies"
-        ],
+          "Operating Microsoft environments with Outlook, Office, Windows, users, groups, and traceable permissions.",
+        signals: ["Microsoft 365 in daily admin work", "Active Directory and group structures", "Workplace support with technical context"],
+        stack: ["Microsoft 365", "Outlook", "Office", "Windows", "Active Directory", "User support"],
         links: {
           live: "#contact",
           code: "https://www.linkedin.com/in/eirik-christiansen/"
         }
       },
       {
-        title: "Automation & System Connections",
+        title: "Windows Server & Network",
+        category: "infra",
+        year: "2021 - today",
+        status: "Infrastructure",
+        card: "Servers, LAN/WAN, hardware, and operational stability.",
+        summary:
+          "Keeping infrastructure stable, narrowing down issues, and supporting systems so operations can continue.",
+        signals: ["Windows Server and workplace systems", "LAN/WAN, devices, and hardware", "Troubleshooting across user, network, and backend"],
+        stack: ["Windows Server", "LAN/WAN", "Hardware", "Backup", "Helpdesk", "Operating systems"],
+        links: {
+          live: "#contact",
+          code: "https://www.linkedin.com/in/eirik-christiansen/"
+        }
+      },
+      {
+        title: "PowerShell Automation",
         category: "automation",
         year: "ongoing",
-        status: "Systems connected",
+        status: "Automation",
+        card: "Recurring tasks and system handovers simplified.",
         summary:
-          "Simplifying recurring tasks, data flows, and handovers between systems with PowerShell, SQL, MySQL, APIs, and Microsoft tools.",
-        impact:
-          "I do not enjoy writing large software products the most. My strength is building technical bridges, reducing manual clicking, and letting systems talk to each other.",
-        signals: [
-          "PowerShell and small scripts for recurring admin tasks",
-          "SQL/MySQL, reports, and data handovers between business systems",
-          "Process thinking: see manual friction first, then automate where it makes sense"
-        ],
-        stack: ["PowerShell", "SQL", "MySQL", "APIs", "Reporting", "Processes"],
+          "Using PowerShell, SQL, MySQL, and APIs where they reduce manual work and connect systems.",
+        signals: ["Scripts for recurring admin tasks", "Data handovers between business systems", "Reports, interfaces, and small internal tools"],
+        stack: ["PowerShell", "SQL", "MySQL", "APIs", "Reports", "Microsoft tools"],
+        links: {
+          live: "#contact",
+          code: "https://www.linkedin.com/in/eirik-christiansen/"
+        }
+      },
+      {
+        title: "AI Agents & Assistance",
+        category: "ai",
+        year: "since 2020",
+        status: "AI Assistance",
+        card: "Agents, knowledge sources, and process help.",
+        summary:
+          "Designing AI agents for support, knowledge, and automation with clear roles, data sources, and boundaries.",
+        signals: ["AI workflows and prompting since 2020", "Knowledge sources for support and processes", "Connection with automation and APIs"],
+        stack: ["AI agents", "Prompting", "Knowledge sources", "Workflows", "Governance"],
         links: {
           live: "#contact",
           code: "https://www.linkedin.com/in/eirik-christiansen/"
@@ -412,37 +224,12 @@ window.PORTFOLIO_CONTENT = {
         title: "SAP Business One Technology",
         category: "sap",
         year: "since Apr. 2025",
-        status: "ERP learning curve",
+        status: "ERP Technology",
+        card: "ERP technology through an infrastructure and data lens.",
         summary:
-          "Since 2025, I have been building technical SAP Business One understanding around ERP operations, data, HANA, SQL, interfaces, and customer requirements.",
-        impact:
-          "SAP B1 is a growing part of my profile, not the center of it. I frame ERP topics through my IT administration and infrastructure background.",
-        signals: [
-          "Technical framing of SAP B1 inside existing IT landscapes",
-          "Database, HANA, and SQL understanding as a bridge into ERP topics",
-          "Intentionally positioned as a growing area because hands-on practice started in 2025"
-        ],
-        stack: ["SAP Business One", "HANA", "SQL", "ERP technology", "Support"],
-        links: {
-          live: "#contact",
-          code: "https://www.linkedin.com/in/eirik-christiansen/"
-        }
-      },
-      {
-        title: "AI Agents & Assistant Systems",
-        category: "ai",
-        year: "since 2020",
-        status: "AI builder",
-        summary:
-          "Since 2020, I have worked with AI workflows, agents, prompting, knowledge sources, and assistant systems for support, processes, and automation.",
-        impact:
-          "AI for me is not hype. It is controlled assistance: clear roles, clean data sources, traceable instructions, and meaningful connection to existing systems.",
-        signals: [
-          "Building AI agents for knowledge, support, process help, and internal assistance",
-          "Defining data sources, roles, prompts, and boundaries deliberately",
-          "Using automation, APIs, and systems thinking as the base for useful agents"
-        ],
-        stack: ["AI agents", "Prompting", "Knowledge sources", "Automation", "Governance"],
+          "Framing SAP Business One technically: HANA, SQL, interfaces, data flows, and integration into existing IT.",
+        signals: ["SAP B1 technology since 2025", "SQL, HANA, and interfaces", "ERP topics from an infrastructure perspective"],
+        stack: ["SAP Business One", "HANA", "SQL", "Interfaces", "Support"],
         links: {
           live: "#contact",
           code: "https://www.linkedin.com/in/eirik-christiansen/"
@@ -453,200 +240,65 @@ window.PORTFOLIO_CONTENT = {
       {
         date: "Apr. 2025 - today",
         title: "SAP IT Consultant, Be1Eye GmbH",
-        text:
-          "Hamburg & remote. SAP Business One technology, IT infrastructure, security, process automation, and technical framing of ERP topics."
+        text: "Hamburg & remote. SAP Business One technology, IT infrastructure, security, and process automation."
       },
       {
         date: "Oct. 2021 - Apr. 2025",
         title: "IT Systems Administrator, Reos GmbH",
-        text:
-          "Hamburg & remote during dual studies. Active Directory, Microsoft Outlook, Windows Server, networking, hardware, operating systems, and helpdesk support."
+        text: "Dual study role with Active Directory, Microsoft Outlook, Windows Server, networking, hardware, and helpdesk."
       },
       {
         date: "2020 - today",
         title: "AI Workflows & Agents",
-        text:
-          "Personal practice with AI systems, prompting, assistant logic, knowledge sources, and automation ideas for IT and process work."
+        text: "Practice with AI systems, prompting, knowledge sources, and automation ideas for IT and process work."
       },
       {
         date: "Oct. 2021 - Mar. 2025",
         title: "B.Sc. Computer Science, IU International University",
-        text:
-          "Bachelor's degree, grade 2.2. Profile topics include SQL, MySQL, OOP, JavaScript, HTML/CSS, and Java."
+        text: "Bachelor's degree. Relevant foundations: SQL, MySQL, OOP, JavaScript, HTML/CSS, and Java."
       },
       {
         date: "Sept. 2012 - Jun. 2021",
-        title: "Abitur, Schloss Torgelow Private Boarding School",
-        text:
-          "Abitur, grade 2.4. Profile foundations include SQL, MySQL, Python, hardware, and technical working methods."
+        title: "Abitur, Schloss Torgelow",
+        text: "Technical foundations, structured working style, and early interest in hardware and software."
       }
     ],
     stack: [
-      {
-        name: "Microsoft administration & workplace",
-        level: 8.5,
-        tone: "mint",
-        evidence: "Basis: Outlook, Office, Windows, user support, and daily admin practice."
-      },
-      {
-        name: "Active Directory & permissions",
-        level: 8.4,
-        tone: "violet",
-        evidence: "Basis: Reos experience, users, groups, permissions, and traceable access."
-      },
-      {
-        name: "IT infrastructure & security",
-        level: 8.3,
-        tone: "blue",
-        evidence: "Basis: infrastructure roles, security tasks, and operational systems work."
-      },
-      {
-        name: "Helpdesk & user support",
-        level: 8.6,
-        tone: "coral",
-        evidence: "Basis: real user issues, workplace systems, and fast technical framing."
-      },
-      {
-        name: "Windows Server",
-        level: 8.2,
-        tone: "amber",
-        evidence: "Basis: profile skills, admin experience, and operating system understanding."
-      },
-      {
-        name: "Network administration & LAN/WAN",
-        level: 8.1,
-        tone: "blue",
-        evidence: "Basis: LinkedIn skills, network technology, and operational troubleshooting."
-      },
-      {
-        name: "Hardware assembly & installation",
-        level: 8.2,
-        tone: "lime",
-        evidence: "Basis: hardware, computer hardware assembly, and installation from profile and practice."
-      },
-      {
-        name: "PowerShell & automation",
-        level: 7.6,
-        tone: "violet",
-        evidence: "Basis: recurring task automation and system connections."
-      },
-      {
-        name: "SQL & MySQL",
-        level: 7.2,
-        tone: "amber",
-        evidence: "Basis: university work, profile skills, and technical data/ERP topics."
-      },
-      {
-        name: "AI agents & prompting",
-        level: 7.7,
-        tone: "mint",
-        evidence: "Basis: personal AI practice since 2020, agent logic, knowledge sources, and automation."
-      },
-      {
-        name: "SAP Business One technology",
-        level: 5.8,
-        tone: "lime",
-        evidence: "Basis: current growth area since April 2025, intentionally below infrastructure topics."
-      },
-      {
-        name: "HTML, CSS & JavaScript",
-        level: 6.1,
-        tone: "coral",
-        evidence: "Basis: university foundations and understanding, not positioned as the main focus."
-      },
-      {
-        name: "Java, Python & OOP",
-        level: 5.7,
-        tone: "blue",
-        evidence: "Basis: academic foundations and technical understanding, not the preferred focus."
-      },
-      {
-        name: "Windows & Mac",
-        level: 7.5,
-        tone: "amber",
-        evidence: "Basis: operating systems, workplace environments, and endpoint support."
-      },
-      {
-        name: "Teamwork & communication",
-        level: 8.7,
-        tone: "mint",
-        evidence: "Basis: support, consulting, user contact, and translation between IT and business."
-      }
+      { name: "Microsoft administration", level: 8.6, tone: "blue", trend: [5, 6, 7, 8, 8.6] },
+      { name: "Active Directory", level: 8.4, tone: "mint", trend: [5, 6, 7, 8, 8.4] },
+      { name: "IT infrastructure", level: 8.3, tone: "blue", trend: [5, 6, 7, 7.8, 8.3] },
+      { name: "Helpdesk & support", level: 8.6, tone: "coral", trend: [6, 7, 8, 8.2, 8.6] },
+      { name: "Windows Server", level: 8.2, tone: "amber", trend: [5, 6.5, 7.4, 8, 8.2] },
+      { name: "LAN/WAN & networking", level: 8.1, tone: "blue", trend: [5.2, 6, 7.2, 7.8, 8.1] },
+      { name: "PowerShell automation", level: 7.8, tone: "violet", trend: [4.5, 5.5, 6.6, 7.2, 7.8] },
+      { name: "AI agents", level: 7.8, tone: "mint", trend: [3, 4.8, 6.2, 7.1, 7.8] },
+      { name: "SQL & MySQL", level: 7.2, tone: "amber", trend: [4.5, 5.5, 6.3, 6.8, 7.2] },
+      { name: "SAP Business One", level: 6.0, tone: "lime", trend: [2, 3.5, 4.8, 5.5, 6] },
+      { name: "HTML/CSS/JavaScript", level: 6.2, tone: "coral", trend: [3.2, 4.4, 5.2, 5.8, 6.2] },
+      { name: "Communication", level: 8.7, tone: "mint", trend: [6, 7.2, 8, 8.4, 8.7] }
     ],
     metrics: [
-      {
-        label: "Base",
-        value: "Hamburg & remote",
-        text: "Clear location focus without artificial spread."
-      },
-      {
-        label: "AI experience",
-        value: "since 2020",
-        text: "Agents, prompting, and assistant systems as an ongoing practice area."
-      },
-      {
-        label: "Skill model",
-        value: "1 to 10",
-        text: "Realistic framing from LinkedIn, work experience, and self-assessment."
-      },
-      {
-        label: "Role",
-        value: "Admin + integrator",
-        text: "Stabilizing systems, connecting them, and making them usable for people."
-      }
+      { label: "Microsoft & Identity", value: "9/10", text: "M365, Outlook, Windows, AD", tone: "blue", trend: [5, 6, 7, 8, 9] },
+      { label: "Automation", value: "8/10", text: "PowerShell, SQL, APIs", tone: "violet", trend: [3, 5, 6, 7, 8] },
+      { label: "Infrastructure", value: "9/10", text: "Server, network, hardware", tone: "blue", trend: [5, 6.5, 7.5, 8.4, 9] },
+      { label: "AI Agents", value: "8/10", text: "AI workflows since 2020", tone: "mint", trend: [2, 4, 6, 7, 8] },
+      { label: "Security & Access", value: "8/10", text: "Rights, groups, operations", tone: "amber", trend: [4, 5, 6.5, 7.2, 8] },
+      { label: "SAP B1 technology", value: "6/10", text: "Growing since 04/2025", tone: "lime", trend: [2, 3, 4.5, 5.4, 6] }
     ],
     capabilities: [
-      {
-        title: "Identity & Access",
-        text: "Active Directory, users, groups, permissions, roles, and traceable access as the foundation."
-      },
-      {
-        title: "Microsoft Workplace",
-        text: "Outlook, Office, Windows, workplace processes, support, and admin decisions in daily operations."
-      },
-      {
-        title: "Network & Server",
-        text: "LAN/WAN, Windows Server, operating systems, hardware, infrastructure, and structured troubleshooting."
-      },
-      {
-        title: "Automation Layer",
-        text: "PowerShell, SQL, MySQL, APIs, reports, and small tools that reduce recurring work."
-      },
-      {
-        title: "SAP B1 Technology",
-        text: "ERP as a growth area: HANA, SQL, interfaces, data, and technical framing inside existing IT."
-      },
-      {
-        title: "AI Agent Systems",
-        text: "AI agents since 2020: roles, knowledge sources, prompts, boundaries, and connection to real processes."
-      }
+      { title: "Microsoft Workplace", text: "Operating Outlook, Office, Windows, and user processes." },
+      { title: "Identity & Access", text: "Active Directory, groups, permissions, and traceable access." },
+      { title: "Server & Network", text: "Windows Server, LAN/WAN, endpoints, and structured troubleshooting." },
+      { title: "Automation Layer", text: "PowerShell, SQL, APIs, and reports to reduce manual work." },
+      { title: "AI Agent Systems", text: "Agents with roles, knowledge sources, prompts, and clear boundaries." },
+      { title: "SAP B1 Technology", text: "ERP technology, HANA, SQL, and interfaces as a growing area." }
     ],
     playbooks: [
-      {
-        step: "01",
-        title: "Capture context",
-        text: "Understand the user issue, system state, permissions, and dependencies first."
-      },
-      {
-        step: "02",
-        title: "Protect operations",
-        text: "Stabilize quickly, then separate root cause, risk, and sustainable fix."
-      },
-      {
-        step: "03",
-        title: "Connect systems",
-        text: "When data moves repeatedly, prefer a clear interface over more manual clicking."
-      },
-      {
-        step: "04",
-        title: "Automate",
-        text: "Use PowerShell, SQL, APIs, or Microsoft tools where they remove real friction."
-      },
-      {
-        step: "05",
-        title: "Add assistance",
-        text: "Build AI agents only where roles, data, limits, and value are clear enough."
-      }
+      { step: "01", title: "Clarify context", text: "Understand system, user, permissions, and dependencies first." },
+      { step: "02", title: "Stabilize operations", text: "Secure quickly, then separate cause and sustainable fix." },
+      { step: "03", title: "Connect systems", text: "Model data flows and handovers cleanly." },
+      { step: "04", title: "Automate", text: "Use PowerShell, SQL, and APIs where they remove friction." },
+      { step: "05", title: "Add assistance", text: "Use AI agents only with clear value, data boundaries, and control." }
     ]
   }
 };
