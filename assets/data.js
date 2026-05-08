@@ -129,13 +129,13 @@ window.PORTFOLIO_CONTENT = {
         date: "Apr. 2025 - heute",
         title: "SAP IT-Consultant, Be1Eye GmbH",
         text:
-          "Hamburg/Remote. SAP Business One Technik, IT-Infrastruktur, Security, Prozessautomatisierung und technische Einordnung von ERP-Themen."
+          "Hamburg & Remote. SAP Business One Technik, IT-Infrastruktur, Security, Prozessautomatisierung und technische Einordnung von ERP-Themen."
       },
       {
         date: "Okt. 2021 - Apr. 2025",
         title: "IT-Systemadministrator, Reos GmbH",
         text:
-          "Hamburg/Remote im dualen Studium. Active Directory, Microsoft Outlook, Windows Server, Netzwerk, Hardware, Betriebssysteme und Helpdesk-Support."
+          "Hamburg & Remote im dualen Studium. Active Directory, Microsoft Outlook, Windows Server, Netzwerk, Hardware, Betriebssysteme und Helpdesk-Support."
       },
       {
         date: "2020 - heute",
@@ -454,13 +454,13 @@ window.PORTFOLIO_CONTENT = {
         date: "Apr. 2025 - today",
         title: "SAP IT Consultant, Be1Eye GmbH",
         text:
-          "Hamburg/remote. SAP Business One technology, IT infrastructure, security, process automation, and technical framing of ERP topics."
+          "Hamburg & remote. SAP Business One technology, IT infrastructure, security, process automation, and technical framing of ERP topics."
       },
       {
         date: "Oct. 2021 - Apr. 2025",
         title: "IT Systems Administrator, Reos GmbH",
         text:
-          "Hamburg/remote during dual studies. Active Directory, Microsoft Outlook, Windows Server, networking, hardware, operating systems, and helpdesk support."
+          "Hamburg & remote during dual studies. Active Directory, Microsoft Outlook, Windows Server, networking, hardware, operating systems, and helpdesk support."
       },
       {
         date: "2020 - today",

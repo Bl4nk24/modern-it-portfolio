@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="IT Administrator Portfolio mit Microsoft, Infrastruktur, PowerShell-Automatisierung, SAP Business One Technik und KI-Agenten seit 2020."
+      content="IT Administrator und Systems Integrator Portfolio mit Microsoft, Infrastruktur, PowerShell-Automatisierung, SAP Business One Technik und KI-Agenten seit 2020."
     />
-    <title>Eirik | IT Portfolio</title>
+    <title>Eirik Christiansen | IT Administrator & Systems Integrator</title>
     <link rel="stylesheet" href="./assets/styles.css" />
   </head>
   <body>
@@ -15,15 +15,19 @@
 
     <header class="site-header" data-elevate>
       <a class="brand" href="#top" aria-label="Zur Startansicht">
-        <span class="brand-mark" aria-hidden="true">E</span>
-        <span>Eirik</span>
+        <span class="brand-mark" aria-hidden="true">EC.</span>
+        <span class="brand-copy">
+          <strong>Eirik Christiansen</strong>
+          <small data-i18n="brandRole">IT Administrator & Systems Integrator</small>
+        </span>
       </a>
 
       <nav class="nav-links" aria-label="Hauptnavigation">
-        <a href="#ops" data-i18n="navOps">Ops</a>
-        <a href="#projects" data-i18n="navProjects">Praxisfelder</a>
-        <a href="#life" data-i18n="navLife">Lebenslauf</a>
-        <a href="#stack" data-i18n="navSkills">Kenntnisse</a>
+        <a href="#top" data-i18n="navOverview">Overview</a>
+        <a href="#ops" data-i18n="navOps">Expertise</a>
+        <a href="#projects" data-i18n="navProjects">Work</a>
+        <a href="#life" data-i18n="navLife">Journey</a>
+        <a href="#stack" data-i18n="navSkills">Skills</a>
         <a href="#contact" data-i18n="navContact">Kontakt</a>
       </nav>
 
@@ -43,15 +47,27 @@
 
         <div class="hero-grid">
           <div class="hero-copy">
-            <h1 id="hero-title">Eirik</h1>
+            <p class="hero-name">Eirik Christiansen</p>
+            <h1 id="hero-title" data-i18n="heroTitle">
+              IT verbinden, automatisieren, stabil betreiben.
+            </h1>
             <p class="hero-lede" data-i18n="heroLede">
-              IT Administrator mit Fokus auf Infrastruktur, Microsoft-Umgebungen,
-              Automatisierung und Systeme, die im Alltag wirklich zusammenarbeiten.
+              IT Administrator aus Hamburg mit Fokus auf Microsoft-Umgebungen,
+              Infrastruktur, PowerShell-Automatisierung und Systeme, die im Alltag
+              wirklich zusammenarbeiten.
             </p>
+
+            <div class="hero-tags" aria-label="Profil-Schwerpunkte">
+              <span data-i18n="chipMicrosoft">Microsoft</span>
+              <span data-i18n="chipIdentity">Identity</span>
+              <span data-i18n="chipAutomation">PowerShell</span>
+              <span data-i18n="chipAi">KI-Agenten seit 2020</span>
+              <span data-i18n="chipSap">SAP B1 seit 04/2025</span>
+            </div>
 
             <div class="hero-actions" aria-label="Primaere Aktionen">
               <a class="button button-primary" href="#projects">
-                <span data-icon="folder" aria-hidden="true"></span>
+                <span data-icon="arrow" aria-hidden="true"></span>
                 <span data-i18n="primaryCta">Praxisfelder ansehen</span>
               </a>
               <a class="button button-secondary" href="#contact">
@@ -70,37 +86,55 @@
             </div>
           </div>
 
-          <aside class="identity-console" aria-label="Profil Momentaufnahme">
-            <div class="console-topline">
-              <span data-i18n="consoleLabel">now.running</span>
-              <strong data-profile-status>Demo Data</strong>
+          <aside class="system-map" aria-label="System Map">
+            <div class="map-header">
+              <span data-i18n="mapTitle">System Map - was ich verbinde</span>
+              <strong data-profile-status>Supabase ready</strong>
             </div>
-            <div class="console-portrait" aria-hidden="true">
-              <span>E</span>
+            <div class="map-canvas">
+              <div class="map-center">
+                <span data-icon="spark" aria-hidden="true"></span>
+                <strong>Operations</strong>
+                <small data-i18n="mapCenter">Monitor · Automate · Secure</small>
+              </div>
+              <div class="map-node node-microsoft">
+                <span class="node-icon">MS</span>
+                  <strong>Microsoft</strong>
+                  <small>M365<br />Outlook<br />Windows</small>
+              </div>
+              <div class="map-node node-identity">
+                <span data-icon="lock" aria-hidden="true"></span>
+                  <strong>Identity</strong>
+                  <small>AD<br />Rechte</small>
+              </div>
+              <div class="map-node node-infra">
+                <span data-icon="server" aria-hidden="true"></span>
+                  <strong>Infrastructure</strong>
+                  <small>Server<br />LAN/WAN</small>
+              </div>
+              <div class="map-node node-automation">
+                <span data-icon="terminal" aria-hidden="true"></span>
+                  <strong>Automation</strong>
+                  <small>PowerShell<br />SQL / APIs</small>
+              </div>
+              <div class="map-node node-sap">
+                <span class="node-icon">SAP</span>
+                <strong>SAP B1</strong>
+                <small>seit 04/2025</small>
+              </div>
+              <div class="map-node node-ai">
+                <span data-icon="brain" aria-hidden="true"></span>
+                <strong>AI Agents</strong>
+                <small>seit 2020</small>
+              </div>
+              <span class="map-line line-a"></span>
+              <span class="map-line line-b"></span>
+              <span class="map-line line-c"></span>
+              <span class="map-line line-d"></span>
             </div>
-            <dl class="console-stats">
-              <div>
-                <dt data-i18n="consoleFocus">Fokus</dt>
-                <dd data-profile-focus>SAP B1, Infrastruktur, Security</dd>
-              </div>
-              <div>
-                <dt data-i18n="consoleMode">Modus</dt>
-                <dd data-profile-mode>Consultant, Admin, Automatisierer</dd>
-              </div>
-              <div>
-                <dt data-i18n="consoleBase">Basis</dt>
-                <dd data-profile-location>Hamburg & Remote</dd>
-              </div>
-            </dl>
-            <div class="console-mini-grid">
-              <div>
-                <span data-i18n="consoleAi">KI seit</span>
-                <strong>2020</strong>
-              </div>
-              <div>
-                <span data-i18n="consoleProof">Profilbasis</span>
-                <strong data-i18n="consoleLinkedIn">LinkedIn + Praxis</strong>
-              </div>
+            <div class="map-footer">
+              <span data-i18n="mapFooter">Reale Systeme. Reale Wirkung.</span>
+              <a href="#projects" data-i18n="mapLink">Praxisfelder ansehen</a>
             </div>
           </aside>
         </div>
@@ -108,33 +142,31 @@
 
       <section class="ops-section" id="ops" aria-labelledby="ops-title">
         <div class="section-heading">
-          <p class="section-kicker" data-i18n="opsKicker">Command Center</p>
-          <h2 id="ops-title" data-i18n="opsTitle">Wie ich IT-Systeme denke</h2>
+          <p class="section-kicker" data-i18n="opsKicker">Expertise</p>
+          <h2 id="ops-title" data-i18n="opsTitle">Capabilities mit operativer Substanz.</h2>
         </div>
 
-        <div class="ops-layout">
-          <div class="ops-metrics" data-ops-metrics></div>
-          <div class="capability-rail" data-capability-rail></div>
-        </div>
+        <div class="ops-metrics" data-ops-metrics></div>
+        <div class="capability-rail" data-capability-rail></div>
       </section>
 
       <section class="projects-section" id="projects" aria-labelledby="projects-title">
-        <div class="section-heading">
-          <p class="section-kicker" data-i18n="projectsKicker">Praxisfelder</p>
-          <h2 id="projects-title" data-i18n="projectsTitle">IT, die im Alltag funktioniert</h2>
+        <div class="section-heading section-heading-split">
+          <div>
+            <p class="section-kicker" data-i18n="projectsKicker">Work</p>
+            <h2 id="projects-title" data-i18n="projectsTitle">Praxis statt Projektliste.</h2>
+          </div>
+          <p data-i18n="projectsIntro">
+            Kein künstliches Developer-Theater: diese Felder zeigen, wo ich IT-Betrieb,
+            Systemverständnis und Automatisierung wirklich zusammenbringe.
+          </p>
         </div>
 
         <div class="project-toolbar" aria-label="Projektfilter">
           <button class="segment is-active" type="button" data-filter="all" data-i18n="filterAll">Alle</button>
-          <button class="segment" type="button" data-filter="infra" data-i18n="filterInfra">
-            Infrastruktur
-          </button>
-          <button class="segment" type="button" data-filter="microsoft" data-i18n="filterMicrosoft">
-            Microsoft
-          </button>
-          <button class="segment" type="button" data-filter="automation" data-i18n="filterAutomation">
-            Automation
-          </button>
+          <button class="segment" type="button" data-filter="infra" data-i18n="filterInfra">Infrastruktur</button>
+          <button class="segment" type="button" data-filter="microsoft" data-i18n="filterMicrosoft">Microsoft</button>
+          <button class="segment" type="button" data-filter="automation" data-i18n="filterAutomation">Automation</button>
           <button class="segment" type="button" data-filter="sap" data-i18n="filterSap">SAP B1</button>
           <button class="segment" type="button" data-filter="ai" data-i18n="filterAi">KI-Agenten</button>
         </div>
@@ -145,32 +177,34 @@
         </div>
       </section>
 
+      <section class="stack-section" id="stack" aria-labelledby="stack-title">
+        <div class="section-heading section-heading-split">
+          <div>
+            <p class="section-kicker" data-i18n="skillsKicker">Skills</p>
+            <h2 id="stack-title" data-i18n="skillsTitle">Praktische Stärke, belegt statt behauptet.</h2>
+          </div>
+          <p class="stack-note" data-i18n="skillsNote">
+            Die Werte sind ein realistisches 1-bis-10-Modell aus LinkedIn-Kenntnissen,
+            Berufserfahrung und Selbsteinschätzung, keine Zertifikatsnoten.
+          </p>
+        </div>
+
+        <div class="stack-board" data-stack-board></div>
+      </section>
+
       <section class="life-section" id="life" aria-labelledby="life-title">
         <div class="section-heading">
-          <p class="section-kicker" data-i18n="lifeKicker">Lebenslauf</p>
-          <h2 id="life-title" data-i18n="lifeTitle">Erfahrung und Ausbildung</h2>
+          <p class="section-kicker" data-i18n="lifeKicker">Journey</p>
+          <h2 id="life-title" data-i18n="lifeTitle">Von Grundlagen zu Integration.</h2>
         </div>
 
         <div class="life-grid" data-life-grid></div>
       </section>
 
-      <section class="stack-section" id="stack" aria-labelledby="stack-title">
-        <div class="section-heading">
-          <p class="section-kicker" data-i18n="skillsKicker">Kenntnisse</p>
-          <h2 id="stack-title" data-i18n="skillsTitle">Was ich laut Profil mitbringe</h2>
-        </div>
-
-        <div class="stack-board" data-stack-board></div>
-        <p class="stack-note" data-i18n="skillsNote">
-          Die Werte sind ein realistisches 1-bis-10-Modell aus LinkedIn-Kenntnissen,
-          Berufserfahrung und Selbsteinschätzung, keine Zertifikatsnoten.
-        </p>
-      </section>
-
       <section class="playbook-section" aria-labelledby="playbook-title">
         <div class="section-heading">
-          <p class="section-kicker" data-i18n="playbookKicker">Playbooks</p>
-          <h2 id="playbook-title" data-i18n="playbookTitle">Vom Problem zur sauberen Lösung</h2>
+          <p class="section-kicker" data-i18n="playbookKicker">Operating Method</p>
+          <h2 id="playbook-title" data-i18n="playbookTitle">Wie ich Probleme sauber mache.</h2>
         </div>
 
         <div class="playbook-grid" data-playbook-grid></div>
@@ -178,8 +212,8 @@
 
       <section class="contact-section" id="contact" aria-labelledby="contact-title">
         <div class="contact-copy">
-          <p class="section-kicker" data-i18n="contactKicker">Open channel</p>
-          <h2 id="contact-title" data-i18n="contactTitle">Lass uns IT einfacher machen</h2>
+          <p class="section-kicker" data-i18n="contactKicker">Let's connect</p>
+          <h2 id="contact-title" data-i18n="contactTitle">Hast du eine IT-Frage im Kopf?</h2>
           <p data-i18n="contactText">
             Infrastruktur, Microsoft-Umgebung, Automatisierung, SAP-B1-Thema oder KI-Agent:
             Schreib mir ein Signal und ich melde mich mit Kontext zurück.
@@ -196,37 +230,51 @@
         </div>
 
         <form class="contact-form" data-contact-form>
-          <label>
-            <span data-i18n="formName">Name</span>
-            <input name="name" autocomplete="name" minlength="2" maxlength="120" required />
-          </label>
-          <label>
-            <span data-i18n="formEmail">E-Mail</span>
-            <input name="email" type="email" autocomplete="email" maxlength="180" required />
-          </label>
-          <label>
-            <span data-i18n="formTopic">Thema</span>
-            <select name="topic" required>
-              <option value="" data-i18n="topicPlaceholder">Thema wählen</option>
-              <option value="Microsoft & Workplace" data-i18n="topicMicrosoft">Microsoft & Workplace</option>
-              <option value="Infrastruktur" data-i18n="topicInfra">Infrastruktur</option>
-              <option value="Automation" data-i18n="topicAutomation">Automation</option>
-              <option value="SAP B1" data-i18n="topicSap">SAP B1</option>
-              <option value="KI-Agenten" data-i18n="topicAi">KI-Agenten</option>
-            </select>
-          </label>
+          <div class="form-grid">
+            <label>
+              <span data-i18n="formName">Name</span>
+              <input name="name" autocomplete="name" minlength="2" maxlength="120" required />
+            </label>
+            <label>
+              <span data-i18n="formEmail">E-Mail</span>
+              <input name="email" type="email" autocomplete="email" maxlength="180" required />
+            </label>
+            <label>
+              <span data-i18n="formTopic">Thema</span>
+              <select name="topic" required>
+                <option value="" data-i18n="topicPlaceholder">Thema wählen</option>
+                <option value="Microsoft & Workplace" data-i18n="topicMicrosoft">Microsoft & Workplace</option>
+                <option value="Infrastruktur" data-i18n="topicInfra">Infrastruktur</option>
+                <option value="Automation" data-i18n="topicAutomation">Automation</option>
+                <option value="SAP B1" data-i18n="topicSap">SAP B1</option>
+                <option value="KI-Agenten" data-i18n="topicAi">KI-Agenten</option>
+              </select>
+            </label>
+            <label>
+              <span data-i18n="formLanguage">Sprache</span>
+              <select name="preferred_language">
+                <option value="de">Deutsch</option>
+                <option value="en">English</option>
+              </select>
+            </label>
+          </div>
           <label>
             <span data-i18n="formMessage">Nachricht</span>
-            <textarea name="message" rows="5" minlength="10" maxlength="4000" required></textarea>
+            <textarea name="message" rows="6" minlength="10" maxlength="4000" required></textarea>
           </label>
           <label class="honeypot" aria-hidden="true">
             <span>Website</span>
             <input name="website" tabindex="-1" autocomplete="off" />
           </label>
-          <button class="button button-primary" type="submit" data-contact-submit>
-            <span data-icon="send" aria-hidden="true"></span>
-            <span data-i18n="formSubmit">Senden</span>
-          </button>
+          <div class="form-footer">
+            <p class="privacy-note" data-i18n="privacyNote">
+              Deine Anfrage landet sicher in Supabase. Keine öffentlichen Leserechte.
+            </p>
+            <button class="button button-primary" type="submit" data-contact-submit>
+              <span data-i18n="formSubmit">Senden</span>
+              <span data-icon="arrow" aria-hidden="true"></span>
+            </button>
+          </div>
           <p class="form-note" data-form-note aria-live="polite"></p>
         </form>
       </section>
@@ -234,6 +282,11 @@
 
     <footer class="site-footer">
       <span data-i18n="footerText">IT Administration, Infrastruktur, Automation and AI agents.</span>
+      <div class="footer-status">
+        <span>Supabase Live</span>
+        <span>RLS secured</span>
+        <span>Docker ready</span>
+      </div>
       <a href="#top" data-i18n="footerTop">Nach oben</a>
     </footer>
 

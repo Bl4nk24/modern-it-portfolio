@@ -5,7 +5,7 @@
     lang: localStorage.getItem("portfolio_lang") || "de",
     filter: "all",
     activeProject: 0,
-    theme: localStorage.getItem("portfolio_theme") || "dark"
+    theme: localStorage.getItem("portfolio_theme_v2") || "light"
   };
 
   const ui = {
@@ -14,13 +14,21 @@
         "IT Administrator Portfolio mit Microsoft, Infrastruktur, PowerShell-Automatisierung, SAP Business One Technik und KI-Agenten seit 2020.",
       titleSuffix: "IT Portfolio",
       skipLink: "Direkt zu den Praxisfeldern",
-      navOps: "Ops",
-      navProjects: "Praxisfelder",
-      navLife: "Lebenslauf",
+      brandRole: "IT Administrator & Systems Integrator",
+      navOverview: "Overview",
+      navOps: "Expertise",
+      navProjects: "Work",
+      navLife: "Journey",
       navSkills: "Kenntnisse",
       navContact: "Kontakt",
+      heroTitle: "IT verbinden, automatisieren, stabil betreiben.",
       heroLede:
         "IT Administrator aus Hamburg mit Fokus auf Microsoft-Umgebungen, Infrastruktur, PowerShell-Automatisierung und Systeme, die im Alltag wirklich zusammenarbeiten.",
+      chipMicrosoft: "Microsoft",
+      chipIdentity: "Identity",
+      chipAutomation: "PowerShell",
+      chipAi: "KI-Agenten seit 2020",
+      chipSap: "SAP B1 seit 04/2025",
       primaryCta: "Praxisfelder ansehen",
       secondaryCta: "Kontakt aufnehmen",
       linkedinCta: "LinkedIn ansehen",
@@ -31,10 +39,16 @@
       consoleAi: "KI seit",
       consoleProof: "Profilbasis",
       consoleLinkedIn: "LinkedIn + Praxis",
-      opsKicker: "Command Center",
-      opsTitle: "Wie ich IT-Systeme denke",
-      projectsKicker: "Praxisfelder",
-      projectsTitle: "IT, die im Alltag funktioniert",
+      mapTitle: "System Map - was ich verbinde",
+      mapCenter: "Monitor · Automate · Secure",
+      mapFooter: "Reale Systeme. Reale Wirkung.",
+      mapLink: "Praxisfelder ansehen",
+      opsKicker: "Expertise",
+      opsTitle: "Capabilities mit operativer Substanz.",
+      projectsKicker: "Work",
+      projectsTitle: "Praxis statt Projektliste.",
+      projectsIntro:
+        "Kein künstliches Developer-Theater: diese Felder zeigen, wo ich IT-Betrieb, Systemverständnis und Automatisierung wirklich zusammenbringe.",
       filterAll: "Alle",
       filterInfra: "Infrastruktur",
       filterMicrosoft: "Microsoft",
@@ -42,15 +56,15 @@
       filterSap: "SAP B1",
       filterAi: "KI-Agenten",
       lifeKicker: "Lebenslauf",
-      lifeTitle: "Erfahrung und Ausbildung",
+      lifeTitle: "Von Grundlagen zu Integration.",
       skillsKicker: "Kenntnisse",
-      skillsTitle: "Was ich laut Profil mitbringe",
+      skillsTitle: "Praktische Stärke, belegt statt behauptet.",
       skillsNote:
         "Die Werte sind ein realistisches 1-bis-10-Modell aus LinkedIn-Kenntnissen, Berufserfahrung und Selbsteinschätzung, keine Zertifikatsnoten.",
-      playbookKicker: "Playbooks",
-      playbookTitle: "Vom Problem zur sauberen Lösung",
-      contactKicker: "Open channel",
-      contactTitle: "Lass uns IT einfacher machen",
+      playbookKicker: "Operating Method",
+      playbookTitle: "Wie ich Probleme sauber mache.",
+      contactKicker: "Let's connect",
+      contactTitle: "Hast du eine IT-Frage im Kopf?",
       contactText:
         "Infrastruktur, Microsoft-Umgebung, Automatisierung, SAP-B1-Thema oder KI-Agent: Schreib mir ein Signal und ich melde mich mit Kontext zurück.",
       contactLinkedIn: "Profil auf LinkedIn öffnen",
@@ -63,8 +77,10 @@
       topicAutomation: "Automation",
       topicSap: "SAP B1",
       topicAi: "KI-Agenten",
+      formLanguage: "Sprache",
       formMessage: "Nachricht",
       formSubmit: "Senden",
+      privacyNote: "Deine Anfrage landet sicher in Supabase. Keine öffentlichen Leserechte.",
       footerText: "IT Administration, Infrastruktur, Automation and AI agents.",
       footerTop: "Nach oben",
       liveLabel: "Kontakt",
@@ -84,13 +100,21 @@
         "IT administrator portfolio focused on Microsoft, infrastructure, PowerShell automation, SAP Business One technology, and AI agents since 2020.",
       titleSuffix: "IT Portfolio",
       skipLink: "Skip to practice areas",
-      navOps: "Ops",
-      navProjects: "Practice",
-      navLife: "Resume",
+      brandRole: "IT Administrator & Systems Integrator",
+      navOverview: "Overview",
+      navOps: "Expertise",
+      navProjects: "Work",
+      navLife: "Journey",
       navSkills: "Skills",
       navContact: "Contact",
+      heroTitle: "Connect, automate and operate reliable IT.",
       heroLede:
         "Hamburg-based IT administrator focused on Microsoft environments, infrastructure, PowerShell automation, and systems that actually work together in daily operations.",
+      chipMicrosoft: "Microsoft",
+      chipIdentity: "Identity",
+      chipAutomation: "PowerShell",
+      chipAi: "AI agents since 2020",
+      chipSap: "SAP B1 since 04/2025",
       primaryCta: "View practice areas",
       secondaryCta: "Get in touch",
       linkedinCta: "View LinkedIn",
@@ -101,10 +125,16 @@
       consoleAi: "AI since",
       consoleProof: "Profile basis",
       consoleLinkedIn: "LinkedIn + practice",
-      opsKicker: "Command Center",
-      opsTitle: "How I think about IT systems",
-      projectsKicker: "Practice areas",
-      projectsTitle: "IT that works in real operations",
+      mapTitle: "System Map - what I connect",
+      mapCenter: "Monitor · Automate · Secure",
+      mapFooter: "Real systems. Real impact.",
+      mapLink: "See practice areas",
+      opsKicker: "Expertise",
+      opsTitle: "Capabilities with operational impact.",
+      projectsKicker: "Work",
+      projectsTitle: "Practice instead of a project list.",
+      projectsIntro:
+        "No artificial developer theater: these fields show where I bring IT operations, systems thinking, and automation together.",
       filterAll: "All",
       filterInfra: "Infrastructure",
       filterMicrosoft: "Microsoft",
@@ -112,15 +142,15 @@
       filterSap: "SAP B1",
       filterAi: "AI agents",
       lifeKicker: "Resume",
-      lifeTitle: "Experience and education",
+      lifeTitle: "From foundations to integration.",
       skillsKicker: "Skills",
-      skillsTitle: "What my profile brings together",
+      skillsTitle: "Practical strengths backed by evidence.",
       skillsNote:
         "The values use a realistic 1-to-10 model based on LinkedIn skills, work experience, and self-assessment, not certificate grades.",
-      playbookKicker: "Playbooks",
-      playbookTitle: "From issue to clean solution",
-      contactKicker: "Open channel",
-      contactTitle: "Let's make IT simpler",
+      playbookKicker: "Operating Method",
+      playbookTitle: "How I make problems clean.",
+      contactKicker: "Let's connect",
+      contactTitle: "Have an IT challenge in mind?",
       contactText:
         "Infrastructure, Microsoft environments, automation, SAP B1 topics, or AI agents: send me a signal and I will get back to you with context.",
       contactLinkedIn: "Open LinkedIn profile",
@@ -133,8 +163,10 @@
       topicAutomation: "Automation",
       topicSap: "SAP B1",
       topicAi: "AI agents",
+      formLanguage: "Language",
       formMessage: "Message",
       formSubmit: "Send",
+      privacyNote: "Your request is stored securely in Supabase. No public read access.",
       footerText: "IT administration, infrastructure, automation and AI agents.",
       footerTop: "Back to top",
       liveLabel: "Contact",
@@ -165,7 +197,15 @@
     spark:
       '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 9.8 9.8 3 12l6.8 2.2L12 21l2.2-6.8L21 12l-6.8-2.2L12 3Z"/></svg>',
     linkedin:
-      '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 10v8M8 7.2v.1M12 18v-4.6c0-2.1 1.2-3.4 3.1-3.4 1.8 0 2.9 1.2 2.9 3.5V18M12 10.4V18M4 4.8A1.8 1.8 0 0 1 5.8 3h12.4A1.8 1.8 0 0 1 20 4.8v14.4a1.8 1.8 0 0 1-1.8 1.8H5.8A1.8 1.8 0 0 1 4 19.2V4.8Z"/></svg>'
+      '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 10v8M8 7.2v.1M12 18v-4.6c0-2.1 1.2-3.4 3.1-3.4 1.8 0 2.9 1.2 2.9 3.5V18M12 10.4V18M4 4.8A1.8 1.8 0 0 1 5.8 3h12.4A1.8 1.8 0 0 1 20 4.8v14.4a1.8 1.8 0 0 1-1.8 1.8H5.8A1.8 1.8 0 0 1 4 19.2V4.8Z"/></svg>',
+    lock:
+      '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10V8a5 5 0 0 1 10 0v2M6.5 10h11A1.5 1.5 0 0 1 19 11.5v7A1.5 1.5 0 0 1 17.5 20h-11A1.5 1.5 0 0 1 5 18.5v-7A1.5 1.5 0 0 1 6.5 10Z"/></svg>',
+    server:
+      '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14v6H5V4Zm0 10h14v6H5v-6Zm3-7h.1M8 17h.1"/></svg>',
+    terminal:
+      '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 7 5 5-5 5m7 0h7"/></svg>',
+    brain:
+      '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5.5A3 3 0 0 0 6 8.5v7A3.5 3.5 0 0 0 9.5 19H10V5.5H9Zm6 0a3 3 0 0 1 3 3v7a3.5 3.5 0 0 1-3.5 3.5H14V5.5h1ZM10 9H8m2 4H7.5M14 9h2m-2 4h2.5"/></svg>'
   };
 
   const selectors = {
@@ -217,7 +257,7 @@
   function bindThemeToggle() {
     selectors.themeToggle.addEventListener("click", () => {
       state.theme = state.theme === "dark" ? "light" : "dark";
-      localStorage.setItem("portfolio_theme", state.theme);
+      localStorage.setItem("portfolio_theme_v2", state.theme);
       applyTheme();
     });
   }
@@ -278,7 +318,7 @@
         email: String(formData.get("email") || "").trim(),
         topic: String(formData.get("topic") || "").trim(),
         message: String(formData.get("message") || "").trim(),
-        language: state.lang,
+        language: String(formData.get("preferred_language") || state.lang).trim() || state.lang,
         source_url: window.location.href,
         user_agent: navigator.userAgent.slice(0, 500)
       };
@@ -304,6 +344,9 @@
   }
 
   async function loadSupabaseData() {
+    selectors.status.textContent = window.PortfolioSupabase.hasConfig()
+      ? "Supabase ready"
+      : "Demo Data";
     try {
       const remoteData = await window.PortfolioSupabase.loadData();
       if (!remoteData) return;
@@ -317,7 +360,9 @@
       selectors.status.textContent = "Supabase Live";
       renderAll();
     } catch (error) {
-      selectors.status.textContent = "Demo Data";
+      selectors.status.textContent = window.PortfolioSupabase.hasConfig()
+        ? "Supabase ready"
+        : "Demo Data";
     }
   }
 
@@ -333,13 +378,7 @@
   function renderProfile() {
     const profile = state.data.profile;
     document.title = `${profile.name} | ${t("titleSuffix")}`;
-    document.querySelector(".brand span:last-child").textContent = profile.name;
-    document.querySelector(".brand-mark").textContent = profile.name.slice(0, 1);
-    document.querySelector(".console-portrait span").textContent = profile.name.slice(0, 1);
-    document.querySelector("#hero-title").textContent = profile.name;
-    selectors.focus.textContent = profile.focus;
-    selectors.mode.textContent = profile.mode;
-    selectors.location.textContent = profile.location;
+    document.querySelector(".brand-copy strong").textContent = profile.name;
   }
 
   function visibleProjects() {
@@ -366,7 +405,7 @@
       .map(
         (capability, index) => `
           <article class="capability-item">
-            <span>${String(index + 1).padStart(2, "0")}</span>
+            <span class="capability-index">${String(index + 1).padStart(2, "0")}</span>
             <div>
               <h3>${escapeHtml(capability.title)}</h3>
               <p>${escapeHtml(capability.text)}</p>
@@ -408,6 +447,9 @@
       return;
     }
 
+    const liveHref = project.links.live || "#contact";
+    const codeHref = project.links.code || "#contact";
+
     selectors.projectDetail.innerHTML = `
       <div class="project-detail-body">
         <div class="detail-shell">
@@ -432,11 +474,11 @@
             ${project.stack.map((item) => `<span>${escapeHtml(item)}</span>`).join("")}
           </div>
           <div class="detail-actions">
-            <a class="button button-secondary" href="${escapeAttr(project.links.live || "#contact")}">
+            <a class="button button-secondary" ${linkAttributes(liveHref)}>
               <span data-icon="arrow" aria-hidden="true"></span>
               ${escapeHtml(t("liveLabel"))}
             </a>
-            <a class="button button-ghost" href="${escapeAttr(project.links.code || "#contact")}">
+            <a class="button button-ghost" ${linkAttributes(codeHref)}>
               <span data-icon="folder" aria-hidden="true"></span>
               ${escapeHtml(t("codeLabel"))}
             </a>
@@ -445,6 +487,14 @@
       </div>
     `;
     hydrateIcons(selectors.projectDetail);
+  }
+
+  function linkAttributes(href) {
+    const safeHref = escapeAttr(href);
+    if (/^https?:\/\//i.test(href)) {
+      return `href="${safeHref}" target="_blank" rel="noreferrer"`;
+    }
+    return `href="${safeHref}"`;
   }
 
   function renderLife() {
@@ -472,9 +522,7 @@
               <strong>${escapeHtml(item.name)}</strong>
               <span>${formatLevel(level)}/10</span>
             </div>
-            <div class="meter" aria-hidden="true">
-              <span style="width:${level * 10}%"></span>
-            </div>
+            <div class="skill-dots" aria-hidden="true">${renderDots(level)}</div>
             ${item.evidence ? `<p>${escapeHtml(item.evidence)}</p>` : ""}
           </article>
         `;
@@ -516,12 +564,12 @@
       canvas.width = Math.floor(rect.width * ratio);
       canvas.height = Math.floor(rect.height * ratio);
       ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
-      points = Array.from({ length: 42 }, (_, index) => ({
+      points = Array.from({ length: 34 }, (_, index) => ({
         x: Math.random() * rect.width,
         y: Math.random() * rect.height,
-        vx: (Math.random() - 0.5) * 0.28,
-        vy: (Math.random() - 0.5) * 0.28,
-        size: index % 7 === 0 ? 2.2 : 1.4
+        vx: (Math.random() - 0.5) * 0.18,
+        vy: (Math.random() - 0.5) * 0.18,
+        size: index % 7 === 0 ? 2 : 1.25
       }));
     }
 
@@ -543,7 +591,8 @@
           const b = points[j];
           const distance = Math.hypot(a.x - b.x, a.y - b.y);
           if (distance < 135) {
-            ctx.strokeStyle = `rgba(108, 240, 207, ${0.22 - distance / 700})`;
+            const lineColor = state.theme === "dark" ? "14, 165, 233" : "12, 31, 47";
+            ctx.strokeStyle = `rgba(${lineColor}, ${0.13 - distance / 1300})`;
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);
             ctx.lineTo(b.x, b.y);
@@ -553,7 +602,7 @@
       }
 
       points.forEach((point, index) => {
-        ctx.fillStyle = index % 5 === 0 ? "#ff7a59" : index % 3 === 0 ? "#d8ff63" : "#6cf0cf";
+        ctx.fillStyle = index % 5 === 0 ? "#f59e0b" : index % 3 === 0 ? "#0ea5e9" : "#0f172a";
         ctx.beginPath();
         ctx.arc(point.x, point.y, point.size, 0, Math.PI * 2);
         ctx.fill();
@@ -586,6 +635,14 @@
 
   function formatLevel(value) {
     return Number.isInteger(value) ? String(value) : value.toFixed(1);
+  }
+
+  function renderDots(level) {
+    const rounded = Math.round(level);
+    return Array.from({ length: 10 }, (_, index) => {
+      const filled = index < rounded ? " is-filled" : "";
+      return `<span class="skill-dot${filled}"></span>`;
+    }).join("");
   }
 
   function t(key) {
