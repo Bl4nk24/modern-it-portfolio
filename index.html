@@ -5,36 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="IT Administrator und Systems Integrator Portfolio mit Microsoft, Infrastruktur, PowerShell-Automatisierung, SAP Business One Technik und KI-Agenten seit 2020."
+      content="Eirik Christiansen ist IT Administrator und Systems Integrator aus Hamburg mit Fokus auf Microsoft, Infrastruktur, PowerShell-Automatisierung und KI-Agenten."
     />
     <title>Eirik Christiansen | IT Administrator & Systems Integrator</title>
     <link rel="stylesheet" href="./assets/styles.css" />
   </head>
   <body>
-    <a class="skip-link" href="#projects" data-i18n="skipLink">Direkt zu den Praxisfeldern</a>
+    <a class="skip-link" href="#work" data-i18n="skipLink">Direkt zur Arbeit</a>
 
     <header class="site-header" data-elevate>
       <a class="brand" href="#top" aria-label="Zur Startansicht">
-        <span class="brand-mark" aria-hidden="true">EC.</span>
-        <span class="brand-copy">
+        <span class="brand-mark" aria-hidden="true">EC</span>
+        <span>
           <strong>Eirik Christiansen</strong>
-          <small data-i18n="brandRole">IT Administrator & Systems Integrator</small>
+          <small data-i18n="brandRole">IT Administrator / Systems Integrator</small>
         </span>
       </a>
 
       <nav class="nav-links" aria-label="Hauptnavigation">
-        <a href="#top" data-i18n="navOverview">Überblick</a>
-        <a href="#ops" data-i18n="navOps">Expertise</a>
-        <a href="#projects" data-i18n="navProjects">Praxis</a>
-        <a href="#life" data-i18n="navLife">Werdegang</a>
-        <a href="#stack" data-i18n="navSkills">Kenntnisse</a>
+        <a href="#work" data-i18n="navWork">Arbeit</a>
+        <a href="#stack" data-i18n="navStack">Stack</a>
+        <a href="#journey" data-i18n="navJourney">Werdegang</a>
         <a href="#contact" data-i18n="navContact">Kontakt</a>
       </nav>
 
       <div class="header-actions">
-        <button class="language-toggle" type="button" data-language-toggle aria-label="Switch language">
-          EN
-        </button>
+        <button class="language-toggle" type="button" data-language-toggle aria-label="Switch language">EN</button>
         <button class="icon-button" type="button" data-theme-toggle aria-label="Theme wechseln">
           <span data-icon="moon" aria-hidden="true"></span>
         </button>
@@ -43,170 +39,120 @@
 
     <main id="top">
       <section class="hero-section" aria-labelledby="hero-title">
-        <canvas id="signalCanvas" class="signal-canvas" aria-hidden="true"></canvas>
+        <canvas id="meshCanvas" class="mesh-canvas" aria-hidden="true"></canvas>
 
-        <div class="hero-grid">
+        <div class="hero-shell">
           <div class="hero-copy">
-            <p class="hero-name">Eirik Christiansen</p>
-            <h1 id="hero-title" data-i18n="heroTitle">
-              IT verbinden, automatisieren, stabil betreiben.
-            </h1>
+            <p class="eyebrow" data-i18n="heroEyebrow">Hamburg / Remote / Microsoft-first</p>
+            <h1 id="hero-title" data-i18n="heroTitle">Ich mache IT ruhig, verbunden und bedienbar.</h1>
             <p class="hero-lede" data-i18n="heroLede">
-              IT Administrator aus Hamburg mit Fokus auf Microsoft-Umgebungen,
-              Infrastruktur, PowerShell-Automatisierung und Systeme, die im Alltag
-              wirklich zusammenarbeiten.
+              IT Administrator mit Schwerpunkt Microsoft, Infrastruktur, PowerShell-Automatisierung und KI-Agenten,
+              die echte Abläufe unterstützen.
             </p>
-
-            <div class="hero-tags" aria-label="Profil-Schwerpunkte">
-              <span data-i18n="chipMicrosoft">Microsoft</span>
-              <span data-i18n="chipIdentity">Identity</span>
-              <span data-i18n="chipAutomation">PowerShell</span>
-              <span data-i18n="chipLocation">Hamburg & Remote</span>
-              <span data-i18n="chipAi">KI-Agenten seit 2020</span>
-              <span data-i18n="chipSap">SAP B1 seit 04/2025</span>
-            </div>
-
-            <div class="hero-actions" aria-label="Primaere Aktionen">
-              <a class="button button-primary" href="#projects">
+            <div class="hero-actions">
+              <a class="button button-primary" href="#work">
                 <span data-icon="arrow" aria-hidden="true"></span>
-                <span data-i18n="primaryCta">Praxisfelder ansehen</span>
+                <span data-i18n="primaryCta">Praxis ansehen</span>
               </a>
               <a class="button button-secondary" href="#contact">
                 <span data-icon="send" aria-hidden="true"></span>
-                <span data-i18n="secondaryCta">Kontakt aufnehmen</span>
-              </a>
-              <a
-                class="button button-ghost"
-                href="https://www.linkedin.com/in/eirik-christiansen/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <span data-icon="linkedin" aria-hidden="true"></span>
-                <span data-i18n="linkedinCta">LinkedIn ansehen</span>
+                <span data-i18n="secondaryCta">Kontakt</span>
               </a>
             </div>
           </div>
 
-          <aside class="orbit-panel" aria-label="Microsoft System Orbit">
-            <div class="orbit-header">
-              <span data-i18n="mapTitle">Microsoft System Orbit</span>
-              <strong data-profile-status data-i18n="mapStatus">Microsoft Stack</strong>
+          <aside class="ops-panel" aria-label="Operations summary">
+            <div class="panel-topline">
+              <span data-i18n="panelTitle">Operations Board</span>
+              <strong data-i18n="panelState">stabil / verbunden</strong>
             </div>
-            <div class="orbit-stage">
-              <canvas id="orbitScene" class="orbit-scene" aria-hidden="true"></canvas>
-              <div class="orbit-label label-m365">
-                <strong>Microsoft 365</strong>
-                <small>Outlook · Office · Teams</small>
+            <div class="system-orbit" aria-hidden="true">
+              <span class="system-core">EC</span>
+              <span class="node node-a">M365</span>
+              <span class="node node-b">AD</span>
+              <span class="node node-c">PS</span>
+              <span class="node node-d">AI</span>
+              <span class="node node-e">LAN</span>
+              <span class="node node-f">SAP</span>
+            </div>
+            <div class="panel-readout">
+              <div>
+                <span data-i18n="readoutOneLabel">Fokus</span>
+                <strong data-i18n="readoutOne">Microsoft & Infrastruktur</strong>
               </div>
-              <div class="orbit-label label-entra">
-                <strong>Entra ID</strong>
-                <small>Identity · Access</small>
+              <div>
+                <span data-i18n="readoutTwoLabel">KI</span>
+                <strong data-i18n="readoutTwo">seit 2020</strong>
               </div>
-              <div class="orbit-label label-server">
-                <strong>Windows Server</strong>
-                <small>AD · Files · Services</small>
-              </div>
-              <div class="orbit-label label-ps">
-                <strong>PowerShell</strong>
-                <small>Automation · APIs</small>
-              </div>
-              <div class="orbit-label label-network">
-                <strong>Network</strong>
-                <small>LAN/WAN · Security</small>
-              </div>
-              <div class="orbit-label label-ai">
-                <strong>AI Agents</strong>
-                <small>Support · Knowledge</small>
+              <div>
+                <span data-i18n="readoutThreeLabel">SAP B1</span>
+                <strong data-i18n="readoutThree">seit 04/2025</strong>
               </div>
             </div>
-            <div class="orbit-footer">
-              <span data-i18n="mapFooter">Microsoft, Infrastruktur und Automation als ein System.</span>
-              <a href="#projects" data-i18n="mapLink">Work ansehen</a>
-            </div>
+            <ol class="console-lines" data-console-lines></ol>
           </aside>
         </div>
-      </section>
 
-      <section class="ops-section" id="ops" aria-labelledby="ops-title">
-        <div class="section-heading">
-          <p class="section-kicker" data-i18n="opsKicker">Expertise</p>
-          <h2 id="ops-title" data-i18n="opsTitle">Kompetenzen mit operativer Substanz.</h2>
-        </div>
-
-        <div class="ops-metrics" data-ops-metrics></div>
-        <div class="capability-rail" data-capability-rail></div>
-      </section>
-
-      <section class="projects-section" id="projects" aria-labelledby="projects-title">
-        <div class="section-heading section-heading-split">
-          <div>
-            <p class="section-kicker" data-i18n="projectsKicker">Praxis</p>
-            <h2 id="projects-title" data-i18n="projectsTitle">Systeme, die arbeiten.</h2>
+        <div class="ticker" aria-hidden="true">
+          <div data-ticker-track>
+            <span>Microsoft 365</span>
+            <span>Active Directory</span>
+            <span>PowerShell</span>
+            <span>Windows Server</span>
+            <span>LAN/WAN</span>
+            <span>Automation</span>
+            <span>AI Agents</span>
+            <span>SAP Business One</span>
+            <span>SQL</span>
           </div>
-          <p data-i18n="projectsIntro">
-            Ausgewählte Schwerpunkte aus Administration, Microsoft-Infrastruktur,
-            Automatisierung und KI-Assistenz.
+        </div>
+      </section>
+
+      <section class="work-section" id="work" aria-labelledby="work-title">
+        <div class="section-intro">
+          <p class="eyebrow" data-i18n="workEyebrow">Praxisfelder</p>
+          <h2 id="work-title" data-i18n="workTitle">Keine Showcases. Systeme, die Alltag aushalten.</h2>
+          <p data-i18n="workIntro">
+            Ein Portfolio für operative IT: Rechte, Geräte, Datenflüsse, Automatisierung und Assistenzsysteme.
           </p>
         </div>
-
-        <div class="project-toolbar project-toolbar-simple" aria-label="Projektansicht">
-          <span class="segment is-active" data-i18n="filterAll">Alle</span>
-        </div>
-
-        <div class="project-layout">
-          <div class="project-list" data-project-list></div>
-          <article class="project-detail" data-project-detail aria-live="polite"></article>
+        <div class="work-layout">
+          <div class="field-list" data-field-list></div>
+          <article class="field-detail" data-field-detail aria-live="polite"></article>
         </div>
       </section>
 
       <section class="stack-section" id="stack" aria-labelledby="stack-title">
-        <div class="section-heading section-heading-split">
+        <div class="section-intro section-intro-split">
           <div>
-            <p class="section-kicker" data-i18n="skillsKicker">Kenntnisse</p>
-            <h2 id="stack-title" data-i18n="skillsTitle">Kompetenzkarte.</h2>
+            <p class="eyebrow" data-i18n="stackEyebrow">Stack</p>
+            <h2 id="stack-title" data-i18n="stackTitle">Breit genug für Betrieb. Tief genug für Lösungen.</h2>
           </div>
-          <p class="stack-note" data-i18n="skillsNote">
-            Skala 1 bis 10: eingeordnet aus LinkedIn-Profil, Berufserfahrung, Projekten und Ausbildung.
+          <p data-i18n="stackIntro">
+            Die Werte sind eine 1-bis-10-Einordnung aus LinkedIn, Berufserfahrung, Projekten und Ausbildung.
           </p>
         </div>
-
-        <div class="stack-board" data-stack-board></div>
+        <div class="skill-board" data-skill-board></div>
       </section>
 
-      <section class="life-section" id="life" aria-labelledby="life-title">
-        <div class="section-heading">
-          <p class="section-kicker" data-i18n="lifeKicker">Journey</p>
-          <h2 id="life-title" data-i18n="lifeTitle">Von Betrieb zu Integration.</h2>
+      <section class="journey-section" id="journey" aria-labelledby="journey-title">
+        <div class="section-intro">
+          <p class="eyebrow" data-i18n="journeyEyebrow">Werdegang</p>
+          <h2 id="journey-title" data-i18n="journeyTitle">Von Support und Betrieb zu Systemintegration.</h2>
         </div>
-
-        <div class="life-grid" data-life-grid></div>
-      </section>
-
-      <section class="playbook-section" aria-labelledby="playbook-title">
-        <div class="section-heading">
-          <p class="section-kicker" data-i18n="playbookKicker">Arbeitsweise</p>
-          <h2 id="playbook-title" data-i18n="playbookTitle">Wie ich Systeme sauber bekomme.</h2>
-        </div>
-
-        <div class="playbook-grid" data-playbook-grid></div>
+        <div class="journey-track" data-journey-track></div>
       </section>
 
       <section class="contact-section" id="contact" aria-labelledby="contact-title">
         <div class="contact-copy">
-          <p class="section-kicker" data-i18n="contactKicker">Kontakt</p>
-          <h2 id="contact-title" data-i18n="contactTitle">Lass uns über IT sprechen.</h2>
+          <p class="eyebrow" data-i18n="contactEyebrow">Kontakt</p>
+          <h2 id="contact-title" data-i18n="contactTitle">Schreib mir, wenn Systeme sprechen sollen.</h2>
           <p data-i18n="contactText">
-            Infrastruktur, Microsoft-Umgebung, Automatisierung, SAP-B1-Thema oder KI-Agent:
-            Schreib mir kurz, worum es geht.
+            Microsoft, Infrastruktur, Automatisierung, SAP B1 oder KI-Agenten: kurz beschreiben, worum es geht.
           </p>
-          <a
-            class="profile-link"
-            href="https://www.linkedin.com/in/eirik-christiansen/"
-            target="_blank"
-            rel="noreferrer"
-          >
+          <a class="text-link" href="https://www.linkedin.com/in/eirik-christiansen/" target="_blank" rel="noreferrer">
             <span data-icon="linkedin" aria-hidden="true"></span>
-            <span data-i18n="contactLinkedIn">Profil auf LinkedIn öffnen</span>
+            <span data-i18n="linkedinCta">LinkedIn ansehen</span>
           </a>
         </div>
 
@@ -248,9 +194,7 @@
             <input name="website" tabindex="-1" autocomplete="off" />
           </label>
           <div class="form-footer">
-            <p class="privacy-note" data-i18n="privacyNote">
-              Deine Anfrage kommt direkt bei mir an und wird nicht öffentlich angezeigt.
-            </p>
+            <p class="privacy-note" data-i18n="privacyNote">Deine Anfrage kommt direkt bei mir an.</p>
             <button class="button button-primary" type="submit" data-contact-submit>
               <span data-i18n="formSubmit">Senden</span>
               <span data-icon="arrow" aria-hidden="true"></span>
@@ -262,7 +206,7 @@
     </main>
 
     <footer class="site-footer">
-      <span data-i18n="footerText">IT Administration, Microsoft-Infrastruktur, Automation und KI-Agenten.</span>
+      <span>Eirik Christiansen</span>
       <a href="https://www.linkedin.com/in/eirik-christiansen/" target="_blank" rel="noreferrer">LinkedIn</a>
       <a href="#top" data-i18n="footerTop">Nach oben</a>
     </footer>
@@ -271,6 +215,5 @@
     <script src="./assets/data.js"></script>
     <script src="./assets/supabase.js"></script>
     <script src="./assets/app.js"></script>
-    <script type="module" src="./assets/orbit.js"></script>
   </body>
 </html>
