@@ -17,8 +17,8 @@
   --radius: 8px;
   --max: 1180px;
   --header: 76px;
-  --mx: 50%;
-  --my: 50%;
+  --mx: 50vw;
+  --my: 50vh;
   font-family:
     Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
@@ -57,11 +57,33 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   background:
-    radial-gradient(circle at var(--mx) var(--my), color-mix(in srgb, var(--accent) 12%, transparent), transparent 24rem),
     linear-gradient(90deg, color-mix(in srgb, var(--line) 42%, transparent) 1px, transparent 1px),
     linear-gradient(0deg, color-mix(in srgb, var(--line) 34%, transparent) 1px, transparent 1px),
     var(--bg);
-  background-size: auto, 96px 96px, 96px 96px, auto;
+  background-size: 96px 96px, 96px 96px, auto;
+}
+
+body::before {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at var(--mx) var(--my),
+    color-mix(in srgb, var(--accent) 18%, transparent) 0,
+    color-mix(in srgb, var(--accent) 9%, transparent) 13rem,
+    transparent 28rem
+  );
+  content: "";
+  opacity: 0.92;
+  transition: opacity 180ms ease;
+}
+
+.site-header,
+main,
+.site-footer {
+  position: relative;
+  z-index: 1;
 }
 
 body,

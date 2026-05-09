@@ -382,13 +382,19 @@
   }
 
   function setupPointer() {
+    const setPointer = (x, y) => {
+      state.pointer.x = x / window.innerWidth;
+      state.pointer.y = y / window.innerHeight;
+      document.documentElement.style.setProperty("--mx", `${Math.round(x)}px`);
+      document.documentElement.style.setProperty("--my", `${Math.round(y)}px`);
+    };
+
+    setPointer(window.innerWidth / 2, window.innerHeight / 2);
+
     window.addEventListener(
       "pointermove",
       (event) => {
-        state.pointer.x = event.clientX / window.innerWidth;
-        state.pointer.y = event.clientY / window.innerHeight;
-        document.documentElement.style.setProperty("--mx", `${state.pointer.x * 100}%`);
-        document.documentElement.style.setProperty("--my", `${state.pointer.y * 100}%`);
+        setPointer(event.clientX, event.clientY);
       },
       { passive: true }
     );
