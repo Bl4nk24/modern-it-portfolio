@@ -7,6 +7,22 @@
       name="description"
       content="Eirik Christiansen ist IT Administrator aus Hamburg und verbindet Microsoft-Umgebungen, Infrastruktur, PowerShell-Automatisierung und KI-Agenten."
     />
+    <link rel="canonical" href="https://bl4nk24.github.io/modern-it-portfolio/" />
+    <meta property="og:title" content="Eirik Christiansen | IT Administrator & Systems Integrator" />
+    <meta
+      property="og:description"
+      content="Microsoft, Infrastruktur, PowerShell, APIs, KI-Agenten und SAP Business One Technik aus Hamburg und remote."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://bl4nk24.github.io/modern-it-portfolio/" />
+    <meta property="og:image" content="https://bl4nk24.github.io/modern-it-portfolio/assets/social-preview.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Eirik Christiansen | IT Administrator & Systems Integrator" />
+    <meta
+      name="twitter:description"
+      content="IT verbinden, automatisieren und stabil betreiben: Microsoft, Infrastruktur, APIs und KI-Agenten."
+    />
+    <meta name="twitter:image" content="https://bl4nk24.github.io/modern-it-portfolio/assets/social-preview.png" />
     <title>Eirik Christiansen | IT Administrator & Systems Integrator</title>
     <link rel="stylesheet" href="./assets/styles.css" />
   </head>
@@ -25,6 +41,7 @@
       <nav class="nav-links" aria-label="Hauptnavigation">
         <a href="#work" data-i18n="navWork">Arbeit</a>
         <a href="#connect" data-i18n="navConnect">Verbindungen</a>
+        <a href="#cases" data-i18n="navCases">Cases</a>
         <a href="#stack" data-i18n="navStack">Stack</a>
         <a href="#journey" data-i18n="navJourney">Werdegang</a>
         <a href="#contact" data-i18n="navContact">Kontakt</a>
@@ -58,6 +75,10 @@
               <a class="button button-secondary" href="#contact">
                 <span data-icon="send" aria-hidden="true"></span>
                 <span data-i18n="secondaryCta">Kontakt</span>
+              </a>
+              <a class="button button-secondary" href="./assets/eirik-christiansen-cv.pdf" data-track="cv_download" data-track-target="hero-cv">
+                <span data-icon="file" aria-hidden="true"></span>
+                <span data-i18n="cvCta">CV herunterladen</span>
               </a>
             </div>
           </div>
@@ -151,6 +172,42 @@
         </div>
       </section>
 
+      <section class="cases-section" id="cases" aria-labelledby="cases-title">
+        <div class="section-intro section-intro-split">
+          <div>
+            <p class="eyebrow" data-i18n="casesEyebrow">Cases</p>
+            <h2 id="cases-title" data-i18n="casesTitle">Konkrete Verbindungen statt Buzzwords.</h2>
+          </div>
+          <p data-i18n="casesIntro">
+            Vier Beispiele, die zeigen, wie ich denke: erst den Prozess verstehen, dann Datenfelder, Rechte, Fehlerpfade und Betrieb sauber machen.
+          </p>
+        </div>
+        <div class="case-grid" data-case-grid></div>
+      </section>
+
+      <section class="practice-section" id="practice" aria-labelledby="practice-title">
+        <div class="section-intro section-intro-split">
+          <div>
+            <p class="eyebrow" data-i18n="practiceEyebrow">Best Practices</p>
+            <h2 id="practice-title" data-i18n="practiceTitle">So baue ich Integrationen, die man betreiben kann.</h2>
+          </div>
+          <p data-i18n="practiceIntro">
+            Gute Automatisierung ist nicht nur ein Script. Sie hat Eigentümer, Logs, Grenzen, Wiederholbarkeit und einen Weg zurück.
+          </p>
+        </div>
+        <div class="practice-shell">
+          <div>
+            <h3 data-i18n="automationTitle">Automation-Werkzeuge</h3>
+            <div class="automation-rail" data-automation-rail></div>
+          </div>
+          <div>
+            <h3 data-i18n="microsoftTitle">Microsoft-Bezug</h3>
+            <div class="microsoft-map" data-microsoft-map></div>
+          </div>
+        </div>
+        <div class="practice-grid" data-practice-grid></div>
+      </section>
+
       <section class="stack-section" id="stack" aria-labelledby="stack-title">
         <div class="section-intro section-intro-split">
           <div>
@@ -181,9 +238,20 @@
             Sag kurz, was nicht rund läuft oder was du verbinden willst. Ich melde mich mit einem klaren nächsten
             Schritt.
           </p>
-          <a class="text-link" href="https://www.linkedin.com/in/eirik-christiansen/" target="_blank" rel="noreferrer">
+          <a
+            class="text-link"
+            href="https://www.linkedin.com/in/eirik-christiansen/"
+            target="_blank"
+            rel="noreferrer"
+            data-track="outbound_click"
+            data-track-target="linkedin-contact"
+          >
             <span data-icon="linkedin" aria-hidden="true"></span>
             <span data-i18n="linkedinCta">LinkedIn ansehen</span>
+          </a>
+          <a class="text-link" href="./assets/eirik-christiansen-cv.pdf" data-track="cv_download" data-track-target="contact-cv">
+            <span data-icon="file" aria-hidden="true"></span>
+            <span data-i18n="cvCta">CV herunterladen</span>
           </a>
         </div>
 
@@ -238,7 +306,7 @@
 
     <footer class="site-footer">
       <span>Eirik Christiansen</span>
-      <a href="https://www.linkedin.com/in/eirik-christiansen/" target="_blank" rel="noreferrer">LinkedIn</a>
+      <a href="https://www.linkedin.com/in/eirik-christiansen/" target="_blank" rel="noreferrer" data-track="outbound_click" data-track-target="linkedin-footer">LinkedIn</a>
       <a href="#top" data-i18n="footerTop">Nach oben</a>
     </footer>
 

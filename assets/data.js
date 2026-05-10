@@ -73,7 +73,77 @@ window.PORTFOLIO_CONTENT = {
       { name: "KI-Workflows & Agenten", level: 7.8, group: "AI" },
       { name: "SAP Business One Technik", level: 5.8, group: "ERP" },
       { name: "HTML/CSS/JavaScript", level: 5.9, group: "Web" },
+      { name: "n8n / Power Automate", level: 7.6, group: "Automation" },
+      { name: "Python / Shell", level: 6.6, group: "Scripting" },
+      { name: "API-Integration", level: 8.0, group: "Systems" },
       { name: "Kommunikation", level: 8.7, group: "People" }
+    ],
+    cases: [
+      {
+        title: "Automatisiertes Onboarding",
+        label: "Bachelorarbeit",
+        summary: "Eintrittsprozesse als durchgängige IT-Strecke: Identität, Telefonie, Passworttresor, Geräte und Inventar statt manueller Checklisten.",
+        systems: ["NFON", "Microsoft 365", "Keeper", "Laptop Setup", "Snipe-IT"],
+        result: "Neue Nutzer werden planbarer angelegt, Geräte sauber zugeordnet und wiederkehrende Admin-Schritte kontrolliert automatisiert.",
+        data: ["Name und Rolle", "Telefonprofil", "M365-Konto", "Keeper-Zugriff", "Gerätestatus", "Inventar-ID"]
+      },
+      {
+        title: "SAP B1 Geschäftspartner zur Telefonanlage",
+        label: "ERP + Telefonie",
+        summary: "Geschäftspartnerdaten aus SAP B1 so aufbereiten, dass Telefonie und Support mit aktuellen Kontakten arbeiten können.",
+        systems: ["SAP Business One", "NFON", "API", "Mapping"],
+        result: "Kontakte bleiben zwischen ERP und Telefonanlage konsistent, ohne Finanz- oder Belegdaten unnötig mitzunehmen.",
+        data: ["Geschäftspartner-ID", "Firma", "Ansprechpartner", "Telefonnummer", "Status", "Zuordnung"]
+      },
+      {
+        title: "SAP B1 zu Mailchimp",
+        label: "CRM + Kampagnen",
+        summary: "Kundensegmente, Opt-ins und Kontaktstammdaten kontrolliert in Kampagnenlisten überführen.",
+        systems: ["SAP Business One", "Mailchimp", "Consent", "Segments"],
+        result: "Marketing arbeitet mit gepflegten Empfängergruppen, während Abmeldung, Einwilligung und Datenminimierung mitgedacht werden.",
+        data: ["E-Mail", "Einwilligung", "Segment", "Sprache", "Kundenstatus", "Änderungsdatum"]
+      },
+      {
+        title: "SAP B1 Termine in Outlook",
+        label: "ERP + Kalender",
+        summary: "Aktivitäten und Termine aus SAP B1 in Outlook sichtbar machen, damit operative Arbeit dort ankommt, wo Menschen planen.",
+        systems: ["SAP Business One", "Outlook", "Microsoft Graph", "Power Automate"],
+        result: "Termine, Erinnerungen und Kundenbezug werden nutzbar, ohne private Kalenderdaten zurück ins ERP zu ziehen.",
+        data: ["Terminname", "Teilnehmer", "Datum/Uhrzeit", "Kundenbezug", "Erinnerung", "Status"]
+      }
+    ],
+    bestPractices: [
+      {
+        title: "Ein führendes System",
+        text: "Vor dem ersten Sync ist klar, welches System welche Daten besitzt. Alles andere wird Mapping, nicht Bauchgefühl."
+      },
+      {
+        title: "Idempotente Jobs",
+        text: "Ein Lauf darf wiederholt werden, ohne doppelte Nutzer, Tickets, Termine oder Kontakte zu erzeugen."
+      },
+      {
+        title: "Least Privilege",
+        text: "APIs bekommen nur die Rechte, die der konkrete Prozess braucht. Admin-Credentials gehören nicht in Skripte."
+      },
+      {
+        title: "Datenminimierung",
+        text: "Synchronisiert werden operative Felder, keine vertraulichen Inhalte, wenn sie für den Prozess keinen Nutzen haben."
+      },
+      {
+        title: "Audit Trail",
+        text: "Jede Änderung ist nachvollziehbar: Quelle, Ziel, Zeitpunkt, Objekt-ID, Ergebnis und Fehlerstatus."
+      },
+      {
+        title: "Fehlerpfade",
+        text: "Retries, Queues und manuelle Freigaben sind Teil der Lösung, nicht erst die Reparatur danach."
+      }
+    ],
+    automationStack: ["PowerShell", "n8n", "Power Automate", "Python", "Shell", "Microsoft Graph", "REST APIs", "SQL/MySQL"],
+    microsoftMap: [
+      { title: "Identity", items: ["Entra ID", "Active Directory", "Gruppen", "Rollen", "Lifecycle"] },
+      { title: "Workplace", items: ["Microsoft 365", "Outlook", "Teams", "SharePoint", "Office"] },
+      { title: "Endpoint", items: ["Windows", "Laptop Setup", "Policies", "Geräte", "Support"] },
+      { title: "Automation", items: ["Graph API", "PowerShell", "Power Automate", "n8n", "Audit Logs"] }
     ],
     journey: [
       {
@@ -94,7 +164,12 @@ window.PORTFOLIO_CONTENT = {
       {
         date: "2021 - 2025",
         title: "B.Sc. Computer Science, IU Internationale Hochschule",
-        text: "Computer-Science-Grundlagen, die mir helfen, Systeme nicht nur zu bedienen, sondern zu verstehen."
+        text: "Bachelorarbeit über automatisiertes Onboarding mit NFON, Microsoft 365, Keeper, Laptop-Einrichtung und Snipe-IT."
+      },
+      {
+        date: "Schule",
+        title: "Term in England",
+        text: "Auslandszeit in England als Teil des schulischen Wegs: Sprache, Selbstständigkeit und Arbeiten in einem anderen Umfeld."
       }
     ],
     connector: {
@@ -102,6 +177,9 @@ window.PORTFOLIO_CONTENT = {
         { id: "hr", tag: "HR", name: "HR / Stammdaten", short: "Mitarbeiter, Eintritt, Austritt" },
         { id: "entra", tag: "ID", name: "Microsoft Entra ID", short: "User, Gruppen, Rollen" },
         { id: "m365", tag: "M365", name: "Microsoft 365", short: "Outlook, SharePoint, Teams" },
+        { id: "outlook", tag: "CAL", name: "Outlook Kalender", short: "Termine, Erinnerungen" },
+        { id: "nfon", tag: "TEL", name: "NFON / Telefonanlage", short: "Durchwahlen, Kontakte, Profile" },
+        { id: "mailchimp", tag: "CRM", name: "Mailchimp", short: "Listen, Segmente, Opt-ins" },
         { id: "sap", tag: "ERP", name: "SAP Business One", short: "Kunden, Artikel, Belege" },
         { id: "ticket", tag: "ITSM", name: "Ticket-System", short: "Anfragen, SLA, Lösungen" },
         { id: "monitoring", tag: "MON", name: "Monitoring", short: "Alerts, Hosts, Status" },
@@ -211,6 +289,46 @@ window.PORTFOLIO_CONTENT = {
           method: "SAP Service Layer zu Outlook, Teams oder Power Automate.",
           guard: "Keine Buchungsdaten ungeprüft zurückschreiben, Status sauber mappen.",
           avoid: "Buchungssätze, Zahlungsdaten, vertrauliche Preise."
+        },
+        {
+          from: "sap",
+          to: "nfon",
+          title: "SAP Business One -> NFON / Telefonanlage",
+          summary: "Geschäftspartner und Ansprechpartner werden als aktuelle Telefonkontakte nutzbar.",
+          data: ["Geschäftspartner-ID", "Firma", "Ansprechpartner", "Telefonnummer", "Status", "Zuständigkeit"],
+          method: "SAP Service Layer oder SQL-Export, Mapping, danach NFON/API-Import.",
+          guard: "Nur freigegebene Kontaktdaten, stabile IDs und Änderungsprotokoll.",
+          avoid: "Finanzdaten, Belege, interne Notizen, private Nummern ohne Zweck."
+        },
+        {
+          from: "sap",
+          to: "mailchimp",
+          title: "SAP Business One -> Mailchimp",
+          summary: "Kundenkontakte werden mit Einwilligung und Segmentlogik für Kampagnen bereitgestellt.",
+          data: ["E-Mail", "Name", "Opt-in", "Segment", "Sprache", "Kundenstatus", "Änderungsdatum"],
+          method: "SAP-Datenquelle zu Mapping-Job, dann Mailchimp API mit Delta-Läufen.",
+          guard: "Consent prüfen, Abmeldungen respektieren, Segmentregeln dokumentieren.",
+          avoid: "Kontakte ohne Einwilligung, Zahlungsdaten, interne Bemerkungen."
+        },
+        {
+          from: "sap",
+          to: "outlook",
+          title: "SAP Business One -> Outlook Kalender",
+          summary: "SAP-Aktivitäten werden als planbare Termine im Microsoft-Arbeitsalltag sichtbar.",
+          data: ["Aktivitäts-ID", "Betreff", "Kundenbezug", "Teilnehmer", "Start/Ende", "Erinnerung", "Status"],
+          method: "Service Layer oder Export zu Microsoft Graph / Power Automate.",
+          guard: "Eindeutige Kalender-ID, Update statt Duplikat, klare Schreibrichtung.",
+          avoid: "Private Kalenderinhalte, vertrauliche Belegdetails, ungeprüfte Rückschreibungen."
+        },
+        {
+          from: "hr",
+          to: "nfon",
+          title: "HR / Stammdaten -> NFON / Telefonanlage",
+          summary: "Neue Mitarbeitende erhalten passende Telefonprofile, Durchwahlen und Zuordnungen.",
+          data: ["Mitarbeiter-ID", "Name", "Standort", "Rolle", "Durchwahl", "Telefonprofil"],
+          method: "Onboarding-Workflow mit API, CSV-Import oder PowerShell-Brücke.",
+          guard: "Profilvorlagen, Freigabe bei Sonderrechten, Rückbau beim Offboarding.",
+          avoid: "Private Nummern, HR-Kommentare, Profile ohne fachliche Freigabe."
         },
         {
           from: "monitoring",
@@ -369,7 +487,77 @@ window.PORTFOLIO_CONTENT = {
       { name: "AI workflows & agents", level: 7.8, group: "AI" },
       { name: "SAP Business One technology", level: 5.8, group: "ERP" },
       { name: "HTML/CSS/JavaScript", level: 5.9, group: "Web" },
+      { name: "n8n / Power Automate", level: 7.6, group: "Automation" },
+      { name: "Python / Shell", level: 6.6, group: "Scripting" },
+      { name: "API integration", level: 8.0, group: "Systems" },
       { name: "Communication", level: 8.7, group: "People" }
+    ],
+    cases: [
+      {
+        title: "Automated onboarding",
+        label: "Bachelor thesis",
+        summary: "Joiner processes as one connected IT flow: identity, telephony, password vault, device setup, and inventory instead of manual checklists.",
+        systems: ["NFON", "Microsoft 365", "Keeper", "Laptop setup", "Snipe-IT"],
+        result: "New users become easier to provision, devices are assigned cleanly, and recurring admin work can be automated with control.",
+        data: ["Name and role", "Phone profile", "M365 account", "Keeper access", "Device state", "Inventory ID"]
+      },
+      {
+        title: "SAP B1 business partners to telephony",
+        label: "ERP + telephony",
+        summary: "Prepare SAP B1 business partner data so telephony and support can work with current contact information.",
+        systems: ["SAP Business One", "NFON", "API", "Mapping"],
+        result: "Contacts stay consistent between ERP and phone system without moving financial or document data unnecessarily.",
+        data: ["Business partner ID", "Company", "Contact person", "Phone number", "Status", "Assignment"]
+      },
+      {
+        title: "SAP B1 to Mailchimp",
+        label: "CRM + campaigns",
+        summary: "Move customer segments, opt-ins, and contact master data into campaign lists with clear boundaries.",
+        systems: ["SAP Business One", "Mailchimp", "Consent", "Segments"],
+        result: "Marketing works with maintained recipient groups while unsubscribe, consent, and data minimization stay part of the design.",
+        data: ["Email", "Consent", "Segment", "Language", "Customer status", "Changed timestamp"]
+      },
+      {
+        title: "SAP B1 appointments to Outlook",
+        label: "ERP + calendar",
+        summary: "Make SAP B1 activities and appointments visible in Outlook so operational work lands where people plan.",
+        systems: ["SAP Business One", "Outlook", "Microsoft Graph", "Power Automate"],
+        result: "Appointments, reminders, and customer context become useful without pulling private calendar data back into ERP.",
+        data: ["Title", "Participants", "Date/time", "Customer link", "Reminder", "Status"]
+      }
+    ],
+    bestPractices: [
+      {
+        title: "One system of record",
+        text: "Before the first sync, it is clear which system owns which data. Everything else is mapping, not guesswork."
+      },
+      {
+        title: "Idempotent jobs",
+        text: "A run can repeat without creating duplicate users, tickets, appointments, or contacts."
+      },
+      {
+        title: "Least privilege",
+        text: "APIs receive only the permissions the process needs. Admin credentials do not belong in scripts."
+      },
+      {
+        title: "Data minimization",
+        text: "Only operational fields move. Confidential content stays out when it does not serve the process."
+      },
+      {
+        title: "Audit trail",
+        text: "Every change is traceable: source, target, timestamp, object ID, result, and error state."
+      },
+      {
+        title: "Failure paths",
+        text: "Retries, queues, and manual approvals are part of the solution, not an afterthought."
+      }
+    ],
+    automationStack: ["PowerShell", "n8n", "Power Automate", "Python", "Shell", "Microsoft Graph", "REST APIs", "SQL/MySQL"],
+    microsoftMap: [
+      { title: "Identity", items: ["Entra ID", "Active Directory", "Groups", "Roles", "Lifecycle"] },
+      { title: "Workplace", items: ["Microsoft 365", "Outlook", "Teams", "SharePoint", "Office"] },
+      { title: "Endpoint", items: ["Windows", "Laptop setup", "Policies", "Devices", "Support"] },
+      { title: "Automation", items: ["Graph API", "PowerShell", "Power Automate", "n8n", "Audit logs"] }
     ],
     journey: [
       {
@@ -390,7 +578,12 @@ window.PORTFOLIO_CONTENT = {
       {
         date: "2021 - 2025",
         title: "B.Sc. Computer Science, IU International University",
-        text: "Computer science foundations that help me not only operate systems, but understand them."
+        text: "Bachelor thesis on automated onboarding with NFON, Microsoft 365, Keeper, laptop setup, and Snipe-IT."
+      },
+      {
+        date: "School",
+        title: "Term in England",
+        text: "Time in England as part of my school path: language, independence, and working in a different environment."
       }
     ],
     connector: {
@@ -398,6 +591,9 @@ window.PORTFOLIO_CONTENT = {
         { id: "hr", tag: "HR", name: "HR / Master Data", short: "Employees, start, exit" },
         { id: "entra", tag: "ID", name: "Microsoft Entra ID", short: "Users, groups, roles" },
         { id: "m365", tag: "M365", name: "Microsoft 365", short: "Outlook, SharePoint, Teams" },
+        { id: "outlook", tag: "CAL", name: "Outlook Calendar", short: "Appointments, reminders" },
+        { id: "nfon", tag: "TEL", name: "NFON / Phone System", short: "Extensions, contacts, profiles" },
+        { id: "mailchimp", tag: "CRM", name: "Mailchimp", short: "Lists, segments, opt-ins" },
         { id: "sap", tag: "ERP", name: "SAP Business One", short: "Customers, items, documents" },
         { id: "ticket", tag: "ITSM", name: "Ticket System", short: "Requests, SLA, resolutions" },
         { id: "monitoring", tag: "MON", name: "Monitoring", short: "Alerts, hosts, status" },
@@ -507,6 +703,46 @@ window.PORTFOLIO_CONTENT = {
           method: "SAP Service Layer to Outlook, Teams, or Power Automate.",
           guard: "Do not write accounting data back without validation; map status cleanly.",
           avoid: "Journal entries, payment data, confidential prices."
+        },
+        {
+          from: "sap",
+          to: "nfon",
+          title: "SAP Business One -> NFON / Phone System",
+          summary: "Business partners and contact persons become usable, current phone contacts.",
+          data: ["Business partner ID", "Company", "Contact person", "Phone number", "Status", "Assignment"],
+          method: "SAP Service Layer or SQL export, mapping, then NFON/API import.",
+          guard: "Approved contact fields only, stable IDs, and change logs.",
+          avoid: "Financial data, documents, internal notes, private numbers without purpose."
+        },
+        {
+          from: "sap",
+          to: "mailchimp",
+          title: "SAP Business One -> Mailchimp",
+          summary: "Customer contacts move into campaign lists with consent and segment logic.",
+          data: ["Email", "Name", "Opt-in", "Segment", "Language", "Customer status", "Changed timestamp"],
+          method: "SAP data source to mapping job, then Mailchimp API with delta runs.",
+          guard: "Check consent, respect unsubscribes, document segment rules.",
+          avoid: "Contacts without consent, payment data, internal comments."
+        },
+        {
+          from: "sap",
+          to: "outlook",
+          title: "SAP Business One -> Outlook Calendar",
+          summary: "SAP activities become planned appointments inside the Microsoft workday.",
+          data: ["Activity ID", "Subject", "Customer context", "Participants", "Start/end", "Reminder", "Status"],
+          method: "Service Layer or export to Microsoft Graph / Power Automate.",
+          guard: "Stable calendar ID, update instead of duplicate, clear write direction.",
+          avoid: "Private calendar content, confidential document details, unreviewed writebacks."
+        },
+        {
+          from: "hr",
+          to: "nfon",
+          title: "HR / Master Data -> NFON / Phone System",
+          summary: "New employees receive the right phone profiles, extensions, and assignments.",
+          data: ["Employee ID", "Name", "Location", "Role", "Extension", "Phone profile"],
+          method: "Onboarding workflow through API, CSV import, or PowerShell bridge.",
+          guard: "Profile templates, approval for special rights, cleanup during offboarding.",
+          avoid: "Private numbers, HR comments, profiles without business approval."
         },
         {
           from: "monitoring",

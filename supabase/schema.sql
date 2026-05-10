@@ -57,7 +57,20 @@ alter table public.contact_messages
   add column if not exists topic text,
   add column if not exists language text,
   add column if not exists source_url text,
-  add column if not exists user_agent text;
+  add column if not exists user_agent text,
+  add column if not exists email_status text not null default 'pending',
+  add column if not exists email_error text,
+  add column if not exists notified_at timestamptz;
+
+create table if not exists public.portfolio_events (
+  id uuid primary key default gen_random_uuid(),
+  event_type text not null,
+  event_target text,
+  language text,
+  path text,
+  metadata jsonb not null default '{}',
+  created_at timestamptz not null default now()
+);
 
 create index if not exists contact_messages_created_at_idx
   on public.contact_messages (created_at desc);
@@ -69,7 +82,9 @@ alter table public.contact_messages
   drop constraint if exists contact_messages_topic_length,
   drop constraint if exists contact_messages_language_value,
   drop constraint if exists contact_messages_source_url_length,
-  drop constraint if exists contact_messages_user_agent_length;
+  drop constraint if exists contact_messages_user_agent_length,
+  drop constraint if exists contact_messages_email_status_value,
+  drop constraint if exists contact_messages_email_error_length;
 
 alter table public.contact_messages
   add constraint contact_messages_name_length
@@ -90,12 +105,17 @@ alter table public.contact_messages
   add constraint contact_messages_source_url_length
     check (source_url is null or length(source_url) <= 500) not valid,
   add constraint contact_messages_user_agent_length
-    check (user_agent is null or length(user_agent) <= 500) not valid;
+    check (user_agent is null or length(user_agent) <= 500) not valid,
+  add constraint contact_messages_email_status_value
+    check (email_status in ('pending', 'sent', 'not_configured', 'failed')) not valid,
+  add constraint contact_messages_email_error_length
+    check (email_error is null or length(email_error) <= 1000) not valid;
 
 alter table public.profile enable row level security;
 alter table public.projects enable row level security;
 alter table public.life_events enable row level security;
 alter table public.contact_messages enable row level security;
+alter table public.portfolio_events enable row level security;
 
 drop policy if exists "Public can read profile" on public.profile;
 create policy "Public can read profile"
@@ -134,11 +154,42 @@ create policy "Public can submit contact messages"
     and (language is null or language in ('de', 'en'))
     and (source_url is null or length(source_url) <= 500)
     and (user_agent is null or length(user_agent) <= 500)
+    and email_status = 'pending'
+  );
+
+drop policy if exists "Public can submit portfolio events" on public.portfolio_events;
+create policy "Public can submit portfolio events"
+  on public.portfolio_events
+  for insert
+  to anon, authenticated
+  with check (
+    event_type in (
+      'section_view',
+      'contact_submit',
+      'contact_success',
+      'contact_error',
+      'outbound_click',
+      'cv_download',
+      'language_toggle',
+      'theme_toggle',
+      'connector_select'
+    )
+    and (event_target is null or length(event_target) <= 120)
+    and (language is null or language in ('de', 'en'))
+    and (path is null or length(path) <= 500)
+    and jsonb_typeof(metadata) = 'object'
   );
 
 grant usage on schema public to anon, authenticated;
 grant select on public.profile, public.projects, public.life_events to anon, authenticated;
 grant insert on public.contact_messages to anon, authenticated;
+grant insert on public.portfolio_events to anon, authenticated;
+
+create index if not exists portfolio_events_created_at_idx
+  on public.portfolio_events (created_at desc);
+
+create index if not exists portfolio_events_type_created_at_idx
+  on public.portfolio_events (event_type, created_at desc);
 
 insert into public.profile (profile_key, name, focus, mode, location, email, is_public)
 values (

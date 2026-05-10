@@ -9,7 +9,9 @@ Ein modernes, zweisprachiges Portfolio fuer IT Administration, IT-Infrastruktur,
 - `assets/app.js` steuert Filter, Projektdetail, Theme, Canvas und Kontaktflow.
 - `assets/data.js` enthaelt die deutschen und englischen Portfolio-Inhalte aus dem LinkedIn-Screenshot: Hamburg/Remote, Be1Eye, Reos, IU, Infrastruktur, Microsoft, SAP B1 als Aufbaugebiet, Automatisierung, KI seit 2020 und Kenntnisse.
 - `assets/supabase.js` laedt Supabase nur, wenn URL und Publishable Key gesetzt sind.
-- `supabase/schema.sql` legt Tabellen, RLS-Policies, Grants und Seed-Daten an.
+- `supabase/schema.sql` legt Tabellen, RLS-Policies, Grants, Analytics-Events und Seed-Daten an.
+- `supabase/functions/contact-notify` speichert Kontaktanfragen und verschickt Mail-Benachrichtigungen.
+- `assets/eirik-christiansen-cv.pdf` ist das passende zweisprachige CV.
 
 ## Lokal starten
 
@@ -31,6 +33,40 @@ window.PORTFOLIO_ENV = {
 Nutze im Browser nur einen Publishable Key. Ein `service_role` oder Secret Key gehoert nie in Frontend-Code.
 
 Hinweis vom 7. Mai 2026: Supabase rollt aus, dass neue Tabellen in `public` nicht mehr automatisch fuer Data API und GraphQL sichtbar sind. Das Schema enthaelt deshalb explizite `grant`-Anweisungen und RLS-Policies fuer die oeffentlich lesbaren Portfolio-Tabellen.
+
+## Kontaktmail an Gmail
+
+Der Browser schreibt nicht direkt an Gmail. Der Kontaktflow ruft die Supabase Edge Function `contact-notify` auf. Diese speichert die Nachricht in `contact_messages` und sendet danach eine E-Mail an deine Gmail-Adresse ueber Resend.
+
+Setze dafuer in Supabase Function Secrets:
+
+```bash
+supabase secrets set \
+  --project-ref pkkjrxlubgddvuesqtpf \
+  RESEND_API_KEY="re_..." \
+  CONTACT_TO_EMAIL="deine-adresse@gmail.com" \
+  CONTACT_FROM_EMAIL="Portfolio <portfolio@deine-domain.de>"
+```
+
+Zusätzlich braucht die Function serverseitig einen Secret Key. In neuen Supabase-Projekten ist dieser als `SUPABASE_SECRET_KEYS` verfuegbar; alternativ kann `SUPABASE_SERVICE_ROLE_KEY` als Function Secret gesetzt werden. Dieser Key darf niemals in `assets/env.js`.
+
+Wenn die Mail-Secrets fehlen, wird die Nachricht trotzdem gespeichert und mit `email_status = 'not_configured'` markiert.
+
+Deploy der Function:
+
+```bash
+supabase functions deploy contact-notify --project-ref pkkjrxlubgddvuesqtpf --no-verify-jwt
+```
+
+## Analytics
+
+Die Seite speichert sparsame, cookielose Events in `portfolio_events`: Section Views, Kontaktstatus, CV-Downloads, Sprachwechsel, Themewechsel und Connector-Auswahl. `Do Not Track` wird respektiert. Abschalten geht mit:
+
+```js
+window.PORTFOLIO_ENV = {
+  ANALYTICS_ENABLED: "false"
+};
+```
 
 ## Personalisieren
 

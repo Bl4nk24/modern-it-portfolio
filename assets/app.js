@@ -18,15 +18,17 @@
       brandRole: "IT Administrator / Systems Integrator",
       navWork: "Arbeit",
       navConnect: "Verbindungen",
+      navCases: "Cases",
       navStack: "Stack",
       navJourney: "Werdegang",
       navContact: "Kontakt",
       heroEyebrow: "Moin / Hamburg / Remote",
-      heroTitle: "Ich bin Eirik. Ich halte IT ruhig, verbunden und nutzbar.",
+      heroTitle: "IT muss nicht laut sein. Sie muss funktionieren.",
       heroLede:
-        "Ich arbeite dort, wo Microsoft, Infrastruktur, Automatisierung und Support zusammenkommen: Rechte, Geräte, Datenflüsse, Agenten und Systeme, die im Alltag einfach funktionieren.",
+        "Ich verbinde Microsoft-Umgebungen, Infrastruktur, APIs und Automatisierung so, dass Menschen weniger suchen, weniger klicken und schneller arbeiten.",
       primaryCta: "Praxis ansehen",
       secondaryCta: "Kontakt",
+      cvCta: "CV herunterladen",
       panelTitle: "Operations Board",
       panelState: "online / ruhig",
       readoutOneLabel: "Fokus",
@@ -36,11 +38,11 @@
       readoutThreeLabel: "SAP B1",
       readoutThree: "seit 04/2025",
       workEyebrow: "Praxisfelder",
-      workTitle: "Betrieb, Verbindung, Automatisierung.",
+      workTitle: "Wo Betrieb und Automatisierung zusammenkommen.",
       workIntro:
-        "Meine Arbeit beginnt meist dort, wo Systeme schon da sind: Microsoft, Server, Netzwerk, Daten und Menschen. Ich bringe Struktur rein, automatisiere Wiederholung und mache Übergänge verlässlich.",
+        "Mein Profil ist kein reines Developer-Portfolio. Es ist Administration, Systemverständnis und die Fähigkeit, vorhandene Tools sauber miteinander sprechen zu lassen.",
       connectEyebrow: "System Connector",
-      connectTitle: "Wähle zwei Systeme. Sieh, welche Daten fließen.",
+      connectTitle: "Wähle zwei Systeme. Sieh, welche Daten sinnvoll fließen.",
       connectIntro:
         "Ein Ausschnitt aus Integrationsarbeit: Stammdaten mappen, IDs stabil halten, Fehler loggen und nur Daten bewegen, die fachlich Sinn ergeben.",
       connectorSource: "Quelle",
@@ -52,13 +54,23 @@
       connectorDirection: "Richtung",
       stackEyebrow: "Stack",
       stackTitle: "Technik, die ich wirklich anfasse.",
-      stackIntro: "Die Skala orientiert sich an LinkedIn-Kenntnissen, Berufserfahrung, Studium, Projekten und täglichem Betrieb.",
+      stackIntro: "Die Werte sind ein 1-bis-10-Modell aus LinkedIn-Kenntnissen, Berufserfahrung, Studium, Projekten und täglichem Betrieb.",
+      casesEyebrow: "Cases",
+      casesTitle: "Konkrete Verbindungen statt Buzzwords.",
+      casesIntro: "Vier Beispiele, die zeigen, wie ich denke: erst den Prozess verstehen, dann Datenfelder, Rechte, Fehlerpfade und Betrieb sauber machen.",
+      caseDataLabel: "Daten",
+      caseResultLabel: "Wirkung",
+      practiceEyebrow: "Best Practices",
+      practiceTitle: "So baue ich Integrationen, die man betreiben kann.",
+      practiceIntro: "Gute Automatisierung ist nicht nur ein Script. Sie hat Eigentümer, Logs, Grenzen, Wiederholbarkeit und einen Weg zurück.",
+      automationTitle: "Automation-Werkzeuge",
+      microsoftTitle: "Microsoft-Bezug",
       journeyEyebrow: "Werdegang",
       journeyTitle: "Vom Admin-Alltag zur Systemintegration.",
       contactEyebrow: "Kontakt",
       contactTitle: "Lass uns deine Systeme sortieren.",
       contactText:
-        "Sag kurz, was nicht rund läuft oder was du verbinden willst. Ich melde mich mit einem klaren nächsten Schritt.",
+        "Sag kurz, welche Systeme du verbinden, stabilisieren oder automatisieren willst. Ich melde mich mit einem klaren nächsten Schritt.",
       linkedinCta: "LinkedIn ansehen",
       formName: "Name",
       formEmail: "E-Mail",
@@ -71,7 +83,7 @@
       topicAi: "KI-Agenten",
       formLanguage: "Sprache",
       formMessage: "Nachricht",
-      privacyNote: "Kommt direkt bei mir an. Diskret, kurz, ohne Umwege.",
+      privacyNote: "Die Nachricht wird gespeichert und als Mail an mich weitergeleitet.",
       formSubmit: "Senden",
       footerTop: "Nach oben",
       detailSignals: "Signale",
@@ -91,15 +103,17 @@
       brandRole: "IT Administrator / Systems Integrator",
       navWork: "Work",
       navConnect: "Connections",
+      navCases: "Cases",
       navStack: "Stack",
       navJourney: "Journey",
       navContact: "Contact",
       heroEyebrow: "Hi / Hamburg / remote",
-      heroTitle: "I'm Eirik. I keep IT calm, connected, and usable.",
+      heroTitle: "IT does not need to be loud. It needs to work.",
       heroLede:
-        "I work where Microsoft, infrastructure, automation, and support meet: permissions, devices, data flows, agents, and systems that hold up in daily work.",
+        "I connect Microsoft environments, infrastructure, APIs, and automation so people search less, click less, and get work done faster.",
       primaryCta: "View work",
       secondaryCta: "Contact",
+      cvCta: "Download CV",
       panelTitle: "Operations Board",
       panelState: "online / calm",
       readoutOneLabel: "Focus",
@@ -109,11 +123,11 @@
       readoutThreeLabel: "SAP B1",
       readoutThree: "since 04/2025",
       workEyebrow: "Practice areas",
-      workTitle: "Operations, integration, automation.",
+      workTitle: "Where operations and automation meet.",
       workIntro:
-        "Most of my work starts with systems that already exist: Microsoft, servers, networks, data, and people. I bring structure, remove repetition, and make handovers reliable.",
+        "This is not a pure developer portfolio. It is administration, system understanding, and the ability to make existing tools talk to each other cleanly.",
       connectEyebrow: "System connector",
-      connectTitle: "Pick two systems. See which data moves.",
+      connectTitle: "Pick two systems. See which data should move.",
       connectIntro:
         "A small slice of integration work: map master data, keep IDs stable, log failures, and move only data that makes operational sense.",
       connectorSource: "Source",
@@ -125,7 +139,17 @@
       connectorDirection: "Direction",
       stackEyebrow: "Stack",
       stackTitle: "Technology I actually work with.",
-      stackIntro: "The scale is based on LinkedIn skills, work experience, education, projects, and daily operations.",
+      stackIntro: "The values are a 1-to-10 model based on LinkedIn skills, work experience, education, projects, and daily operations.",
+      casesEyebrow: "Cases",
+      casesTitle: "Concrete connections, not buzzwords.",
+      casesIntro: "Four examples that show how I think: understand the process first, then make data fields, permissions, failure paths, and operations clean.",
+      caseDataLabel: "Data",
+      caseResultLabel: "Impact",
+      practiceEyebrow: "Best practices",
+      practiceTitle: "How I build integrations you can operate.",
+      practiceIntro: "Good automation is not just a script. It has owners, logs, boundaries, repeatability, and a way back.",
+      automationTitle: "Automation tools",
+      microsoftTitle: "Microsoft signal",
       journeyEyebrow: "Journey",
       journeyTitle: "From admin work to system integration.",
       contactEyebrow: "Contact",
@@ -143,7 +167,7 @@
       topicAi: "AI agents",
       formLanguage: "Language",
       formMessage: "Message",
-      privacyNote: "Goes directly to me. Private, short, no detours.",
+      privacyNote: "Your message is stored and forwarded to me by email.",
       formSubmit: "Send",
       footerTop: "Back to top",
       detailSignals: "Signals",
@@ -163,6 +187,7 @@
     send: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 12 16-8-5.5 16-3.2-6.2L4 12Zm7.3 1.8L20 4"/></svg>',
     linkedin:
       '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 10v8M8 7.2v.1M12 18v-4.6c0-2.1 1.2-3.4 3.1-3.4 1.8 0 2.9 1.2 2.9 3.5V18M4 4.8A1.8 1.8 0 0 1 5.8 3h12.4A1.8 1.8 0 0 1 20 4.8v14.4a1.8 1.8 0 0 1-1.8 1.8H5.8A1.8 1.8 0 0 1 4 19.2V4.8Z"/></svg>',
+    file: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Zm0 0v5h5M9 13h6M9 17h4"/></svg>',
     moon: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 15.2A7.4 7.4 0 0 1 8.8 4 8.2 8.2 0 1 0 20 15.2Z"/></svg>',
     sun: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5V3m0 18v-2m7-7h2M3 12h2m12.95-4.95 1.42-1.42M4.63 19.37l1.42-1.42m0-10.9L4.63 5.63m14.74 13.74-1.42-1.42M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z"/></svg>'
   };
@@ -173,6 +198,10 @@
     connectorSource: document.querySelector("[data-connector-source]"),
     connectorTarget: document.querySelector("[data-connector-target]"),
     connectorDetail: document.querySelector("[data-connector-detail]"),
+    caseGrid: document.querySelector("[data-case-grid]"),
+    practiceGrid: document.querySelector("[data-practice-grid]"),
+    automationRail: document.querySelector("[data-automation-rail]"),
+    microsoftMap: document.querySelector("[data-microsoft-map]"),
     skillBoard: document.querySelector("[data-skill-board]"),
     journeyTrack: document.querySelector("[data-journey-track]"),
     consoleLines: document.querySelector("[data-console-lines]"),
@@ -196,6 +225,7 @@
     setupCanvas();
     setupPointer();
     setupHashScroll();
+    setupAnalytics();
   }
 
   function setLanguage(lang) {
@@ -217,6 +247,8 @@
     renderConsole();
     renderFields();
     renderConnector();
+    renderCases();
+    renderPractices();
     renderSkills();
     renderJourney();
     setupReveal();
@@ -302,6 +334,7 @@
     selectors.connectorSource.querySelectorAll("[data-connector-source-id]").forEach((button) => {
       button.addEventListener("click", () => {
         state.activeConnectionSource = button.dataset.connectorSourceId;
+        trackEvent("connector_select", state.activeConnectionSource, { side: "source" });
         renderConnector();
       });
     });
@@ -309,6 +342,7 @@
     selectors.connectorTarget.querySelectorAll("[data-connector-target-id]").forEach((button) => {
       button.addEventListener("click", () => {
         state.activeConnectionTarget = button.dataset.connectorTargetId;
+        trackEvent("connector_select", state.activeConnectionTarget, { side: "target" });
         renderConnector();
       });
     });
@@ -386,6 +420,72 @@
     `;
   }
 
+  function renderCases() {
+    if (!selectors.caseGrid || !state.data.cases) return;
+    selectors.caseGrid.innerHTML = state.data.cases
+      .map(
+        (item, index) => `
+          <article class="case-card" style="--delay:${index * 120}ms">
+            <div class="case-topline">
+              <span>${escapeHtml(item.label)}</span>
+              <i>${String(index + 1).padStart(2, "0")}</i>
+            </div>
+            <h3>${escapeHtml(item.title)}</h3>
+            <p>${escapeHtml(item.summary)}</p>
+            <div class="case-system-strip">
+              ${item.systems.map((system) => `<span>${escapeHtml(system)}</span>`).join("")}
+            </div>
+            <div class="case-data">
+              <strong>${escapeHtml(t("caseDataLabel"))}</strong>
+              ${item.data.map((field) => `<em>${escapeHtml(field)}</em>`).join("")}
+            </div>
+            <div class="case-result">
+              <strong>${escapeHtml(t("caseResultLabel"))}</strong>
+              <p>${escapeHtml(item.result)}</p>
+            </div>
+          </article>
+        `
+      )
+      .join("");
+  }
+
+  function renderPractices() {
+    if (selectors.practiceGrid && state.data.bestPractices) {
+      selectors.practiceGrid.innerHTML = state.data.bestPractices
+        .map(
+          (item, index) => `
+            <article class="practice-item" style="--delay:${index * 95}ms">
+              <span>${String(index + 1).padStart(2, "0")}</span>
+              <h3>${escapeHtml(item.title)}</h3>
+              <p>${escapeHtml(item.text)}</p>
+            </article>
+          `
+        )
+        .join("");
+    }
+
+    if (selectors.automationRail && state.data.automationStack) {
+      selectors.automationRail.innerHTML = state.data.automationStack
+        .map((item, index) => `<span style="--delay:${index * 140}ms">${escapeHtml(item)}</span>`)
+        .join("");
+    }
+
+    if (selectors.microsoftMap && state.data.microsoftMap) {
+      selectors.microsoftMap.innerHTML = state.data.microsoftMap
+        .map(
+          (group) => `
+            <article>
+              <h3>${escapeHtml(group.title)}</h3>
+              <div>
+                ${group.items.map((item) => `<span>${escapeHtml(item)}</span>`).join("")}
+              </div>
+            </article>
+          `
+        )
+        .join("");
+    }
+  }
+
   function renderSkills() {
     selectors.skillBoard.innerHTML = state.data.skills
       .map((skill) => {
@@ -425,6 +525,7 @@
       state.activeField = 0;
       setLanguage(state.lang === "de" ? "en" : "de");
       renderAll();
+      trackEvent("language_toggle", state.lang);
     });
   }
 
@@ -433,6 +534,7 @@
       state.theme = state.theme === "dark" ? "light" : "dark";
       localStorage.setItem("portfolio_theme_v3", state.theme);
       applyTheme();
+      trackEvent("theme_toggle", state.theme);
     });
   }
 
@@ -469,13 +571,16 @@
       };
 
       setFormState("loading", t("sending"));
+      trackEvent("contact_submit", payload.topic || "contact");
       selectors.form.querySelector("[data-contact-submit]").disabled = true;
       try {
         await window.PortfolioSupabase.saveMessage(payload);
         selectors.form.reset();
         setFormState("success", t("sent"));
+        trackEvent("contact_success", payload.topic || "contact");
       } catch (error) {
         setFormState("error", t("sendError"));
+        trackEvent("contact_error", payload.topic || "contact", { message: String(error && error.message ? error.message : error).slice(0, 160) });
       } finally {
         selectors.form.querySelector("[data-contact-submit]").disabled = false;
       }
@@ -543,6 +648,41 @@
       },
       { passive: true }
     );
+  }
+
+  function setupAnalytics() {
+    document.addEventListener("click", (event) => {
+      const target = event.target.closest("[data-track]");
+      if (!target) return;
+      trackEvent(target.dataset.track || "outbound_click", target.dataset.trackTarget || target.getAttribute("href") || "");
+    });
+
+    const sections = document.querySelectorAll("section[id]");
+    if (!("IntersectionObserver" in window)) return;
+
+    const seen = new Set();
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting || seen.has(entry.target.id)) return;
+          seen.add(entry.target.id);
+          trackEvent("section_view", entry.target.id);
+        });
+      },
+      { threshold: 0.42 }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+  }
+
+  function trackEvent(eventType, eventTarget = "", metadata = {}) {
+    window.PortfolioSupabase?.trackEvent?.({
+      event_type: eventType,
+      event_target: eventTarget,
+      language: state.lang,
+      path: window.location.pathname + window.location.hash,
+      metadata
+    }).catch(() => {});
   }
 
   function setupHashScroll() {
