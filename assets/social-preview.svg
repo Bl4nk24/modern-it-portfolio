@@ -12,6 +12,9 @@
     <pattern id="grid" width="54" height="54" patternUnits="userSpaceOnUse">
       <path d="M54 0H0v54" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
     </pattern>
+    <clipPath id="photoClip">
+      <circle cx="925" cy="310" r="74"/>
+    </clipPath>
     <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
       <feGaussianBlur stdDeviation="12" result="blur"/>
       <feMerge>
@@ -43,7 +46,6 @@
   </g>
   <g transform="translate(785 170)" filter="url(#glow)">
     <circle cx="140" cy="140" r="76" fill="rgba(248,250,252,.08)" stroke="rgba(255,255,255,.26)"/>
-    <text x="140" y="148" text-anchor="middle" fill="#f8fafc" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="900">EC</text>
     <path d="M140 64V12M205 101l46-27M205 179l46 27M140 216v52M75 179l-46 27M75 101 29 74" stroke="url(#line)" stroke-width="5" stroke-linecap="round"/>
     <g font-family="Consolas, monospace" font-size="20" font-weight="900" fill="#f8fafc">
       <rect x="104" y="-24" width="72" height="44" rx="8" fill="rgba(8,9,11,.78)" stroke="rgba(255,255,255,.25)"/>
@@ -60,4 +62,6 @@
       <text x="11" y="74" text-anchor="middle">LAN</text>
     </g>
   </g>
+  <image href="eirik-christiansen.png" x="851" y="236" width="148" height="148" preserveAspectRatio="xMidYMid slice" clip-path="url(#photoClip)"/>
+  <circle cx="925" cy="310" r="74" fill="none" stroke="rgba(255,255,255,.28)" stroke-width="2"/>
 </svg>

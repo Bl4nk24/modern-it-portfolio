@@ -81,9 +81,18 @@
       .meta {
         display: grid;
         gap: 2mm;
+        justify-items: end;
         color: var(--muted);
         font-size: 9.2pt;
         text-align: right;
+      }
+
+      .cv-photo {
+        width: 24mm;
+        height: 24mm;
+        border: 1px solid var(--line);
+        border-radius: 50%;
+        object-fit: cover;
       }
 
       .meta strong {
@@ -212,6 +221,7 @@
           </p>
         </div>
         <div class="meta">
+          <img class="cv-photo" src="./eirik-christiansen.png" alt="Eirik Christiansen" />
           <strong>Hamburg & Remote</strong>
           <span>Deutsch / Englisch</span>
           <span>linkedin.com/in/eirik-christiansen</span>
@@ -323,6 +333,7 @@
           </p>
         </div>
         <div class="meta">
+          <img class="cv-photo" src="./eirik-christiansen.png" alt="Eirik Christiansen" />
           <strong>Hamburg & Remote</strong>
           <span>German / English</span>
           <span>linkedin.com/in/eirik-christiansen</span>

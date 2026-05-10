@@ -192,6 +192,15 @@ svg {
   color: var(--bg);
   font-size: 0.8rem;
   font-weight: 950;
+  overflow: hidden;
+}
+
+.brand-mark img,
+.system-core img,
+.contact-portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .brand strong {
@@ -446,12 +455,16 @@ section[id] {
 .system-core {
   left: 50%;
   top: 50%;
-  width: 72px;
-  height: 72px;
+  width: 92px;
+  height: 92px;
   border-radius: 50%;
   background: var(--paper);
   color: var(--bg);
   transform: translate(-50%, -50%);
+  overflow: hidden;
+  box-shadow:
+    0 0 0 8px color-mix(in srgb, var(--paper) 10%, transparent),
+    0 18px 44px rgba(0, 0, 0, 0.28);
 }
 
 .node {
@@ -1415,6 +1428,35 @@ section[id] {
 
 .contact-copy p:not(.eyebrow) {
   margin-top: 18px;
+}
+
+.contact-portrait {
+  display: flex;
+  width: fit-content;
+  align-items: center;
+  gap: 12px;
+  margin-top: 24px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: color-mix(in srgb, var(--surface) 76%, transparent);
+  color: var(--ink);
+  padding: 10px 14px 10px 10px;
+  font-weight: 850;
+}
+
+.contact-portrait img {
+  width: 58px;
+  height: 58px;
+  border: 1px solid var(--line-strong);
+  border-radius: 50%;
+  background: var(--paper);
+}
+
+.contact-portrait span {
+  color: var(--muted);
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 0.72rem;
+  text-transform: uppercase;
 }
 
 .text-link {
