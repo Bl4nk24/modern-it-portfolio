@@ -5,6 +5,8 @@
     lang: localStorage.getItem("portfolio_lang") || "de",
     theme: localStorage.getItem("portfolio_theme_v3") || "dark",
     activeField: 0,
+    activeConnectionSource: "hr",
+    activeConnectionTarget: "entra",
     pointer: { x: 0.5, y: 0.5 }
   };
 
@@ -15,6 +17,7 @@
       skipLink: "Direkt zur Arbeit",
       brandRole: "IT Administrator / Systems Integrator",
       navWork: "Arbeit",
+      navConnect: "Verbindungen",
       navStack: "Stack",
       navJourney: "Werdegang",
       navContact: "Kontakt",
@@ -36,6 +39,16 @@
       workTitle: "Betrieb, Verbindung, Automatisierung.",
       workIntro:
         "Meine Arbeit beginnt meist dort, wo Systeme schon da sind: Microsoft, Server, Netzwerk, Daten und Menschen. Ich bringe Struktur rein, automatisiere Wiederholung und mache Übergänge verlässlich.",
+      connectEyebrow: "System Connector",
+      connectTitle: "Wähle zwei Systeme. Sieh, welche Daten fließen.",
+      connectIntro:
+        "Ein Ausschnitt aus Integrationsarbeit: Stammdaten mappen, IDs stabil halten, Fehler loggen und nur Daten bewegen, die fachlich Sinn ergeben.",
+      connectorSource: "Quelle",
+      connectorTarget: "Ziel",
+      connectorSyncData: "Synchronisierte Daten",
+      connectorMethod: "Umsetzung",
+      connectorGuard: "Sauber halten",
+      connectorDirection: "Richtung",
       stackEyebrow: "Stack",
       stackTitle: "Technik, die ich wirklich anfasse.",
       stackIntro: "Die Skala orientiert sich an LinkedIn-Kenntnissen, Berufserfahrung, Studium, Projekten und täglichem Betrieb.",
@@ -76,6 +89,7 @@
       skipLink: "Skip to work",
       brandRole: "IT Administrator / Systems Integrator",
       navWork: "Work",
+      navConnect: "Connections",
       navStack: "Stack",
       navJourney: "Journey",
       navContact: "Contact",
@@ -97,6 +111,16 @@
       workTitle: "Operations, integration, automation.",
       workIntro:
         "Most of my work starts with systems that already exist: Microsoft, servers, networks, data, and people. I bring structure, remove repetition, and make handovers reliable.",
+      connectEyebrow: "System connector",
+      connectTitle: "Pick two systems. See which data moves.",
+      connectIntro:
+        "A small slice of integration work: map master data, keep IDs stable, log failures, and move only data that makes operational sense.",
+      connectorSource: "Source",
+      connectorTarget: "Target",
+      connectorSyncData: "Synchronized data",
+      connectorMethod: "Implementation",
+      connectorGuard: "Keep it clean",
+      connectorDirection: "Direction",
       stackEyebrow: "Stack",
       stackTitle: "Technology I actually work with.",
       stackIntro: "The scale is based on LinkedIn skills, work experience, education, projects, and daily operations.",
@@ -144,6 +168,9 @@
   const selectors = {
     fieldList: document.querySelector("[data-field-list]"),
     fieldDetail: document.querySelector("[data-field-detail]"),
+    connectorSource: document.querySelector("[data-connector-source]"),
+    connectorTarget: document.querySelector("[data-connector-target]"),
+    connectorDetail: document.querySelector("[data-connector-detail]"),
     skillBoard: document.querySelector("[data-skill-board]"),
     journeyTrack: document.querySelector("[data-journey-track]"),
     consoleLines: document.querySelector("[data-console-lines]"),
@@ -166,6 +193,7 @@
     setupReveal();
     setupCanvas();
     setupPointer();
+    setupHashScroll();
   }
 
   function setLanguage(lang) {
@@ -186,6 +214,7 @@
   function renderAll() {
     renderConsole();
     renderFields();
+    renderConnector();
     renderSkills();
     renderJourney();
     setupReveal();
@@ -237,6 +266,111 @@
         </div>
         <div class="stack-tags" aria-label="${escapeAttr(t("detailStack"))}">
           ${field.stack.map((item) => `<span>${escapeHtml(item)}</span>`).join("")}
+        </div>
+      </div>
+    `;
+  }
+
+  function renderConnector() {
+    const connector = state.data.connector;
+    if (!connector || !selectors.connectorSource || !selectors.connectorTarget || !selectors.connectorDetail) return;
+
+    const sourceIds = unique(connector.flows.map((flow) => flow.from));
+    const targetIds = unique(connector.flows.map((flow) => flow.to));
+    const sources = connector.systems.filter((system) => sourceIds.includes(system.id));
+    const targets = connector.systems.filter((system) => targetIds.includes(system.id));
+
+    if (!sourceIds.includes(state.activeConnectionSource)) {
+      state.activeConnectionSource = sources[0].id;
+    }
+
+    const availableTargetIds = connector.flows
+      .filter((flow) => flow.from === state.activeConnectionSource)
+      .map((flow) => flow.to);
+
+    if (!availableTargetIds.includes(state.activeConnectionTarget)) {
+      state.activeConnectionTarget = availableTargetIds[0];
+    }
+
+    selectors.connectorSource.innerHTML = sources.map((system, index) => renderConnectorButton(system, index, "source", true)).join("");
+    selectors.connectorTarget.innerHTML = targets
+      .map((system, index) => renderConnectorButton(system, index, "target", availableTargetIds.includes(system.id)))
+      .join("");
+
+    selectors.connectorSource.querySelectorAll("[data-connector-source-id]").forEach((button) => {
+      button.addEventListener("click", () => {
+        state.activeConnectionSource = button.dataset.connectorSourceId;
+        renderConnector();
+      });
+    });
+
+    selectors.connectorTarget.querySelectorAll("[data-connector-target-id]").forEach((button) => {
+      button.addEventListener("click", () => {
+        state.activeConnectionTarget = button.dataset.connectorTargetId;
+        renderConnector();
+      });
+    });
+
+    const flow = connector.flows.find((item) => item.from === state.activeConnectionSource && item.to === state.activeConnectionTarget);
+    renderConnectorDetail(connector, flow);
+  }
+
+  function renderConnectorButton(system, index, side, isAvailable) {
+    const isActive = side === "source" ? system.id === state.activeConnectionSource : system.id === state.activeConnectionTarget;
+    const dataset = side === "source" ? `data-connector-source-id="${escapeAttr(system.id)}"` : `data-connector-target-id="${escapeAttr(system.id)}"`;
+    const disabled = isAvailable ? "" : "disabled";
+    return `
+      <button
+        class="connector-system ${isActive ? "is-active" : ""}"
+        type="button"
+        ${dataset}
+        ${disabled}
+        aria-pressed="${isActive ? "true" : "false"}"
+        style="--delay:${index * 120}ms"
+      >
+        <span>${escapeHtml(system.tag)}</span>
+        <strong>${escapeHtml(system.name)}</strong>
+        <small>${escapeHtml(system.short)}</small>
+      </button>
+    `;
+  }
+
+  function renderConnectorDetail(connector, flow) {
+    const source = connector.systems.find((system) => system.id === flow.from);
+    const target = connector.systems.find((system) => system.id === flow.to);
+    selectors.connectorDetail.innerHTML = `
+      <div class="connector-flow-visual">
+        <div class="connector-endpoint">
+          <span>${escapeHtml(source.tag)}</span>
+          <strong>${escapeHtml(source.name)}</strong>
+        </div>
+        <div class="connector-beam" aria-hidden="true">
+          ${flow.data.slice(0, 6).map((_, index) => `<i style="--delay:${index * 0.38}s"></i>`).join("")}
+        </div>
+        <div class="connector-endpoint">
+          <span>${escapeHtml(target.tag)}</span>
+          <strong>${escapeHtml(target.name)}</strong>
+        </div>
+      </div>
+      <div class="connector-copy">
+        <p class="detail-meta">${escapeHtml(t("connectorDirection"))}</p>
+        <h3>${escapeHtml(flow.title)}</h3>
+        <p>${escapeHtml(flow.summary)}</p>
+        <div class="sync-data">
+          <strong>${escapeHtml(t("connectorSyncData"))}</strong>
+          <div>
+            ${flow.data.map((item) => `<span>${escapeHtml(item)}</span>`).join("")}
+          </div>
+        </div>
+        <div class="connector-meta-grid">
+          <div>
+            <span>${escapeHtml(t("connectorMethod"))}</span>
+            <p>${escapeHtml(flow.method)}</p>
+          </div>
+          <div>
+            <span>${escapeHtml(t("connectorGuard"))}</span>
+            <p>${escapeHtml(flow.guard)}</p>
+          </div>
         </div>
       </div>
     `;
@@ -351,7 +485,7 @@
   }
 
   function setupReveal() {
-    const items = document.querySelectorAll(".field-row, .field-detail, .skill-row, .journey-item, .contact-form");
+    const items = document.querySelectorAll(".field-row, .field-detail, .connector-system, .connector-detail, .skill-row, .journey-item, .contact-form");
     if (!("IntersectionObserver" in window)) {
       items.forEach((item) => item.classList.add("is-visible"));
       return;
@@ -399,6 +533,17 @@
       },
       { passive: true }
     );
+  }
+
+  function setupHashScroll() {
+    const scrollToHash = () => {
+      if (!window.location.hash) return;
+      const target = document.querySelector(window.location.hash);
+      if (target) target.scrollIntoView({ block: "start" });
+    };
+
+    requestAnimationFrame(() => requestAnimationFrame(scrollToHash));
+    window.addEventListener("hashchange", () => requestAnimationFrame(scrollToHash));
   }
 
   function setupCanvas() {
@@ -490,6 +635,10 @@
 
   function escapeAttr(value) {
     return escapeHtml(value).replaceAll("`", "&#096;");
+  }
+
+  function unique(items) {
+    return Array.from(new Set(items));
   }
 
   init();

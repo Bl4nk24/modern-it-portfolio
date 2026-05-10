@@ -96,7 +96,141 @@ window.PORTFOLIO_CONTENT = {
         title: "B.Sc. Computer Science, IU Internationale Hochschule",
         text: "Computer-Science-Grundlagen, die mir helfen, Systeme nicht nur zu bedienen, sondern zu verstehen."
       }
-    ]
+    ],
+    connector: {
+      systems: [
+        { id: "hr", tag: "HR", name: "HR / Stammdaten", short: "Mitarbeiter, Eintritt, Austritt" },
+        { id: "entra", tag: "ID", name: "Microsoft Entra ID", short: "User, Gruppen, Rollen" },
+        { id: "m365", tag: "M365", name: "Microsoft 365", short: "Outlook, SharePoint, Teams" },
+        { id: "sap", tag: "ERP", name: "SAP Business One", short: "Kunden, Artikel, Belege" },
+        { id: "ticket", tag: "ITSM", name: "Ticket-System", short: "Anfragen, SLA, Lösungen" },
+        { id: "monitoring", tag: "MON", name: "Monitoring", short: "Alerts, Hosts, Status" },
+        { id: "inventory", tag: "CMDB", name: "Asset Inventory", short: "Geräte, Besitzer, Seriennummern" },
+        { id: "sql", tag: "SQL", name: "SQL / Reporting", short: "Views, Auswertung, Dashboards" },
+        { id: "knowledge", tag: "KB", name: "Wissensbasis", short: "Runbooks, FAQ, Dokumente" },
+        { id: "ai", tag: "AI", name: "KI-Agent", short: "Antworten, Suche, Assistenz" },
+        { id: "api", tag: "API", name: "API / PowerShell Hub", short: "Jobs, Mapping, Logs" }
+      ],
+      flows: [
+        {
+          from: "hr",
+          to: "entra",
+          title: "HR / Stammdaten -> Microsoft Entra ID",
+          summary: "Eintritt, Wechsel und Austritt werden als sauberer Identity-Lifecycle abgebildet.",
+          data: ["Mitarbeiter-ID", "Name und E-Mail-Alias", "Abteilung und Standort", "Manager", "Eintritts- und Austrittsdatum", "Kostenstelle"],
+          method: "API oder CSV-Import, danach PowerShell/Graph-Provisioning.",
+          guard: "Eindeutige Mitarbeiter-ID, Deprovisioning-Regeln, Gruppenmodell."
+        },
+        {
+          from: "entra",
+          to: "m365",
+          title: "Microsoft Entra ID -> Microsoft 365",
+          summary: "Identitäten werden in nutzbare M365-Arbeitsbereiche übersetzt.",
+          data: ["Benutzerstatus", "Gruppenmitgliedschaften", "Lizenzgruppen", "Postfach-Aliase", "Teams- und SharePoint-Zugriffe"],
+          method: "Microsoft Graph, dynamische Gruppen oder PowerShell-Jobs.",
+          guard: "Least Privilege, Lizenzgruppen, Audit-Logs und klare Namensregeln."
+        },
+        {
+          from: "entra",
+          to: "ticket",
+          title: "Microsoft Entra ID -> Ticket-System",
+          summary: "Support sieht direkt, wer anfragt und in welchem Kontext das Problem steht.",
+          data: ["Name, Mail und Telefon", "Abteilung und Standort", "Manager", "Gruppen/Rollen", "Account-Status"],
+          method: "Geplanter Graph-API-Sync in das ITSM-Benutzerverzeichnis.",
+          guard: "Matching über UPN, deaktivierte Konten markieren, keine Rollen überschreiben."
+        },
+        {
+          from: "m365",
+          to: "ticket",
+          title: "Microsoft 365 -> Ticket-System",
+          summary: "Aus gemeinsamen Postfächern werden nachvollziehbare Supportvorgänge.",
+          data: ["Absender", "Betreff", "Message-ID", "Konversation", "Anhang-Links", "Empfangszeit"],
+          method: "Graph API oder Mail-Connector mit Ticket-Erstellung.",
+          guard: "Duplikate erkennen, Anhänge begrenzen, sensible Inhalte klassifizieren."
+        },
+        {
+          from: "m365",
+          to: "ai",
+          title: "Microsoft 365 -> KI-Agent",
+          summary: "Freigegebene Dokumente werden zu einer kontrollierten Wissensquelle.",
+          data: ["SharePoint-Dokumente", "Runbooks", "FAQ", "Dateimetadaten", "Berechtigungsbereiche", "Versionsstand"],
+          method: "SharePoint/Graph Connector, Indexierung und RAG-Pipeline.",
+          guard: "Berechtigungen respektieren, private Inhalte ausschließen, Quellen anzeigen."
+        },
+        {
+          from: "sap",
+          to: "sql",
+          title: "SAP Business One -> SQL / Reporting",
+          summary: "ERP-Daten werden auswertbar, ohne operativ im ERP herumzuklicken.",
+          data: ["Geschäftspartner", "Artikelstamm", "Aufträge", "Rechnungen", "Lagerbestände", "Zahlungsstatus"],
+          method: "HANA/SQL-Views, Service Layer oder geplanter Export.",
+          guard: "Read-only Reporting, Primärschlüssel, Delta-Läufe und Zeitstempel."
+        },
+        {
+          from: "sap",
+          to: "m365",
+          title: "SAP Business One -> Microsoft 365",
+          summary: "ERP-Ereignisse landen dort, wo Teams ohnehin arbeiten.",
+          data: ["Kundenkontakte", "Aufgaben", "Beleglinks", "Genehmigungsstatus", "Fälligkeitsdaten", "Benachrichtigungen"],
+          method: "SAP Service Layer zu Outlook, Teams oder Power Automate.",
+          guard: "Keine Buchungsdaten ungeprüft zurückschreiben, Status sauber mappen."
+        },
+        {
+          from: "monitoring",
+          to: "ticket",
+          title: "Monitoring -> Ticket-System",
+          summary: "Technische Alarme werden zu priorisierten, nachvollziehbaren Tickets.",
+          data: ["Alert-ID", "Hostname/System", "Severity", "Zeitstempel", "Metrik/Schwellwert", "Recovery-Status"],
+          method: "Webhook oder REST-API mit Deduplizierung.",
+          guard: "Flapping vermeiden, Auto-Close regeln, Eskalation klar halten."
+        },
+        {
+          from: "inventory",
+          to: "ticket",
+          title: "Asset Inventory -> Ticket-System",
+          summary: "Supportfälle bekommen sofort den passenden Geräte- und Besitzkontext.",
+          data: ["Hostname", "Seriennummer", "Asset-Tag", "Besitzer", "Garantie", "Standort"],
+          method: "Asset-API, CSV-Sync oder PowerShell-Import.",
+          guard: "Matching über Seriennummer/Asset-Tag, alte Geräte archivieren."
+        },
+        {
+          from: "ticket",
+          to: "ai",
+          title: "Ticket-System -> KI-Agent",
+          summary: "Gelöste Fälle werden zu wiederverwendbarem Supportwissen.",
+          data: ["Gelöste Tickets", "Kategorien", "Lösungstexte", "Known Errors", "SLA/Dringlichkeit", "Runbook-Links"],
+          method: "ITSM-API, Bereinigung, Freigabe und Knowledge-Index.",
+          guard: "Personenbezogene Daten entfernen, veraltete Lösungen markieren."
+        },
+        {
+          from: "ticket",
+          to: "sql",
+          title: "Ticket-System -> SQL / Reporting",
+          summary: "Supportdaten werden messbar: Volumen, Engpässe, Themen und Reaktionszeiten.",
+          data: ["Ticket-ID", "Status", "Kategorie", "Bearbeitungszeit", "SLA", "Zuständigkeit"],
+          method: "REST-Export, inkrementelle Loads und Reporting-Views.",
+          guard: "Historie erhalten, Statuswerte normalisieren, PII sparsam halten."
+        },
+        {
+          from: "sql",
+          to: "api",
+          title: "SQL / Reporting -> API / PowerShell Hub",
+          summary: "Datenbankzustände lösen nachvollziehbare Admin- oder Benachrichtigungsjobs aus.",
+          data: ["Statuslisten", "Genehmigungsdaten", "Report-Exports", "Änderungszeitpunkt", "Job-ID", "Fehlerstatus"],
+          method: "SQL-View, Scheduled Job, PowerShell und API-Calls.",
+          guard: "Source of Truth definieren, Idempotenz, Retry-Queue und Logging."
+        },
+        {
+          from: "knowledge",
+          to: "ai",
+          title: "Wissensbasis -> KI-Agent",
+          summary: "Dokumentiertes Wissen wird suchbar, zitierbar und im Support nutzbar.",
+          data: ["Runbooks", "FAQ", "Prozessdokumente", "Version", "Owner", "Freigabestatus"],
+          method: "Indexierung mit Quellenverweisen und regelmäßiger Aktualisierung.",
+          guard: "Nur freigegebene Inhalte, Ablaufdatum, Quellenpflicht in Antworten."
+        }
+      ]
+    }
   },
   en: {
     profile: {
@@ -195,7 +329,141 @@ window.PORTFOLIO_CONTENT = {
         title: "B.Sc. Computer Science, IU International University",
         text: "Computer science foundations that help me not only operate systems, but understand them."
       }
-    ]
+    ],
+    connector: {
+      systems: [
+        { id: "hr", tag: "HR", name: "HR / Master Data", short: "Employees, start, exit" },
+        { id: "entra", tag: "ID", name: "Microsoft Entra ID", short: "Users, groups, roles" },
+        { id: "m365", tag: "M365", name: "Microsoft 365", short: "Outlook, SharePoint, Teams" },
+        { id: "sap", tag: "ERP", name: "SAP Business One", short: "Customers, items, documents" },
+        { id: "ticket", tag: "ITSM", name: "Ticket System", short: "Requests, SLA, resolutions" },
+        { id: "monitoring", tag: "MON", name: "Monitoring", short: "Alerts, hosts, status" },
+        { id: "inventory", tag: "CMDB", name: "Asset Inventory", short: "Devices, owners, serials" },
+        { id: "sql", tag: "SQL", name: "SQL / Reporting", short: "Views, analytics, dashboards" },
+        { id: "knowledge", tag: "KB", name: "Knowledge Base", short: "Runbooks, FAQ, documents" },
+        { id: "ai", tag: "AI", name: "AI Agent", short: "Answers, search, assistance" },
+        { id: "api", tag: "API", name: "API / PowerShell Hub", short: "Jobs, mapping, logs" }
+      ],
+      flows: [
+        {
+          from: "hr",
+          to: "entra",
+          title: "HR / Master Data -> Microsoft Entra ID",
+          summary: "Joiner, mover, and leaver events become a clean identity lifecycle.",
+          data: ["Employee ID", "Name and email alias", "Department and location", "Manager", "Start and exit date", "Cost center"],
+          method: "API or CSV import, followed by PowerShell/Graph provisioning.",
+          guard: "Unique employee ID, deprovisioning rules, group model."
+        },
+        {
+          from: "entra",
+          to: "m365",
+          title: "Microsoft Entra ID -> Microsoft 365",
+          summary: "Identities become usable M365 workspaces.",
+          data: ["User status", "Group memberships", "License groups", "Mailbox aliases", "Teams and SharePoint access"],
+          method: "Microsoft Graph, dynamic groups, or PowerShell jobs.",
+          guard: "Least privilege, license groups, audit logs, and clear naming rules."
+        },
+        {
+          from: "entra",
+          to: "ticket",
+          title: "Microsoft Entra ID -> Ticket System",
+          summary: "Support immediately sees who is asking and the context around the issue.",
+          data: ["Name, mail, and phone", "Department and location", "Manager", "Groups/roles", "Account status"],
+          method: "Scheduled Graph API sync into the ITSM user directory.",
+          guard: "Match by UPN, flag disabled accounts, do not overwrite roles blindly."
+        },
+        {
+          from: "m365",
+          to: "ticket",
+          title: "Microsoft 365 -> Ticket System",
+          summary: "Shared mailboxes become traceable support cases.",
+          data: ["Sender", "Subject", "Message ID", "Conversation", "Attachment links", "Received time"],
+          method: "Graph API or mail connector with ticket creation.",
+          guard: "Detect duplicates, limit attachments, classify sensitive content."
+        },
+        {
+          from: "m365",
+          to: "ai",
+          title: "Microsoft 365 -> AI Agent",
+          summary: "Approved documents become a controlled knowledge source.",
+          data: ["SharePoint documents", "Runbooks", "FAQ", "File metadata", "Permission scopes", "Version state"],
+          method: "SharePoint/Graph connector, indexing, and RAG pipeline.",
+          guard: "Respect permissions, exclude private content, show sources."
+        },
+        {
+          from: "sap",
+          to: "sql",
+          title: "SAP Business One -> SQL / Reporting",
+          summary: "ERP data becomes reportable without clicking through the ERP all day.",
+          data: ["Business partners", "Item master data", "Sales orders", "Invoices", "Stock levels", "Payment status"],
+          method: "HANA/SQL views, Service Layer, or scheduled export.",
+          guard: "Read-only reporting, primary keys, delta runs, and timestamps."
+        },
+        {
+          from: "sap",
+          to: "m365",
+          title: "SAP Business One -> Microsoft 365",
+          summary: "ERP events arrive where teams already work.",
+          data: ["Customer contacts", "Tasks", "Document links", "Approval status", "Due dates", "Notifications"],
+          method: "SAP Service Layer to Outlook, Teams, or Power Automate.",
+          guard: "Do not write accounting data back without validation; map status cleanly."
+        },
+        {
+          from: "monitoring",
+          to: "ticket",
+          title: "Monitoring -> Ticket System",
+          summary: "Technical alerts become prioritized, traceable tickets.",
+          data: ["Alert ID", "Host/system", "Severity", "Timestamp", "Metric/threshold", "Recovery status"],
+          method: "Webhook or REST API with deduplication.",
+          guard: "Avoid flapping, define auto-close behavior, keep escalation clear."
+        },
+        {
+          from: "inventory",
+          to: "ticket",
+          title: "Asset Inventory -> Ticket System",
+          summary: "Support cases get device and ownership context immediately.",
+          data: ["Hostname", "Serial number", "Asset tag", "Owner", "Warranty", "Location"],
+          method: "Asset API, CSV sync, or PowerShell import.",
+          guard: "Match by serial/asset tag, archive old devices."
+        },
+        {
+          from: "ticket",
+          to: "ai",
+          title: "Ticket System -> AI Agent",
+          summary: "Solved cases become reusable support knowledge.",
+          data: ["Solved tickets", "Categories", "Resolution text", "Known errors", "SLA/urgency", "Runbook links"],
+          method: "ITSM API, cleanup, approval, and knowledge index.",
+          guard: "Remove personal data, mark stale resolutions."
+        },
+        {
+          from: "ticket",
+          to: "sql",
+          title: "Ticket System -> SQL / Reporting",
+          summary: "Support data becomes measurable: volume, bottlenecks, themes, and response times.",
+          data: ["Ticket ID", "Status", "Category", "Handling time", "SLA", "Assignment"],
+          method: "REST export, incremental loads, and reporting views.",
+          guard: "Keep history, normalize status values, minimize PII."
+        },
+        {
+          from: "sql",
+          to: "api",
+          title: "SQL / Reporting -> API / PowerShell Hub",
+          summary: "Database states trigger traceable admin or notification jobs.",
+          data: ["Status lists", "Approval data", "Report exports", "Changed timestamp", "Job ID", "Error state"],
+          method: "SQL view, scheduled job, PowerShell, and API calls.",
+          guard: "Define the source of truth, idempotency, retry queue, and logging."
+        },
+        {
+          from: "knowledge",
+          to: "ai",
+          title: "Knowledge Base -> AI Agent",
+          summary: "Documented knowledge becomes searchable, quotable, and useful in support.",
+          data: ["Runbooks", "FAQ", "Process documents", "Version", "Owner", "Approval status"],
+          method: "Indexing with source references and regular refresh.",
+          guard: "Approved content only, expiry dates, mandatory sources in answers."
+        }
+      ]
+    }
   }
 };
 

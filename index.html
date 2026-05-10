@@ -24,6 +24,7 @@
 
       <nav class="nav-links" aria-label="Hauptnavigation">
         <a href="#work" data-i18n="navWork">Arbeit</a>
+        <a href="#connect" data-i18n="navConnect">Verbindungen</a>
         <a href="#stack" data-i18n="navStack">Stack</a>
         <a href="#journey" data-i18n="navJourney">Werdegang</a>
         <a href="#contact" data-i18n="navContact">Kontakt</a>
@@ -120,6 +121,33 @@
         <div class="work-layout">
           <div class="field-list" data-field-list></div>
           <article class="field-detail" data-field-detail aria-live="polite"></article>
+        </div>
+      </section>
+
+      <section class="connect-section" id="connect" aria-labelledby="connect-title">
+        <div class="section-intro section-intro-split">
+          <div>
+            <p class="eyebrow" data-i18n="connectEyebrow">System Connector</p>
+            <h2 id="connect-title" data-i18n="connectTitle">Wähle zwei Systeme. Sieh, welche Daten fließen.</h2>
+          </div>
+          <p data-i18n="connectIntro">
+            Ein Ausschnitt aus Integrationsarbeit: Stammdaten mappen, IDs stabil halten, Fehler loggen und nur Daten
+            bewegen, die fachlich Sinn ergeben.
+          </p>
+        </div>
+
+        <div class="connector-board" data-connector-board>
+          <div class="connector-column connector-column-source">
+            <h3 data-i18n="connectorSource">Quelle</h3>
+            <div class="connector-system-list" data-connector-source></div>
+          </div>
+
+          <article class="connector-detail" data-connector-detail aria-live="polite"></article>
+
+          <div class="connector-column connector-column-target">
+            <h3 data-i18n="connectorTarget">Ziel</h3>
+            <div class="connector-system-list" data-connector-target></div>
+          </div>
         </div>
       </section>
 
