@@ -226,9 +226,14 @@ svg {
 }
 
 .nav-links a:hover,
-.nav-links a:focus-visible {
+.nav-links a:focus-visible,
+.nav-links a.is-active {
   background: var(--paper);
   color: var(--bg);
+}
+
+.nav-links a.is-active {
+  box-shadow: 0 10px 26px color-mix(in srgb, var(--accent) 18%, transparent);
 }
 
 .header-actions {
@@ -1108,6 +1113,7 @@ section[id] {
 
 .connector-meta-grid > div {
   display: grid;
+  min-width: 0;
   gap: 10px;
   background: color-mix(in srgb, var(--surface) 90%, var(--bg));
   padding: 15px;
@@ -1117,11 +1123,12 @@ section[id] {
   color: var(--muted);
   font-size: 0.9rem;
   line-height: 1.55;
+  overflow-wrap: anywhere;
 }
 
 .case-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1px;
   overflow: hidden;
   border: 1px solid var(--line);
@@ -1132,32 +1139,25 @@ section[id] {
 .case-card {
   position: relative;
   display: grid;
-  min-height: 520px;
-  grid-template-rows: auto auto auto auto 1fr auto;
-  gap: 18px;
+  min-height: 430px;
+  grid-template-rows: auto auto auto auto auto 1fr;
+  gap: 16px;
   overflow: hidden;
   background:
     linear-gradient(180deg, color-mix(in srgb, var(--surface) 93%, transparent), color-mix(in srgb, var(--bg) 88%, transparent)),
     var(--surface);
-  padding: 22px;
+  padding: 24px;
   animation: rowIn 620ms ease both;
   animation-delay: var(--delay);
 }
 
 .case-card::before {
-  position: absolute;
-  inset: auto 22px 0;
-  height: 42%;
-  border: 1px solid color-mix(in srgb, var(--accent) 34%, transparent);
-  border-bottom: 0;
-  border-radius: var(--radius) var(--radius) 0 0;
-  background:
-    linear-gradient(90deg, color-mix(in srgb, var(--accent) 50%, transparent) 1px, transparent 1px),
-    linear-gradient(0deg, color-mix(in srgb, var(--line) 52%, transparent) 1px, transparent 1px);
-  background-size: 26px 26px;
   content: "";
-  opacity: 0.22;
-  transform: translateY(12%);
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--accent), transparent 78%);
+  opacity: 0.8;
 }
 
 .case-card > * {
@@ -1185,8 +1185,8 @@ section[id] {
 .case-card h3 {
   margin: 0;
   color: var(--ink);
-  font-size: clamp(1.45rem, 2vw, 2rem);
-  line-height: 1.05;
+  font-size: clamp(1.35rem, 2vw, 2.05rem);
+  line-height: 1.08;
   text-wrap: balance;
 }
 
@@ -1217,8 +1217,8 @@ section[id] {
 }
 
 .case-data {
-  align-self: end;
-  padding-top: 60px;
+  align-self: start;
+  padding-top: 10px;
 }
 
 .case-data strong,
@@ -1375,7 +1375,7 @@ section[id] {
 }
 
 .skill-row strong,
-.skill-row span,
+.skill-row > div > span,
 .skill-row em {
   display: block;
 }
@@ -1385,7 +1385,7 @@ section[id] {
   font-size: 0.98rem;
 }
 
-.skill-row span {
+.skill-row > div > span {
   margin-top: 4px;
   color: var(--muted);
   font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
@@ -1413,6 +1413,7 @@ section[id] {
 .skill-meter span {
   display: block;
   height: 100%;
+  margin-top: 0;
   border-radius: inherit;
   background: linear-gradient(90deg, var(--accent), var(--accent-3));
   animation: meterIn 900ms ease both;
@@ -1420,7 +1421,7 @@ section[id] {
 
 .journey-track {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
   border-top: 1px solid var(--line);
 }
 

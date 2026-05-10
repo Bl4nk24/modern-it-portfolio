@@ -83,7 +83,7 @@
       topicAi: "KI-Agenten",
       formLanguage: "Sprache",
       formMessage: "Nachricht",
-      privacyNote: "Die Nachricht wird gespeichert und als Mail an mich weitergeleitet.",
+      privacyNote: "Wird sicher gespeichert und vertraulich behandelt.",
       formSubmit: "Senden",
       footerTop: "Nach oben",
       detailSignals: "Signale",
@@ -167,7 +167,7 @@
       topicAi: "AI agents",
       formLanguage: "Language",
       formMessage: "Message",
-      privacyNote: "Your message is stored and forwarded to me by email.",
+      privacyNote: "Stored securely and handled confidentially.",
       formSubmit: "Send",
       footerTop: "Back to top",
       detailSignals: "Signals",
@@ -225,6 +225,7 @@
     setupCanvas();
     setupPointer();
     setupHashScroll();
+    setupScrollSpy();
     setupAnalytics();
   }
 
@@ -597,6 +598,52 @@
     const update = () => header.classList.toggle("is-elevated", window.scrollY > 18);
     update();
     window.addEventListener("scroll", update, { passive: true });
+  }
+
+  function setupScrollSpy() {
+    const links = Array.from(document.querySelectorAll('.nav-links a[href^="#"]'));
+    const sections = links
+      .map((link) => {
+        const id = link.getAttribute("href").slice(1);
+        return { id, link, section: document.getElementById(id) };
+      })
+      .filter((item) => item.section);
+
+    if (!sections.length) return;
+
+    const setActive = (activeId) => {
+      sections.forEach(({ id, link }) => {
+        const isActive = id === activeId;
+        link.classList.toggle("is-active", isActive);
+        if (isActive) {
+          link.setAttribute("aria-current", "page");
+        } else {
+          link.removeAttribute("aria-current");
+        }
+      });
+    };
+
+    const update = () => {
+      const triggerLine = window.innerHeight * 0.38;
+      let activeId = sections[0].id;
+
+      sections.forEach(({ id, section }) => {
+        if (section.getBoundingClientRect().top <= triggerLine) {
+          activeId = id;
+        }
+      });
+
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) {
+        activeId = sections[sections.length - 1].id;
+      }
+
+      setActive(activeId);
+    };
+
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    window.addEventListener("hashchange", () => requestAnimationFrame(update));
   }
 
   function setupReveal() {

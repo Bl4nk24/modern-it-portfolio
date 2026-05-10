@@ -6,12 +6,12 @@
     <style>
       :root {
         --ink: #0a0d14;
-        --text: #273347;
-        --muted: #647086;
-        --line: #dbe2ec;
-        --soft: #f3f6fb;
+        --text: #263247;
+        --muted: #667086;
+        --line: #dbe3ee;
+        --soft: #f4f7fb;
         --accent: #0078d4;
-        --green: #0f9f6e;
+        --accent-2: #16a34a;
         font-family:
           Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
           sans-serif;
@@ -29,28 +29,8 @@
       }
 
       body {
-        font-size: 10.8pt;
-        line-height: 1.5;
-      }
-
-      .page {
-        width: 210mm;
-        min-height: 297mm;
-        padding: 16mm 17mm;
-        page-break-after: always;
-      }
-
-      .page:last-child {
-        page-break-after: auto;
-      }
-
-      header {
-        display: grid;
-        grid-template-columns: 1fr auto;
-        gap: 12mm;
-        align-items: start;
-        border-bottom: 1px solid var(--line);
-        padding-bottom: 8mm;
+        font-size: 8.8pt;
+        line-height: 1.34;
       }
 
       h1,
@@ -60,38 +40,57 @@
         margin: 0;
       }
 
+      .page {
+        width: 210mm;
+        height: 297mm;
+        overflow: hidden;
+        padding: 10.5mm 12mm;
+      }
+
+      .top {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 8mm;
+        align-items: start;
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 6mm;
+      }
+
       h1 {
         color: var(--ink);
-        font-size: 30pt;
-        letter-spacing: -0.02em;
-        line-height: 0.95;
+        font-size: 27pt;
+        line-height: 0.96;
+        letter-spacing: 0;
       }
 
       .role {
-        margin-top: 4mm;
+        margin-top: 2mm;
         color: var(--accent);
-        font-weight: 800;
+        font-size: 10.4pt;
+        font-weight: 850;
       }
 
       .intro {
-        margin-top: 5mm;
-        max-width: 138mm;
+        max-width: 136mm;
+        margin-top: 3.5mm;
+        font-size: 9.2pt;
       }
 
       .meta {
         display: grid;
-        gap: 2mm;
+        gap: 1.4mm;
         justify-items: end;
         color: var(--muted);
-        font-size: 9.2pt;
+        font-size: 8.2pt;
         text-align: right;
       }
 
-      .cv-photo {
-        width: 24mm;
-        height: 24mm;
+      .photo {
+        width: 22mm;
+        height: 22mm;
         border: 1px solid var(--line);
         border-radius: 50%;
+        background: var(--soft);
         object-fit: cover;
       }
 
@@ -99,106 +98,139 @@
         color: var(--ink);
       }
 
-      section {
-        margin-top: 8mm;
+      .profile {
+        margin-top: 4.5mm;
+        border-left: 3px solid var(--accent);
+        background: var(--soft);
+        padding: 3.4mm 4mm;
+      }
+
+      .layout {
+        display: grid;
+        grid-template-columns: 1.36fr 0.82fr;
+        gap: 6mm;
+        margin-top: 5mm;
+      }
+
+      section + section {
+        margin-top: 5mm;
       }
 
       h2 {
         color: var(--ink);
-        font-size: 12pt;
-        letter-spacing: 0.08em;
+        font-size: 9.2pt;
+        letter-spacing: 0.04em;
         text-transform: uppercase;
-      }
-
-      .grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 5mm;
-        margin-top: 4mm;
       }
 
       .item {
         border-top: 1px solid var(--line);
-        padding-top: 4mm;
+        margin-top: 2.8mm;
+        padding-top: 2.7mm;
       }
 
       .item h3 {
         color: var(--ink);
-        font-size: 12.8pt;
-        line-height: 1.2;
+        font-size: 10.2pt;
+        line-height: 1.15;
       }
 
       .date,
       .label {
         display: block;
+        margin-bottom: 1mm;
         color: var(--accent);
         font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
-        font-size: 8.6pt;
-        font-weight: 800;
-        margin-bottom: 1.5mm;
+        font-size: 7pt;
+        font-weight: 850;
         text-transform: uppercase;
       }
 
-      .item p,
-      li {
-        margin-top: 2mm;
-      }
-
-      ul {
-        margin: 3mm 0 0;
-        padding-left: 4mm;
+      .item p {
+        margin-top: 1.4mm;
       }
 
       .chips {
         display: flex;
         flex-wrap: wrap;
-        gap: 2mm;
-        margin-top: 3mm;
+        gap: 1.4mm;
+        margin-top: 2mm;
       }
 
       .chips span {
         border: 1px solid var(--line);
-        border-radius: 99px;
-        background: var(--soft);
+        border-radius: 999px;
+        background: #ffffff;
         color: var(--ink);
-        font-size: 8.7pt;
-        font-weight: 700;
-        padding: 1.5mm 2.6mm;
+        font-size: 7.2pt;
+        font-weight: 760;
+        padding: 1.1mm 2mm;
       }
 
-      .highlight {
-        border-left: 3px solid var(--accent);
-        background: var(--soft);
-        padding: 4mm;
+      .side-box {
+        border: 1px solid var(--line);
+        background: #ffffff;
+        padding: 3.2mm;
+      }
+
+      .side-box + .side-box {
+        margin-top: 3mm;
+      }
+
+      .side-box h3 {
+        color: var(--ink);
+        font-size: 9.6pt;
+        margin-bottom: 1.7mm;
+      }
+
+      .side-box p,
+      .side-box li {
+        color: var(--muted);
+      }
+
+      ul {
+        margin: 1.5mm 0 0;
+        padding-left: 4mm;
+      }
+
+      li + li {
+        margin-top: 1mm;
       }
 
       .stack {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 3mm;
-        margin-top: 4mm;
-      }
-
-      .stack div {
-        border: 1px solid var(--line);
-        padding: 3mm;
+        gap: 1.8mm;
       }
 
       .stack strong {
         display: block;
         color: var(--ink);
-        margin-bottom: 2mm;
       }
 
-      .stack span {
+      .bar {
+        height: 4px;
+        margin-top: 1mm;
+        overflow: hidden;
+        border-radius: 999px;
+        background: var(--line);
+      }
+
+      .bar span {
         display: block;
-        color: var(--muted);
-        font-size: 9pt;
+        height: 100%;
+        border-radius: inherit;
+        background: linear-gradient(90deg, var(--accent), var(--accent-2));
       }
 
-      .language-block {
-        border-top: 1px solid var(--line);
-        padding-top: 6mm;
+      .mini-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2.5mm;
+      }
+
+      .contact {
+        color: var(--ink);
+        font-weight: 780;
       }
 
       @page {
@@ -209,201 +241,147 @@
   </head>
   <body>
     <main class="page">
-      <header>
+      <header class="top">
         <div>
           <h1>Eirik Christiansen</h1>
           <p class="role">IT Administrator & Systems Integrator</p>
           <p class="intro">
             IT-Administrator aus Hamburg mit Fokus auf Microsoft-Umgebungen, Infrastruktur,
-            PowerShell-Automatisierung und Systemintegration. Ich verbinde vorhandene Tools,
-            APIs und Datenquellen so, dass Prozesse stabiler, transparenter und leichter zu
-            betreiben werden.
+            PowerShell-Automatisierung und Systemintegration. Ich verbinde Tools, APIs und
+            Datenquellen so, dass Prozesse stabiler, transparenter und leichter betreibbar werden.
           </p>
         </div>
         <div class="meta">
-          <img class="cv-photo" src="./eirik-christiansen.png" alt="Eirik Christiansen" />
+          <img class="photo" src="./eirik-christiansen.png" alt="Eirik Christiansen" />
           <strong>Hamburg & Remote</strong>
           <span>Deutsch / Englisch</span>
           <span>linkedin.com/in/eirik-christiansen</span>
         </div>
       </header>
 
-      <section>
-        <h2>Profil</h2>
-        <div class="highlight">
-          Mein Schwerpunkt liegt nicht auf großen Softwareprodukten, sondern auf technischer
-          Verbindung: Microsoft 365, Active Directory/Entra, Windows, Netzwerk, Helpdesk,
-          PowerShell, n8n, Power Automate, Python, Shell, SQL/MySQL und APIs. KI-Workflows und
-          Agenten begleite ich seit 2020; SAP Business One Technik ist seit April 2025 ein
-          wachsendes Praxisfeld.
-        </div>
-      </section>
+      <p class="profile">
+        Schwerpunkt: Microsoft 365, Active Directory/Entra, Windows, Netzwerk, Helpdesk,
+        PowerShell, n8n, Power Automate, Python, Shell, SQL/MySQL und APIs. KI-Workflows und
+        Agenten begleite ich seit 2020. SAP Business One Technik ist seit April 2025 ein
+        wachsendes Praxisfeld, eingeordnet mit Admin- und Infrastruktur-Blick.
+      </p>
 
-      <section>
-        <h2>Erfahrung</h2>
-        <div class="grid">
-          <article class="item">
-            <span class="date">Apr. 2025 - heute</span>
-            <h3>SAP IT-Consultant, Be1Eye GmbH</h3>
-            <p>
-              SAP Business One Technik, IT-Infrastruktur, Security, Prozessautomatisierung und
-              technische Einordnung von ERP-Themen aus Hamburg und remote.
-            </p>
-            <div class="chips">
-              <span>SAP B1</span><span>HANA/SQL</span><span>Support</span><span>Automation</span>
-            </div>
-          </article>
-          <article class="item">
-            <span class="date">Okt. 2021 - Apr. 2025</span>
-            <h3>IT-Systemadministrator, Reos GmbH</h3>
-            <p>
-              Active Directory, Microsoft Outlook, Windows Server, Netzwerk, Hardware,
-              Betriebssysteme, Helpdesk-Support und operative IT im dualen Studium.
-            </p>
-            <div class="chips">
-              <span>AD</span><span>Windows Server</span><span>Outlook</span><span>LAN/WAN</span>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section>
-        <h2>Ausbildung</h2>
-        <div class="grid">
-          <article class="item">
-            <span class="date">Okt. 2021 - März 2025</span>
-            <h3>B.Sc. Computer Science, IU Internationale Hochschule</h3>
-            <p>
-              Abschlussnote 2,2. Bachelorarbeit über automatisiertes Onboarding mit NFON,
-              Microsoft 365, Keeper, automatischer Laptop-Einrichtung und Snipe-IT.
-            </p>
-          </article>
-          <article class="item">
-            <span class="date">Sept. 2012 - Juni 2021</span>
-            <h3>Abitur, Schloss Torgelow Privates Internatsgymnasium</h3>
-            <p>
-              Abschlussnote 2,4. Inklusive Term in England als Teil des schulischen Wegs.
-            </p>
-          </article>
-        </div>
-      </section>
-
-      <section>
-        <h2>Ausgewählte Integrationen</h2>
-        <div class="grid">
-          <article class="item">
-            <span class="label">Bachelorarbeit</span>
-            <h3>Automatisiertes Onboarding</h3>
-            <p>
-              NFON, M365, Keeper, automatische Laptopeinrichtung und Snipe-IT zu einem
-              nachvollziehbaren Eintrittsprozess verbinden.
-            </p>
-          </article>
-          <article class="item">
-            <span class="label">SAP B1</span>
-            <h3>ERP-Daten in operative Systeme</h3>
-            <p>
-              Geschäftspartner zur Telefonanlage, SAP B1 zu Mailchimp und SAP B1 Termine in
-              Outlook-Kalender mit klarer Datenminimierung.
-            </p>
-          </article>
-        </div>
-      </section>
-
-      <section>
-        <h2>Kenntnisse</h2>
-        <div class="stack">
-          <div><strong>Microsoft</strong><span>M365, Outlook, Entra/AD, Windows, Office, Graph</span></div>
-          <div><strong>Infrastructure</strong><span>Windows Server, LAN/WAN, Hardware, Helpdesk</span></div>
-          <div><strong>Automation</strong><span>PowerShell, n8n, Power Automate, Python, Shell</span></div>
-          <div><strong>Data/API</strong><span>REST APIs, SQL, MySQL, HANA, Reporting</span></div>
-        </div>
-      </section>
-    </main>
-
-    <main class="page">
-      <header>
+      <div class="layout">
         <div>
-          <h1>Eirik Christiansen</h1>
-          <p class="role">IT Administrator & Systems Integrator</p>
-          <p class="intro">
-            Hamburg-based IT administrator focused on Microsoft environments, infrastructure,
-            PowerShell automation, and system integration. I connect existing tools, APIs, and
-            data sources so processes become more stable, transparent, and operable.
-          </p>
-        </div>
-        <div class="meta">
-          <img class="cv-photo" src="./eirik-christiansen.png" alt="Eirik Christiansen" />
-          <strong>Hamburg & Remote</strong>
-          <span>German / English</span>
-          <span>linkedin.com/in/eirik-christiansen</span>
-        </div>
-      </header>
+          <section>
+            <h2>Erfahrung</h2>
+            <article class="item">
+              <span class="date">Apr. 2025 - heute</span>
+              <h3>SAP IT-Consultant, Be1Eye GmbH</h3>
+              <p>
+                SAP Business One Technik, IT-Infrastruktur, Security, Prozessautomatisierung und
+                technische Einordnung von ERP-Themen aus Hamburg und remote.
+              </p>
+              <div class="chips">
+                <span>SAP B1</span><span>HANA/SQL</span><span>Support</span><span>Automation</span>
+              </div>
+            </article>
+            <article class="item">
+              <span class="date">Okt. 2021 - Apr. 2025</span>
+              <h3>IT-Systemadministrator, Reos GmbH</h3>
+              <p>
+                Active Directory, Microsoft Outlook, Windows Server, Netzwerk, Hardware,
+                Betriebssysteme, Helpdesk-Support und operative IT im dualen Studium.
+              </p>
+              <div class="chips">
+                <span>AD</span><span>Windows Server</span><span>Outlook</span><span>LAN/WAN</span>
+              </div>
+            </article>
+          </section>
 
-      <section class="language-block">
-        <h2>Profile</h2>
-        <div class="highlight">
-          My strength is not building large software products from scratch. It is connecting
-          systems responsibly: Microsoft 365, Active Directory/Entra, Windows, network, helpdesk,
-          PowerShell, n8n, Power Automate, Python, Shell, SQL/MySQL, and APIs. I have worked with
-          AI workflows and agents since 2020; SAP Business One technology has been a growing area
-          since April 2025.
-        </div>
-      </section>
+          <section>
+            <h2>Ausbildung</h2>
+            <div class="mini-grid">
+              <article class="item">
+                <span class="date">Okt. 2021 - März 2025</span>
+                <h3>B.Sc. Computer Science, IU Internationale Hochschule</h3>
+                <p>
+                  Abschlussnote 2,2. Bachelorarbeit über automatisiertes Onboarding mit NFON,
+                  Microsoft 365, Keeper, automatischer Laptop-Einrichtung und Snipe-IT.
+                </p>
+              </article>
+              <article class="item">
+                <span class="date">Sept. 2012 - Juni 2021</span>
+                <h3>Abitur, Schloss Torgelow Privates Internatsgymnasium</h3>
+                <p>
+                  Abschlussnote 2,4. Sept. bis Dez. 2017: Kingham Hill School in England als
+                  Teil des schulischen Wegs.
+                </p>
+              </article>
+            </div>
+          </section>
 
-      <section>
-        <h2>Experience</h2>
-        <div class="grid">
-          <article class="item">
-            <span class="date">Apr. 2025 - today</span>
-            <h3>SAP IT Consultant, Be1Eye GmbH</h3>
-            <p>
-              SAP Business One technology, IT infrastructure, security, process automation, and
-              technical framing of ERP topics from Hamburg and remotely.
-            </p>
-          </article>
-          <article class="item">
-            <span class="date">Oct. 2021 - Apr. 2025</span>
-            <h3>IT Systems Administrator, Reos GmbH</h3>
-            <p>
-              Active Directory, Microsoft Outlook, Windows Server, networking, hardware,
-              operating systems, helpdesk support, and operational IT during a dual study program.
-            </p>
-          </article>
+          <section>
+            <h2>Integrationsbeispiele</h2>
+            <div class="mini-grid">
+              <article class="item">
+                <span class="label">Bachelorarbeit</span>
+                <h3>Automatisiertes Onboarding</h3>
+                <p>
+                  NFON, Microsoft 365, Keeper, Laptop-Setup und Snipe-IT zu einem kontrollierten
+                  Eintrittsprozess verbinden.
+                </p>
+              </article>
+              <article class="item">
+                <span class="label">SAP B1 / API</span>
+                <h3>ERP-Daten operativ nutzbar machen</h3>
+                <p>
+                  Geschäftspartner zur Telefonanlage, SAP B1 zu Mailchimp und SAP-B1-Termine in
+                  Outlook mit sauberem Mapping und Datenminimierung.
+                </p>
+              </article>
+            </div>
+          </section>
         </div>
-      </section>
 
-      <section>
-        <h2>Education</h2>
-        <div class="grid">
-          <article class="item">
-            <span class="date">Oct. 2021 - Mar. 2025</span>
-            <h3>B.Sc. Computer Science, IU International University</h3>
-            <p>
-              Final grade 2.2. Bachelor thesis on automated onboarding with NFON, Microsoft 365,
-              Keeper, automatic laptop setup, and Snipe-IT.
-            </p>
-          </article>
-          <article class="item">
-            <span class="date">Sept. 2012 - Jun. 2021</span>
-            <h3>Abitur, Schloss Torgelow Private Boarding School</h3>
-            <p>
-              Final grade 2.4. Includes a term in England as part of the school path.
-            </p>
-          </article>
-        </div>
-      </section>
+        <aside>
+          <div class="side-box">
+            <h3>Kernprofil</h3>
+            <ul>
+              <li>Admin + Integrator statt reines Developer-Profil</li>
+              <li>Microsoft-Umgebungen, Identity, Workplace und Betrieb</li>
+              <li>API-Verbindungen mit Logging, Mapping und Fehlerpfaden</li>
+              <li>KI-Agenten, Wissensquellen und Assistenzsysteme seit 2020</li>
+            </ul>
+          </div>
 
-      <section>
-        <h2>Integration Principles</h2>
-        <ul>
-          <li>Define the system of record before moving data.</li>
-          <li>Keep jobs idempotent, logged, and repeatable.</li>
-          <li>Use least privilege for every API and automation account.</li>
-          <li>Move only the fields that serve the process.</li>
-          <li>Design retries, queues, and manual approval paths from the start.</li>
-        </ul>
-      </section>
+          <div class="side-box">
+            <h3>Stack</h3>
+            <div class="stack">
+              <p><strong>Microsoft / Identity</strong>M365, Entra/AD, Outlook, Windows, Graph</p>
+              <div class="bar"><span style="width: 88%"></span></div>
+              <p><strong>Infrastruktur</strong>Windows Server, LAN/WAN, Hardware, Helpdesk</p>
+              <div class="bar"><span style="width: 84%"></span></div>
+              <p><strong>Automation</strong>PowerShell, n8n, Power Automate, Python, Shell</p>
+              <div class="bar"><span style="width: 78%"></span></div>
+              <p><strong>Data / APIs</strong>REST APIs, SQL, MySQL, HANA, Reporting</p>
+              <div class="bar"><span style="width: 74%"></span></div>
+            </div>
+          </div>
+
+          <div class="side-box">
+            <h3>Best Practice</h3>
+            <ul>
+              <li>Ein führendes System pro Datenfeld definieren</li>
+              <li>Jobs idempotent, geloggt und wiederholbar bauen</li>
+              <li>Least Privilege für API- und Automationskonten</li>
+              <li>Nur Daten bewegen, die dem Prozess wirklich dienen</li>
+              <li>Retries, Queues und manuelle Freigaben einplanen</li>
+            </ul>
+          </div>
+
+          <div class="side-box contact">
+            <h3>Kontakt</h3>
+            <p>Hamburg & Remote</p>
+            <p>linkedin.com/in/eirik-christiansen</p>
+          </div>
+        </aside>
+      </div>
     </main>
   </body>
 </html>

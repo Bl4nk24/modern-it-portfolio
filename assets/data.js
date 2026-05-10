@@ -167,9 +167,9 @@ window.PORTFOLIO_CONTENT = {
         text: "Bachelorarbeit über automatisiertes Onboarding mit NFON, Microsoft 365, Keeper, Laptop-Einrichtung und Snipe-IT."
       },
       {
-        date: "Schule",
-        title: "Term in England",
-        text: "Auslandszeit in England als Teil des schulischen Wegs: Sprache, Selbstständigkeit und Arbeiten in einem anderen Umfeld."
+        date: "Sept. 2012 - Juni 2021",
+        title: "Abitur, Schloss Torgelow Privates Internatsgymnasium",
+        text: "Abitur 2,4 mit einer Auslandszeit an der Kingham Hill School in England von Sept. bis Dez. 2017."
       }
     ],
     connector: {
@@ -177,6 +177,7 @@ window.PORTFOLIO_CONTENT = {
         { id: "hr", tag: "HR", name: "HR / Stammdaten", short: "Mitarbeiter, Eintritt, Austritt" },
         { id: "entra", tag: "ID", name: "Microsoft Entra ID", short: "User, Gruppen, Rollen" },
         { id: "m365", tag: "M365", name: "Microsoft 365", short: "Outlook, SharePoint, Teams" },
+        { id: "keeper", tag: "PAM", name: "Keeper", short: "Tresore, Teams, Freigaben" },
         { id: "outlook", tag: "CAL", name: "Outlook Kalender", short: "Termine, Erinnerungen" },
         { id: "nfon", tag: "TEL", name: "NFON / Telefonanlage", short: "Durchwahlen, Kontakte, Profile" },
         { id: "mailchimp", tag: "CRM", name: "Mailchimp", short: "Listen, Segmente, Opt-ins" },
@@ -221,6 +222,26 @@ window.PORTFOLIO_CONTENT = {
           avoid: "Gehalt, Krankenstände, private HR-Kommentare."
         },
         {
+          from: "hr",
+          to: "inventory",
+          title: "HR / Stammdaten -> Asset Inventory",
+          summary: "Ausstattung wird schon vor dem ersten Arbeitstag planbar und nachvollziehbar.",
+          data: ["Mitarbeiter-ID", "Startdatum", "Rolle", "Standort", "Geräteklasse", "Asset-Tag", "Ausgabestatus"],
+          method: "Onboarding-Workflow legt vorbereitete Assets in Snipe-IT oder CMDB an.",
+          guard: "Geräte erst nach Ausgabe final zuordnen, Rückgaben beim Offboarding erzwingen.",
+          avoid: "Private HR-Daten, unbestätigte Geräteübergaben, Seriennummern ohne Besitzstatus."
+        },
+        {
+          from: "hr",
+          to: "keeper",
+          title: "HR / Stammdaten -> Keeper",
+          summary: "Rollenbasierte Tresor- und Teamzugriffe werden Teil des Onboarding- und Offboarding-Prozesses.",
+          data: ["Mitarbeiter-ID", "E-Mail", "Team", "Rollenprofil", "Start-/Enddatum", "Freigabegruppe"],
+          method: "HR-Ereignis startet Provisioning über SCIM, API oder genehmigten Admin-Job.",
+          guard: "Zugriff nur aus geprüften Rollenprofilen ableiten und beim Austritt entziehen.",
+          avoid: "Passwörter, Recovery-Codes, private Notizen."
+        },
+        {
           from: "entra",
           to: "ticket",
           title: "Microsoft Entra ID -> Ticket-System",
@@ -239,6 +260,26 @@ window.PORTFOLIO_CONTENT = {
           method: "Microsoft Graph, optional ergänzt durch Intune-Gerätedaten.",
           guard: "Geräte über stabile IDs mappen, Besitzerwechsel historisieren.",
           avoid: "MFA-Secrets, private Profilfelder, lokale Datei-Inhalte."
+        },
+        {
+          from: "entra",
+          to: "keeper",
+          title: "Microsoft Entra ID -> Keeper",
+          summary: "Identitätsgruppen steuern, welche Keeper-Teams und Tresore Nutzer erhalten.",
+          data: ["UPN", "Objekt-ID", "Gruppen", "Abteilung", "Account-Status", "Manager"],
+          method: "SCIM/SSO oder geplanter Graph-zu-Keeper-API-Abgleich.",
+          guard: "Gruppenmodell dokumentieren, Break-Glass-Zugänge getrennt halten.",
+          avoid: "Passwörter, MFA-Secrets, ungeprüfte Gruppenverschachtelungen."
+        },
+        {
+          from: "entra",
+          to: "mailchimp",
+          title: "Microsoft Entra ID -> Mailchimp",
+          summary: "Interne Verteiler lassen sich für genehmigte Mitarbeiterkommunikation als Zielgruppen pflegen.",
+          data: ["Name", "geschäftliche E-Mail", "Abteilung", "Standort", "Sprache", "Account-Status"],
+          method: "Graph-Export zu Mailchimp API, getrennt von Kundenmarketing.",
+          guard: "Nur interne, freigegebene Kommunikation mit klarer Opt-out- und Austrittslogik.",
+          avoid: "Private E-Mails, Passwörter, sensible Rollen oder Gruppen ohne Zweck."
         },
         {
           from: "m365",
@@ -311,6 +352,26 @@ window.PORTFOLIO_CONTENT = {
           avoid: "Kontakte ohne Einwilligung, Zahlungsdaten, interne Bemerkungen."
         },
         {
+          from: "mailchimp",
+          to: "sap",
+          title: "Mailchimp -> SAP Business One",
+          summary: "Abmeldungen und Opt-in-Änderungen können zurück in die führende Kundenakte laufen.",
+          data: ["Kontakt-ID", "E-Mail", "Opt-in-Status", "Abmeldedatum", "Segment", "Kampagnenquelle"],
+          method: "Mailchimp Webhook oder geplanter API-Job mit SAP-BP-Mapping.",
+          guard: "Nur Consent- und Statusfelder zurückschreiben, nie Marketingverhalten als Verkaufsnotiz.",
+          avoid: "Öffnungsprofile, Klickpfade, ungemappte Kontakte, Finanzdaten."
+        },
+        {
+          from: "mailchimp",
+          to: "sql",
+          title: "Mailchimp -> SQL / Reporting",
+          summary: "Kampagnenleistung wird auswertbar, ohne Empfängerlisten manuell zu exportieren.",
+          data: ["Kampagnen-ID", "Audience-ID", "Segment", "Versandzeit", "Öffnungen", "Klicks", "Abmeldungen"],
+          method: "Mailchimp Reports API mit Aggregation in Reporting-Tabellen.",
+          guard: "Metriken aggregieren und personenbezogene Auswertung begrenzen.",
+          avoid: "Rohes Tracking ohne Zweck, private Notizen, dauerhaft unnötige Empfängerlisten."
+        },
+        {
           from: "sap",
           to: "outlook",
           title: "SAP Business One -> Outlook Kalender",
@@ -329,6 +390,16 @@ window.PORTFOLIO_CONTENT = {
           method: "Onboarding-Workflow mit API, CSV-Import oder PowerShell-Brücke.",
           guard: "Profilvorlagen, Freigabe bei Sonderrechten, Rückbau beim Offboarding.",
           avoid: "Private Nummern, HR-Kommentare, Profile ohne fachliche Freigabe."
+        },
+        {
+          from: "nfon",
+          to: "ticket",
+          title: "NFON / Telefonanlage -> Ticket-System",
+          summary: "Supportrelevante Anrufe werden sichtbar, ohne dass man Telefonie und Ticketarbeit getrennt betrachten muss.",
+          data: ["Call-ID", "Rufnummer", "Queue", "Zeitstempel", "Dauer", "Agent", "Rückrufstatus"],
+          method: "NFON-API oder Webhook erzeugt oder ergänzt Tickets nach klaren Regeln.",
+          guard: "Rufnummern maskieren, Aufzeichnungen nur mit Freigabe, Duplikate vermeiden.",
+          avoid: "Private Gespräche, Gesprächsinhalte ohne Rechtsgrundlage, Rohdaten ohne Löschfrist."
         },
         {
           from: "monitoring",
@@ -381,6 +452,16 @@ window.PORTFOLIO_CONTENT = {
           avoid: "Freitext mit PII, Anhänge, private interne Notizen."
         },
         {
+          from: "ticket",
+          to: "m365",
+          title: "Ticket-System -> Microsoft 365",
+          summary: "Genehmigte Supportvorgänge können Teams, Planner oder Outlook sauber informieren.",
+          data: ["Ticket-ID", "Titel", "Status", "Priorität", "Owner", "Fälligkeitsdatum", "Teams-Kanal"],
+          method: "ITSM-API zu Microsoft Graph, Power Automate oder n8n.",
+          guard: "Nur relevante Statuswechsel posten und keine sensiblen Freitexte verteilen.",
+          avoid: "Kundengeheimnisse, Anhänge, private Kommentare, Spam-Benachrichtigungen."
+        },
+        {
           from: "sql",
           to: "api",
           title: "SQL / Reporting -> API / PowerShell Hub",
@@ -409,6 +490,16 @@ window.PORTFOLIO_CONTENT = {
           method: "PowerShell, Microsoft Graph und Job-Logging mit Rückmeldung.",
           guard: "Nur geprüfte Aktionen, Rollenmodell und vollständiger Audit-Trail.",
           avoid: "Admin-Credentials, ungeprüfte Rechteänderungen, freie Skriptausführung."
+        },
+        {
+          from: "api",
+          to: "mailchimp",
+          title: "API / PowerShell Hub -> Mailchimp",
+          summary: "Freigegebene Listen- und Segmentjobs lassen sich über APIs kontrolliert ausführen.",
+          data: ["Job-ID", "Audience-ID", "Segmentregel", "Kontakt-ID", "Opt-in-Status", "Fehlerstatus"],
+          method: "n8n, PowerShell oder Python gegen die Mailchimp API mit Logtabelle.",
+          guard: "Trockenlauf, Rate-Limits, Consent-Prüfung und Rollback-Liste einplanen.",
+          avoid: "Massenuploads ohne Freigabe, Kontakte ohne Rechtsgrundlage, API-Keys im Client."
         }
       ]
     }
@@ -581,9 +672,9 @@ window.PORTFOLIO_CONTENT = {
         text: "Bachelor thesis on automated onboarding with NFON, Microsoft 365, Keeper, laptop setup, and Snipe-IT."
       },
       {
-        date: "School",
-        title: "Term in England",
-        text: "Time in England as part of my school path: language, independence, and working in a different environment."
+        date: "Sept. 2012 - Jun. 2021",
+        title: "Abitur, Schloss Torgelow Private Boarding School",
+        text: "Final grade 2.4, including a term at Kingham Hill School in England from Sept. to Dec. 2017."
       }
     ],
     connector: {
@@ -591,6 +682,7 @@ window.PORTFOLIO_CONTENT = {
         { id: "hr", tag: "HR", name: "HR / Master Data", short: "Employees, start, exit" },
         { id: "entra", tag: "ID", name: "Microsoft Entra ID", short: "Users, groups, roles" },
         { id: "m365", tag: "M365", name: "Microsoft 365", short: "Outlook, SharePoint, Teams" },
+        { id: "keeper", tag: "PAM", name: "Keeper", short: "Vaults, teams, sharing" },
         { id: "outlook", tag: "CAL", name: "Outlook Calendar", short: "Appointments, reminders" },
         { id: "nfon", tag: "TEL", name: "NFON / Phone System", short: "Extensions, contacts, profiles" },
         { id: "mailchimp", tag: "CRM", name: "Mailchimp", short: "Lists, segments, opt-ins" },
@@ -635,6 +727,26 @@ window.PORTFOLIO_CONTENT = {
           avoid: "Salary, sick leave, private HR comments."
         },
         {
+          from: "hr",
+          to: "inventory",
+          title: "HR / Master Data -> Asset Inventory",
+          summary: "Equipment becomes planned and traceable before the first working day.",
+          data: ["Employee ID", "Start date", "Role", "Location", "Device class", "Asset tag", "Handover state"],
+          method: "Onboarding workflow stages assets in Snipe-IT or a CMDB.",
+          guard: "Assign devices finally only after handover; enforce returns during offboarding.",
+          avoid: "Private HR data, unconfirmed handovers, serials without ownership state."
+        },
+        {
+          from: "hr",
+          to: "keeper",
+          title: "HR / Master Data -> Keeper",
+          summary: "Role-based vault and team access becomes part of onboarding and offboarding.",
+          data: ["Employee ID", "Email", "Team", "Role profile", "Start/end date", "Approval group"],
+          method: "HR event starts provisioning through SCIM, API, or an approved admin job.",
+          guard: "Derive access from reviewed role profiles and remove it during leavers.",
+          avoid: "Passwords, recovery codes, private notes."
+        },
+        {
           from: "entra",
           to: "ticket",
           title: "Microsoft Entra ID -> Ticket System",
@@ -653,6 +765,26 @@ window.PORTFOLIO_CONTENT = {
           method: "Microsoft Graph, optionally enriched with Intune device data.",
           guard: "Map devices by stable IDs, keep owner changes historical.",
           avoid: "MFA secrets, private profile fields, local file contents."
+        },
+        {
+          from: "entra",
+          to: "keeper",
+          title: "Microsoft Entra ID -> Keeper",
+          summary: "Identity groups control which Keeper teams and vaults users receive.",
+          data: ["UPN", "Object ID", "Groups", "Department", "Account status", "Manager"],
+          method: "SCIM/SSO or scheduled Graph-to-Keeper API sync.",
+          guard: "Document the group model and keep break-glass access separate.",
+          avoid: "Passwords, MFA secrets, unreviewed nested groups."
+        },
+        {
+          from: "entra",
+          to: "mailchimp",
+          title: "Microsoft Entra ID -> Mailchimp",
+          summary: "Internal audiences can be maintained for approved employee communication.",
+          data: ["Name", "Work email", "Department", "Location", "Language", "Account status"],
+          method: "Graph export to Mailchimp API, kept separate from customer marketing.",
+          guard: "Internal approved communication only, with clear unsubscribe and leaver logic.",
+          avoid: "Private email addresses, passwords, sensitive roles or groups without communication purpose."
         },
         {
           from: "m365",
@@ -725,6 +857,26 @@ window.PORTFOLIO_CONTENT = {
           avoid: "Contacts without consent, payment data, internal comments."
         },
         {
+          from: "mailchimp",
+          to: "sap",
+          title: "Mailchimp -> SAP Business One",
+          summary: "Unsubscribes and opt-in changes can flow back into the leading customer record.",
+          data: ["Contact ID", "Email", "Opt-in state", "Unsubscribe timestamp", "Segment", "Campaign source"],
+          method: "Mailchimp webhook or scheduled API job with SAP business-partner mapping.",
+          guard: "Write back consent and state fields only; never turn marketing behavior into sales notes.",
+          avoid: "Open profiles, click paths, unmapped contacts, financial data."
+        },
+        {
+          from: "mailchimp",
+          to: "sql",
+          title: "Mailchimp -> SQL / Reporting",
+          summary: "Campaign performance becomes reportable without manual audience exports.",
+          data: ["Campaign ID", "Audience ID", "Segment", "Send time", "Opens", "Clicks", "Unsubscribes"],
+          method: "Mailchimp Reports API with aggregation into reporting tables.",
+          guard: "Aggregate metrics and limit person-level analysis.",
+          avoid: "Raw tracking without purpose, private notes, unnecessary long-term recipient lists."
+        },
+        {
           from: "sap",
           to: "outlook",
           title: "SAP Business One -> Outlook Calendar",
@@ -743,6 +895,16 @@ window.PORTFOLIO_CONTENT = {
           method: "Onboarding workflow through API, CSV import, or PowerShell bridge.",
           guard: "Profile templates, approval for special rights, cleanup during offboarding.",
           avoid: "Private numbers, HR comments, profiles without business approval."
+        },
+        {
+          from: "nfon",
+          to: "ticket",
+          title: "NFON / Phone System -> Ticket System",
+          summary: "Support-relevant calls become visible instead of separating telephony from ticket work.",
+          data: ["Call ID", "Phone number", "Queue", "Timestamp", "Duration", "Agent", "Callback state"],
+          method: "NFON API or webhook creates or enriches tickets by clear rules.",
+          guard: "Mask numbers, use recordings only with approval, avoid duplicates.",
+          avoid: "Private calls, call content without legal basis, raw data without retention rules."
         },
         {
           from: "monitoring",
@@ -795,6 +957,16 @@ window.PORTFOLIO_CONTENT = {
           avoid: "Free text with PII, attachments, private internal notes."
         },
         {
+          from: "ticket",
+          to: "m365",
+          title: "Ticket System -> Microsoft 365",
+          summary: "Approved support events can notify Teams, Planner, or Outlook cleanly.",
+          data: ["Ticket ID", "Title", "Status", "Priority", "Owner", "Due date", "Teams channel"],
+          method: "ITSM API to Microsoft Graph, Power Automate, or n8n.",
+          guard: "Post only relevant state changes and avoid broadcasting sensitive free text.",
+          avoid: "Customer secrets, attachments, private comments, notification spam."
+        },
+        {
           from: "sql",
           to: "api",
           title: "SQL / Reporting -> API / PowerShell Hub",
@@ -823,6 +995,16 @@ window.PORTFOLIO_CONTENT = {
           method: "PowerShell, Microsoft Graph, and job logging with feedback.",
           guard: "Reviewed actions only, role model, and full audit trail.",
           avoid: "Admin credentials, unreviewed permission changes, free-form script execution."
+        },
+        {
+          from: "api",
+          to: "mailchimp",
+          title: "API / PowerShell Hub -> Mailchimp",
+          summary: "Approved list and segment jobs can run against APIs with control.",
+          data: ["Job ID", "Audience ID", "Segment rule", "Contact ID", "Opt-in state", "Error state"],
+          method: "n8n, PowerShell, or Python against the Mailchimp API with a log table.",
+          guard: "Plan dry runs, rate limits, consent checks, and rollback lists.",
+          avoid: "Bulk uploads without approval, contacts without legal basis, API keys in the client."
         }
       ]
     }
