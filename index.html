@@ -27,6 +27,7 @@
     <link rel="stylesheet" href="./assets/styles.css" />
   </head>
   <body>
+    <!-- Source-reader easter egg: type "moin" on the page. Clean logs beat loud dashboards. -->
     <a class="skip-link" href="#work" data-i18n="skipLink">Direkt zur Arbeit</a>
 
     <header class="site-header" data-elevate>
@@ -84,10 +85,16 @@
                 <span data-icon="send" aria-hidden="true"></span>
                 <span data-i18n="secondaryCta">Kontakt</span>
               </a>
-              <a class="button button-secondary" href="./assets/eirik-christiansen-cv.pdf" data-track="cv_download" data-track-target="hero-cv">
-                <span data-icon="file" aria-hidden="true"></span>
-                <span data-i18n="cvCta">CV herunterladen</span>
-              </a>
+              <div class="cv-choice" aria-label="CV Download">
+                <a class="button button-secondary" href="./assets/eirik-christiansen-cv-de.pdf" data-track="cv_download" data-track-target="hero-cv-de">
+                  <span data-icon="file" aria-hidden="true"></span>
+                  <span data-i18n="cvDeCta">CV DE</span>
+                </a>
+                <a class="button button-secondary" href="./assets/eirik-christiansen-cv-en.pdf" data-track="cv_download" data-track-target="hero-cv-en">
+                  <span data-icon="file" aria-hidden="true"></span>
+                  <span data-i18n="cvEnCta">CV EN</span>
+                </a>
+              </div>
             </div>
           </div>
 
@@ -257,10 +264,16 @@
             <span data-icon="linkedin" aria-hidden="true"></span>
             <span data-i18n="linkedinCta">LinkedIn ansehen</span>
           </a>
-          <a class="text-link" href="./assets/eirik-christiansen-cv.pdf" data-track="cv_download" data-track-target="contact-cv">
-            <span data-icon="file" aria-hidden="true"></span>
-            <span data-i18n="cvCta">CV herunterladen</span>
-          </a>
+          <div class="cv-link-row" aria-label="CV Download">
+            <a class="text-link" href="./assets/eirik-christiansen-cv-de.pdf" data-track="cv_download" data-track-target="contact-cv-de">
+              <span data-icon="file" aria-hidden="true"></span>
+              <span data-i18n="cvDeCta">CV DE</span>
+            </a>
+            <a class="text-link" href="./assets/eirik-christiansen-cv-en.pdf" data-track="cv_download" data-track-target="contact-cv-en">
+              <span data-icon="file" aria-hidden="true"></span>
+              <span data-i18n="cvEnCta">CV EN</span>
+            </a>
+          </div>
         </div>
 
         <form class="contact-form" data-contact-form>
@@ -311,6 +324,8 @@
         </form>
       </section>
     </main>
+
+    <div class="easter-toast" data-easter-toast hidden aria-live="polite"></div>
 
     <footer class="site-footer">
       <span>Eirik Christiansen</span>

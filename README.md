@@ -11,7 +11,7 @@ Ein modernes, zweisprachiges Portfolio fuer IT Administration, IT-Infrastruktur,
 - `assets/supabase.js` laedt Supabase nur, wenn URL und Publishable Key gesetzt sind.
 - `supabase/schema.sql` legt Tabellen, RLS-Policies, Grants, Analytics-Events und Seed-Daten an.
 - `supabase/functions/contact-notify` speichert Kontaktanfragen und verschickt Mail-Benachrichtigungen.
-- `assets/eirik-christiansen-cv.pdf` ist ein kompaktes einseitiges CV.
+- `assets/eirik-christiansen-cv-de.pdf` und `assets/eirik-christiansen-cv-en.pdf` sind kompakte einseitige CVs.
 
 ## Lokal starten
 

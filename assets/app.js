@@ -29,6 +29,8 @@
       primaryCta: "Praxis ansehen",
       secondaryCta: "Kontakt",
       cvCta: "CV herunterladen",
+      cvDeCta: "CV DE",
+      cvEnCta: "CV EN",
       panelTitle: "Operations Board",
       panelState: "online / ruhig",
       readoutOneLabel: "Fokus",
@@ -92,6 +94,7 @@
       sent: "Danke, ist angekommen. Ich melde mich.",
       sendError: "Konnte nicht senden. Bitte versuche es erneut.",
       formInvalid: "Bitte fülle die Felder vollständig aus.",
+      easterMessage: "Moin. Logs sauber, APIs wach, Kaffee optional.",
       languageButton: "EN",
       languageLabel: "Switch to English",
       themeLabel: "Theme wechseln"
@@ -114,6 +117,8 @@
       primaryCta: "View work",
       secondaryCta: "Contact",
       cvCta: "Download CV",
+      cvDeCta: "CV DE",
+      cvEnCta: "CV EN",
       panelTitle: "Operations Board",
       panelState: "online / calm",
       readoutOneLabel: "Focus",
@@ -176,6 +181,7 @@
       sent: "Thanks, got it. I will get back to you.",
       sendError: "Could not send. Please try again.",
       formInvalid: "Please complete all fields.",
+      easterMessage: "Moin. Clean logs, awake APIs, coffee optional.",
       languageButton: "DE",
       languageLabel: "Auf Deutsch wechseln",
       themeLabel: "Toggle theme"
@@ -207,6 +213,7 @@
     consoleLines: document.querySelector("[data-console-lines]"),
     languageToggle: document.querySelector("[data-language-toggle]"),
     themeToggle: document.querySelector("[data-theme-toggle]"),
+    easterToast: document.querySelector("[data-easter-toast]"),
     form: document.querySelector("[data-contact-form]"),
     formNote: document.querySelector("[data-form-note]")
   };
@@ -217,6 +224,7 @@
     hydrateIcons();
     renderAll();
     setupTicker();
+    window.addEventListener("resize", () => requestAnimationFrame(setupTicker));
     bindLanguage();
     bindTheme();
     bindContact();
@@ -226,6 +234,7 @@
     setupPointer();
     setupHashScroll();
     setupScrollSpy();
+    setupEasterEggs();
     setupAnalytics();
   }
 
@@ -671,11 +680,56 @@
 
   function setupTicker() {
     document.querySelectorAll("[data-ticker-track]").forEach((track) => {
-      if (!track.dataset.ready) {
-        track.innerHTML += track.innerHTML;
-        track.dataset.ready = "true";
+      if (!track.dataset.seed) {
+        track.dataset.seed = track.innerHTML;
+      }
+      const seed = track.dataset.seed;
+      track.innerHTML = seed;
+      let loops = 1;
+      while (track.scrollWidth < window.innerWidth * 1.45 && loops < 12) {
+        track.innerHTML += seed;
+        loops += 1;
+      }
+      track.innerHTML += track.innerHTML;
+    });
+  }
+
+  function setupEasterEggs() {
+    const toast = selectors.easterToast;
+    if (!toast) return;
+
+    let buffer = "";
+    let timer;
+    const ignoredTags = new Set(["INPUT", "TEXTAREA", "SELECT"]);
+
+    const reveal = () => {
+      toast.textContent = t("easterMessage");
+      toast.hidden = false;
+      toast.classList.add("is-visible");
+      document.documentElement.classList.add("is-easter");
+      clearTimeout(timer);
+      timer = window.setTimeout(() => {
+        toast.classList.remove("is-visible");
+        document.documentElement.classList.remove("is-easter");
+        window.setTimeout(() => {
+          toast.hidden = true;
+        }, 220);
+      }, 4200);
+      trackEvent("easter_egg", "moin");
+    };
+
+    document.addEventListener("keydown", (event) => {
+      if (event.defaultPrevented || event.altKey || event.ctrlKey || event.metaKey) return;
+      if (ignoredTags.has(document.activeElement?.tagName)) return;
+      const key = event.key.toLowerCase();
+      if (!/^[a-z0-9]$/.test(key)) return;
+      buffer = `${buffer}${key}`.slice(-12);
+      if (buffer.endsWith("moin") || buffer.endsWith("eirik")) {
+        reveal();
       }
     });
+
+    document.querySelector(".brand-mark")?.addEventListener("dblclick", reveal);
   }
 
   function setupPointer() {
