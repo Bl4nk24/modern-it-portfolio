@@ -119,16 +119,28 @@ window.PORTFOLIO_CONTENT = {
           summary: "Eintritt, Wechsel und Austritt werden als sauberer Identity-Lifecycle abgebildet.",
           data: ["Mitarbeiter-ID", "Name und E-Mail-Alias", "Abteilung und Standort", "Manager", "Eintritts- und Austrittsdatum", "Kostenstelle"],
           method: "API oder CSV-Import, danach PowerShell/Graph-Provisioning.",
-          guard: "Eindeutige Mitarbeiter-ID, Deprovisioning-Regeln, Gruppenmodell."
+          guard: "Eindeutige Mitarbeiter-ID, Deprovisioning-Regeln, Gruppenmodell.",
+          avoid: "Passwörter, Gehalt, private HR-Notizen."
         },
         {
-          from: "entra",
+          from: "hr",
           to: "m365",
-          title: "Microsoft Entra ID -> Microsoft 365",
-          summary: "Identitäten werden in nutzbare M365-Arbeitsbereiche übersetzt.",
-          data: ["Benutzerstatus", "Gruppenmitgliedschaften", "Lizenzgruppen", "Postfach-Aliase", "Teams- und SharePoint-Zugriffe"],
-          method: "Microsoft Graph, dynamische Gruppen oder PowerShell-Jobs.",
-          guard: "Least Privilege, Lizenzgruppen, Audit-Logs und klare Namensregeln."
+          title: "HR / Stammdaten -> Microsoft 365",
+          summary: "HR-Ereignisse lösen Mailbox, Lizenzierung und Arbeitsbereich-Vorbereitung aus.",
+          data: ["Mitarbeiter-ID", "UPN/E-Mail-Alias", "Rollenprofil", "Lizenzplan", "Startdatum", "Team-/SharePoint-Vorlagen"],
+          method: "HR-Quelle zu Entra ID, danach Microsoft Graph und PowerShell.",
+          guard: "Zugriffe nur aus freigegebenen Rollenprofilen ableiten.",
+          avoid: "Gehaltsdaten, private HR-Dokumente, ungeprüfte Rollen."
+        },
+        {
+          from: "hr",
+          to: "ticket",
+          title: "HR / Stammdaten -> Ticket-System",
+          summary: "Onboarding, Wechsel und Offboarding werden als planbare IT-Aufgaben sichtbar.",
+          data: ["Mitarbeiter-ID", "Start-/Enddatum", "Abteilung", "Standort", "Manager", "Ausstattungsbedarf"],
+          method: "HR-Export oder API erzeugt Ticket-Vorlagen mit Fälligkeiten.",
+          guard: "Aufgabenstatus zurückmelden, aber HR-Stammdaten nicht im Ticket pflegen.",
+          avoid: "Gehalt, Krankenstände, private HR-Kommentare."
         },
         {
           from: "entra",
@@ -137,7 +149,18 @@ window.PORTFOLIO_CONTENT = {
           summary: "Support sieht direkt, wer anfragt und in welchem Kontext das Problem steht.",
           data: ["Name, Mail und Telefon", "Abteilung und Standort", "Manager", "Gruppen/Rollen", "Account-Status"],
           method: "Geplanter Graph-API-Sync in das ITSM-Benutzerverzeichnis.",
-          guard: "Matching über UPN, deaktivierte Konten markieren, keine Rollen überschreiben."
+          guard: "Matching über UPN, deaktivierte Konten markieren, keine Rollen überschreiben.",
+          avoid: "Passwörter, Tokens, vollständige Gruppenlisten ohne Supportbedarf."
+        },
+        {
+          from: "entra",
+          to: "inventory",
+          title: "Microsoft Entra ID -> Asset Inventory",
+          summary: "Identitäts- und Gerätekontext macht Inventar im Support brauchbarer.",
+          data: ["UPN", "Objekt-ID", "Primärer Benutzer", "Geräte-ID", "Join-Typ", "Compliance-Status"],
+          method: "Microsoft Graph, optional ergänzt durch Intune-Gerätedaten.",
+          guard: "Geräte über stabile IDs mappen, Besitzerwechsel historisieren.",
+          avoid: "MFA-Secrets, private Profilfelder, lokale Datei-Inhalte."
         },
         {
           from: "m365",
@@ -146,7 +169,8 @@ window.PORTFOLIO_CONTENT = {
           summary: "Aus gemeinsamen Postfächern werden nachvollziehbare Supportvorgänge.",
           data: ["Absender", "Betreff", "Message-ID", "Konversation", "Anhang-Links", "Empfangszeit"],
           method: "Graph API oder Mail-Connector mit Ticket-Erstellung.",
-          guard: "Duplikate erkennen, Anhänge begrenzen, sensible Inhalte klassifizieren."
+          guard: "Duplikate erkennen, Anhänge begrenzen, sensible Inhalte klassifizieren.",
+          avoid: "Ganze Postfächer, private Chats, Anhänge ohne Klassifizierung."
         },
         {
           from: "m365",
@@ -155,7 +179,18 @@ window.PORTFOLIO_CONTENT = {
           summary: "Freigegebene Dokumente werden zu einer kontrollierten Wissensquelle.",
           data: ["SharePoint-Dokumente", "Runbooks", "FAQ", "Dateimetadaten", "Berechtigungsbereiche", "Versionsstand"],
           method: "SharePoint/Graph Connector, Indexierung und RAG-Pipeline.",
-          guard: "Berechtigungen respektieren, private Inhalte ausschließen, Quellen anzeigen."
+          guard: "Berechtigungen respektieren, private Inhalte ausschließen, Quellen anzeigen.",
+          avoid: "Private Dateien, vertrauliche Chats, Inhalte ohne Freigabe."
+        },
+        {
+          from: "m365",
+          to: "sql",
+          title: "Microsoft 365 -> SQL / Reporting",
+          summary: "Lizenz-, Gruppen- und Workspace-Daten werden auswertbar, ohne Inhalte zu lesen.",
+          data: ["Lizenzzuordnung", "Gruppen", "Mailbox-Typen", "Teams/SharePoint-Bestand", "Gastbenutzer", "Änderungszeitpunkt"],
+          method: "Microsoft Graph Reports und Verzeichnisdaten in Reporting-Views.",
+          guard: "Nur Metadaten nutzen, Inhalte und private Kommunikation außen vor lassen.",
+          avoid: "Mailinhalte, Chat-Inhalte, personenbezogene Nutzungsprofile."
         },
         {
           from: "sap",
@@ -164,7 +199,8 @@ window.PORTFOLIO_CONTENT = {
           summary: "ERP-Daten werden auswertbar, ohne operativ im ERP herumzuklicken.",
           data: ["Geschäftspartner", "Artikelstamm", "Aufträge", "Rechnungen", "Lagerbestände", "Zahlungsstatus"],
           method: "HANA/SQL-Views, Service Layer oder geplanter Export.",
-          guard: "Read-only Reporting, Primärschlüssel, Delta-Läufe und Zeitstempel."
+          guard: "Read-only Reporting, Primärschlüssel, Delta-Läufe und Zeitstempel.",
+          avoid: "Schreibzugriffe ins ERP, Finanzdetails ohne klaren Zweck."
         },
         {
           from: "sap",
@@ -173,7 +209,8 @@ window.PORTFOLIO_CONTENT = {
           summary: "ERP-Ereignisse landen dort, wo Teams ohnehin arbeiten.",
           data: ["Kundenkontakte", "Aufgaben", "Beleglinks", "Genehmigungsstatus", "Fälligkeitsdaten", "Benachrichtigungen"],
           method: "SAP Service Layer zu Outlook, Teams oder Power Automate.",
-          guard: "Keine Buchungsdaten ungeprüft zurückschreiben, Status sauber mappen."
+          guard: "Keine Buchungsdaten ungeprüft zurückschreiben, Status sauber mappen.",
+          avoid: "Buchungssätze, Zahlungsdaten, vertrauliche Preise."
         },
         {
           from: "monitoring",
@@ -182,7 +219,8 @@ window.PORTFOLIO_CONTENT = {
           summary: "Technische Alarme werden zu priorisierten, nachvollziehbaren Tickets.",
           data: ["Alert-ID", "Hostname/System", "Severity", "Zeitstempel", "Metrik/Schwellwert", "Recovery-Status"],
           method: "Webhook oder REST-API mit Deduplizierung.",
-          guard: "Flapping vermeiden, Auto-Close regeln, Eskalation klar halten."
+          guard: "Flapping vermeiden, Auto-Close regeln, Eskalation klar halten.",
+          avoid: "Alert-Stürme, rohe Logdaten mit Secrets."
         },
         {
           from: "inventory",
@@ -191,7 +229,18 @@ window.PORTFOLIO_CONTENT = {
           summary: "Supportfälle bekommen sofort den passenden Geräte- und Besitzkontext.",
           data: ["Hostname", "Seriennummer", "Asset-Tag", "Besitzer", "Garantie", "Standort"],
           method: "Asset-API, CSV-Sync oder PowerShell-Import.",
-          guard: "Matching über Seriennummer/Asset-Tag, alte Geräte archivieren."
+          guard: "Matching über Seriennummer/Asset-Tag, alte Geräte archivieren.",
+          avoid: "Lokale Datei-Inhalte, persönliche Gerätedaten ohne Zweck."
+        },
+        {
+          from: "ticket",
+          to: "knowledge",
+          title: "Ticket-System -> Wissensbasis",
+          summary: "Wiederkehrende Lösungen werden aus Tickets in geprüfte Artikel überführt.",
+          data: ["Gelöste Fälle", "Kategorie", "Lösungsschritte", "Known Error", "Owner", "Freigabestatus"],
+          method: "ITSM-Export, redaktionelle Freigabe und Artikel-Template.",
+          guard: "Nur geprüfte Lösungen veröffentlichen, alte Artikel mit Ablaufdatum versehen.",
+          avoid: "Personenbezogene Daten, Kundengeheimnisse, interne Eskalationsnotizen."
         },
         {
           from: "ticket",
@@ -200,7 +249,8 @@ window.PORTFOLIO_CONTENT = {
           summary: "Gelöste Fälle werden zu wiederverwendbarem Supportwissen.",
           data: ["Gelöste Tickets", "Kategorien", "Lösungstexte", "Known Errors", "SLA/Dringlichkeit", "Runbook-Links"],
           method: "ITSM-API, Bereinigung, Freigabe und Knowledge-Index.",
-          guard: "Personenbezogene Daten entfernen, veraltete Lösungen markieren."
+          guard: "Personenbezogene Daten entfernen, veraltete Lösungen markieren.",
+          avoid: "Rohe Tickets, vertrauliche Anhänge, private Kommentare."
         },
         {
           from: "ticket",
@@ -209,7 +259,8 @@ window.PORTFOLIO_CONTENT = {
           summary: "Supportdaten werden messbar: Volumen, Engpässe, Themen und Reaktionszeiten.",
           data: ["Ticket-ID", "Status", "Kategorie", "Bearbeitungszeit", "SLA", "Zuständigkeit"],
           method: "REST-Export, inkrementelle Loads und Reporting-Views.",
-          guard: "Historie erhalten, Statuswerte normalisieren, PII sparsam halten."
+          guard: "Historie erhalten, Statuswerte normalisieren, PII sparsam halten.",
+          avoid: "Freitext mit PII, Anhänge, private interne Notizen."
         },
         {
           from: "sql",
@@ -218,7 +269,8 @@ window.PORTFOLIO_CONTENT = {
           summary: "Datenbankzustände lösen nachvollziehbare Admin- oder Benachrichtigungsjobs aus.",
           data: ["Statuslisten", "Genehmigungsdaten", "Report-Exports", "Änderungszeitpunkt", "Job-ID", "Fehlerstatus"],
           method: "SQL-View, Scheduled Job, PowerShell und API-Calls.",
-          guard: "Source of Truth definieren, Idempotenz, Retry-Queue und Logging."
+          guard: "Führendes System definieren, Idempotenz, Retry-Queue und Logging.",
+          avoid: "Unvalidierte Befehle, Schreibjobs ohne Freigabe."
         },
         {
           from: "knowledge",
@@ -227,7 +279,18 @@ window.PORTFOLIO_CONTENT = {
           summary: "Dokumentiertes Wissen wird suchbar, zitierbar und im Support nutzbar.",
           data: ["Runbooks", "FAQ", "Prozessdokumente", "Version", "Owner", "Freigabestatus"],
           method: "Indexierung mit Quellenverweisen und regelmäßiger Aktualisierung.",
-          guard: "Nur freigegebene Inhalte, Ablaufdatum, Quellenpflicht in Antworten."
+          guard: "Nur freigegebene Inhalte, Ablaufdatum, Quellenpflicht in Antworten.",
+          avoid: "Entwürfe, vertrauliche Dokumente, veraltete Runbooks."
+        },
+        {
+          from: "api",
+          to: "m365",
+          title: "API / PowerShell Hub -> Microsoft 365",
+          summary: "Freigegebene Admin-Jobs werden kontrolliert gegen Microsoft 365 ausgeführt.",
+          data: ["Genehmigte Änderung", "Zielobjekt", "Mailbox-/Gruppenaktion", "Ticket-ID", "Ausführungszeit", "Audit-Status"],
+          method: "PowerShell, Microsoft Graph und Job-Logging mit Rückmeldung.",
+          guard: "Nur geprüfte Aktionen, Rollenmodell und vollständiger Audit-Trail.",
+          avoid: "Admin-Credentials, ungeprüfte Rechteänderungen, freie Skriptausführung."
         }
       ]
     }
@@ -352,16 +415,28 @@ window.PORTFOLIO_CONTENT = {
           summary: "Joiner, mover, and leaver events become a clean identity lifecycle.",
           data: ["Employee ID", "Name and email alias", "Department and location", "Manager", "Start and exit date", "Cost center"],
           method: "API or CSV import, followed by PowerShell/Graph provisioning.",
-          guard: "Unique employee ID, deprovisioning rules, group model."
+          guard: "Unique employee ID, deprovisioning rules, group model.",
+          avoid: "Passwords, salary, private HR notes."
         },
         {
-          from: "entra",
+          from: "hr",
           to: "m365",
-          title: "Microsoft Entra ID -> Microsoft 365",
-          summary: "Identities become usable M365 workspaces.",
-          data: ["User status", "Group memberships", "License groups", "Mailbox aliases", "Teams and SharePoint access"],
-          method: "Microsoft Graph, dynamic groups, or PowerShell jobs.",
-          guard: "Least privilege, license groups, audit logs, and clear naming rules."
+          title: "HR / Master Data -> Microsoft 365",
+          summary: "HR events trigger mailbox, licensing, and workspace preparation.",
+          data: ["Employee ID", "UPN/email alias", "Role profile", "License plan", "Start date", "Teams/SharePoint templates"],
+          method: "HR source to Entra ID, then Microsoft Graph and PowerShell.",
+          guard: "Derive access only from approved role profiles.",
+          avoid: "Salary data, private HR documents, unapproved roles."
+        },
+        {
+          from: "hr",
+          to: "ticket",
+          title: "HR / Master Data -> Ticket System",
+          summary: "Onboarding, moves, and offboarding become planned IT tasks.",
+          data: ["Employee ID", "Start/end date", "Department", "Location", "Manager", "Equipment needs"],
+          method: "HR export or API creates ticket templates with due dates.",
+          guard: "Report task status back, but do not maintain HR master data in tickets.",
+          avoid: "Salary, sick leave, private HR comments."
         },
         {
           from: "entra",
@@ -370,7 +445,18 @@ window.PORTFOLIO_CONTENT = {
           summary: "Support immediately sees who is asking and the context around the issue.",
           data: ["Name, mail, and phone", "Department and location", "Manager", "Groups/roles", "Account status"],
           method: "Scheduled Graph API sync into the ITSM user directory.",
-          guard: "Match by UPN, flag disabled accounts, do not overwrite roles blindly."
+          guard: "Match by UPN, flag disabled accounts, do not overwrite roles blindly.",
+          avoid: "Passwords, tokens, full group lists without support need."
+        },
+        {
+          from: "entra",
+          to: "inventory",
+          title: "Microsoft Entra ID -> Asset Inventory",
+          summary: "Identity and device context makes inventory more useful for support.",
+          data: ["UPN", "Object ID", "Primary user", "Device ID", "Join type", "Compliance status"],
+          method: "Microsoft Graph, optionally enriched with Intune device data.",
+          guard: "Map devices by stable IDs, keep owner changes historical.",
+          avoid: "MFA secrets, private profile fields, local file contents."
         },
         {
           from: "m365",
@@ -379,7 +465,8 @@ window.PORTFOLIO_CONTENT = {
           summary: "Shared mailboxes become traceable support cases.",
           data: ["Sender", "Subject", "Message ID", "Conversation", "Attachment links", "Received time"],
           method: "Graph API or mail connector with ticket creation.",
-          guard: "Detect duplicates, limit attachments, classify sensitive content."
+          guard: "Detect duplicates, limit attachments, classify sensitive content.",
+          avoid: "Entire mailboxes, private chats, unclassified attachments."
         },
         {
           from: "m365",
@@ -388,7 +475,18 @@ window.PORTFOLIO_CONTENT = {
           summary: "Approved documents become a controlled knowledge source.",
           data: ["SharePoint documents", "Runbooks", "FAQ", "File metadata", "Permission scopes", "Version state"],
           method: "SharePoint/Graph connector, indexing, and RAG pipeline.",
-          guard: "Respect permissions, exclude private content, show sources."
+          guard: "Respect permissions, exclude private content, show sources.",
+          avoid: "Private files, confidential chats, content without approval."
+        },
+        {
+          from: "m365",
+          to: "sql",
+          title: "Microsoft 365 -> SQL / Reporting",
+          summary: "License, group, and workspace data becomes reportable without reading content.",
+          data: ["License assignment", "Groups", "Mailbox types", "Teams/SharePoint inventory", "Guest users", "Changed timestamp"],
+          method: "Microsoft Graph reports and directory data into reporting views.",
+          guard: "Use metadata only; keep content and private communication out.",
+          avoid: "Mail content, chat content, personal usage profiles."
         },
         {
           from: "sap",
@@ -397,7 +495,8 @@ window.PORTFOLIO_CONTENT = {
           summary: "ERP data becomes reportable without clicking through the ERP all day.",
           data: ["Business partners", "Item master data", "Sales orders", "Invoices", "Stock levels", "Payment status"],
           method: "HANA/SQL views, Service Layer, or scheduled export.",
-          guard: "Read-only reporting, primary keys, delta runs, and timestamps."
+          guard: "Read-only reporting, primary keys, delta runs, and timestamps.",
+          avoid: "Writebacks into ERP, financial details without a clear purpose."
         },
         {
           from: "sap",
@@ -406,7 +505,8 @@ window.PORTFOLIO_CONTENT = {
           summary: "ERP events arrive where teams already work.",
           data: ["Customer contacts", "Tasks", "Document links", "Approval status", "Due dates", "Notifications"],
           method: "SAP Service Layer to Outlook, Teams, or Power Automate.",
-          guard: "Do not write accounting data back without validation; map status cleanly."
+          guard: "Do not write accounting data back without validation; map status cleanly.",
+          avoid: "Journal entries, payment data, confidential prices."
         },
         {
           from: "monitoring",
@@ -415,7 +515,8 @@ window.PORTFOLIO_CONTENT = {
           summary: "Technical alerts become prioritized, traceable tickets.",
           data: ["Alert ID", "Host/system", "Severity", "Timestamp", "Metric/threshold", "Recovery status"],
           method: "Webhook or REST API with deduplication.",
-          guard: "Avoid flapping, define auto-close behavior, keep escalation clear."
+          guard: "Avoid flapping, define auto-close behavior, keep escalation clear.",
+          avoid: "Alert storms, raw logs containing secrets."
         },
         {
           from: "inventory",
@@ -424,7 +525,18 @@ window.PORTFOLIO_CONTENT = {
           summary: "Support cases get device and ownership context immediately.",
           data: ["Hostname", "Serial number", "Asset tag", "Owner", "Warranty", "Location"],
           method: "Asset API, CSV sync, or PowerShell import.",
-          guard: "Match by serial/asset tag, archive old devices."
+          guard: "Match by serial/asset tag, archive old devices.",
+          avoid: "Local file contents, personal device data without a purpose."
+        },
+        {
+          from: "ticket",
+          to: "knowledge",
+          title: "Ticket System -> Knowledge Base",
+          summary: "Recurring fixes move from tickets into reviewed knowledge articles.",
+          data: ["Solved cases", "Category", "Resolution steps", "Known error", "Owner", "Approval status"],
+          method: "ITSM export, editorial approval, and article template.",
+          guard: "Publish only reviewed fixes, add expiry dates to old articles.",
+          avoid: "Personal data, customer secrets, internal escalation notes."
         },
         {
           from: "ticket",
@@ -433,7 +545,8 @@ window.PORTFOLIO_CONTENT = {
           summary: "Solved cases become reusable support knowledge.",
           data: ["Solved tickets", "Categories", "Resolution text", "Known errors", "SLA/urgency", "Runbook links"],
           method: "ITSM API, cleanup, approval, and knowledge index.",
-          guard: "Remove personal data, mark stale resolutions."
+          guard: "Remove personal data, mark stale resolutions.",
+          avoid: "Raw tickets, confidential attachments, private comments."
         },
         {
           from: "ticket",
@@ -442,7 +555,8 @@ window.PORTFOLIO_CONTENT = {
           summary: "Support data becomes measurable: volume, bottlenecks, themes, and response times.",
           data: ["Ticket ID", "Status", "Category", "Handling time", "SLA", "Assignment"],
           method: "REST export, incremental loads, and reporting views.",
-          guard: "Keep history, normalize status values, minimize PII."
+          guard: "Keep history, normalize status values, minimize PII.",
+          avoid: "Free text with PII, attachments, private internal notes."
         },
         {
           from: "sql",
@@ -451,7 +565,8 @@ window.PORTFOLIO_CONTENT = {
           summary: "Database states trigger traceable admin or notification jobs.",
           data: ["Status lists", "Approval data", "Report exports", "Changed timestamp", "Job ID", "Error state"],
           method: "SQL view, scheduled job, PowerShell, and API calls.",
-          guard: "Define the source of truth, idempotency, retry queue, and logging."
+          guard: "Define the leading system, idempotency, retry queue, and logging.",
+          avoid: "Unvalidated commands, write jobs without approval."
         },
         {
           from: "knowledge",
@@ -460,7 +575,18 @@ window.PORTFOLIO_CONTENT = {
           summary: "Documented knowledge becomes searchable, quotable, and useful in support.",
           data: ["Runbooks", "FAQ", "Process documents", "Version", "Owner", "Approval status"],
           method: "Indexing with source references and regular refresh.",
-          guard: "Approved content only, expiry dates, mandatory sources in answers."
+          guard: "Approved content only, expiry dates, mandatory sources in answers.",
+          avoid: "Drafts, confidential documents, stale runbooks."
+        },
+        {
+          from: "api",
+          to: "m365",
+          title: "API / PowerShell Hub -> Microsoft 365",
+          summary: "Approved admin jobs run against Microsoft 365 in a controlled way.",
+          data: ["Approved change", "Target object", "Mailbox/group action", "Ticket ID", "Execution time", "Audit status"],
+          method: "PowerShell, Microsoft Graph, and job logging with feedback.",
+          guard: "Reviewed actions only, role model, and full audit trail.",
+          avoid: "Admin credentials, unreviewed permission changes, free-form script execution."
         }
       ]
     }

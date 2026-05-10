@@ -48,6 +48,7 @@
       connectorSyncData: "Synchronisierte Daten",
       connectorMethod: "Umsetzung",
       connectorGuard: "Sauber halten",
+      connectorAvoid: "Nicht synchronisieren",
       connectorDirection: "Richtung",
       stackEyebrow: "Stack",
       stackTitle: "Technik, die ich wirklich anfasse.",
@@ -120,6 +121,7 @@
       connectorSyncData: "Synchronized data",
       connectorMethod: "Implementation",
       connectorGuard: "Keep it clean",
+      connectorAvoid: "Do not sync",
       connectorDirection: "Direction",
       stackEyebrow: "Stack",
       stackTitle: "Technology I actually work with.",
@@ -371,6 +373,14 @@
             <span>${escapeHtml(t("connectorGuard"))}</span>
             <p>${escapeHtml(flow.guard)}</p>
           </div>
+          ${
+            flow.avoid
+              ? `<div>
+                  <span>${escapeHtml(t("connectorAvoid"))}</span>
+                  <p>${escapeHtml(flow.avoid)}</p>
+                </div>`
+              : ""
+          }
         </div>
       </div>
     `;
